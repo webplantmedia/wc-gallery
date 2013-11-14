@@ -1,0 +1,207 @@
+/**
+* CSS Hacks
+*
+* Needed common CSS trick
+*/
+
+.wc-gallery-clearfix:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+ }
+
+.wc-gallery-clearfix { display: inline-block; }
+
+* html .wc-gallery-clearfix { 
+	height: 1%;
+}
+
+.wc-gallery-clearfix { display: block; }
+
+
+/**
+* Google Fonts
+*
+* Styles for Fonts subpage in Wordpress dashboard
+*/
+
+.wc-gallery-font-table {
+	height: 300px;
+	width: 450px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	border: 1px solid #e5e5e5;
+}
+
+.wc-gallery-font-row {
+	clear: both;
+}
+
+.wc-gallery-font-row:nth-child(even) {
+	background-color: #e5e5e5;
+}
+
+.wc-gallery-font-title {
+	width: 200px;
+	float: left;
+	padding-right: 10px;
+	text-align: right;
+	white-space: nowrap;
+}
+
+.wc-gallery-font-variants {
+	width: 200px;
+	float: left;
+}
+
+#wc-gallery-font-preview {
+	font-size: 28px;
+	line-height: 1.5;
+}
+
+.wc-gallery-font-preview-text {
+	margin-right: 10px;
+}
+
+.wc-gallery-font-row-remove {
+	vertical-align: middle;
+}
+
+.wc-gallery-font-preview-row {
+	margin-bottom: 15px;
+}
+
+
+/**
+* Less Variables
+*/
+
+.wc-gallery-variables-preview {
+	margin-right: 190px;
+}
+
+.wc-gallery-variables-table {
+	border: 1px solid #e5e5e5;
+	width: 97%;
+}
+
+.wc-gallery-variables-table tr:nth-child(even) {
+	background-color: #e5e5e5;
+}
+
+.wc-gallery-variables-table td {
+	padding: 3px;
+}
+
+
+/**
+* Border Fields
+*/
+
+.wc-gallery-font-hover-fields .wc-gallery-text-decoration,
+.wc-gallery-border-fields .wc-gallery-border-style,
+.wc-gallery-border-fields .wp-border-width,
+.wc-gallery-border-fields .wp-picker-container {
+	margin-bottom: 7px;
+}
+
+
+/**
+* Font Fields
+*/
+
+.wc-gallery-font-fields .wc-gallery-font-teaser,
+.wc-gallery-font-fields .wp-picker-container,
+.wc-gallery-font-fields select,
+.wc-gallery-font-fields input {
+	margin-bottom: 7px;
+}
+
+.wc-gallery-font-teaser {
+	display: block;
+	line-height: 1.5;
+}
+
+.wc-gallery-font-appearance-fields select,
+.wc-gallery-font-appearance-fields .wp-picker-container {
+	margin-bottom: 7px;
+}
+
+
+/**
+* Media Gallery
+*
+* Styles for media gallery
+*/
+
+.wp-media-buttons-icon {
+	background: url('../../../../../../../wp-admin/images/media-button.png') no-repeat top left;
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	vertical-align: text-top;
+	margin: 0 2px;
+}
+
+.wc-gallery-preview-image img {
+	max-width: 700px;
+	max-height: 200px;
+	background: #FAFAFA;
+	border-color: #ccc #eee #eee #ccc;
+	border-style: solid;
+	border-width: 1px;
+	padding: 5px;
+}
+
+.widget .wc-gallery-preview-image img {
+	padding: 0;
+	border-width: 0;
+	max-width: 100%;
+}
+
+.wc-gallery-preview-image {
+	margin-bottom: 5px;
+}
+
+.wc-gallery-upload-font-textarea {
+	max-width: 900px;
+	height: 210px;
+	width: 97%;
+}
+
+.wc-gallery-social-media-field .button,
+.wc-gallery-social-media-field input,
+.wc-gallery-image-field .button,
+.wc-gallery-image-field input,
+.wc-gallery-background-options .button,
+.wc-gallery-background-options select,
+.wc-gallery-background-options input {
+	margin-bottom: 7px;
+}
+
+
+/**
+* Theme Options Display
+*
+* Specific style for theme options pages
+*/
+
+.wc-gallery-theme-options-display .form-table tr:nth-child(odd) {
+	background-color: #f2f2f2;
+}
+
+.wc-gallery-textarea {
+	max-width: 900px;
+	height: 150px;
+	width: 97%;
+}
+
+.wc-gallery-ajax-submit-button #submit {
+	outline: 0;
+}
+.wc-gallery-ajax-submit-button #compile-status {
+	margin-left: 5px;
+}
