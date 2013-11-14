@@ -14,9 +14,10 @@ Extend WordPress galleries to display masonry gallery, carousel gallery, and sli
 ## Description ##
 
 See the galleries in action.
-[WordPress Canvas Galleries](http://wordpresscanvas.com/features/gallery/)
-[WordPress Canvas Slider & Carousel](http://wordpresscanvas.com/features/gallery/slider-carousel/)
-[WordPress Canvas Gallery Columns](http://wordpresscanvas.com/features/gallery/gallery-columns/)
+
+1. [WordPress Canvas Galleries](http://wordpresscanvas.com/features/gallery/)
+2. [WordPress Canvas Slider & Carousel](http://wordpresscanvas.com/features/gallery/slider-carousel/)
+3. [WordPress Canvas Gallery Columns](http://wordpresscanvas.com/features/gallery/gallery-columns/)
 
 ### Professional Support
 
