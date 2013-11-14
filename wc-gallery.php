@@ -26,3 +26,5 @@ require_once( dirname(__FILE__) . '/includes/options.php' ); // define options a
 require_once( dirname(__FILE__) . '/includes/settings.php' ); // Adds settings
 require_once( dirname(__FILE__) . '/includes/scripts.php' ); // Adds plugin JS and CSS
 require_once( dirname(__FILE__) . '/includes/widgets.php' ); // include any widgets
+
+register_activation_hook( __FILE__, 'wc_gallery_options_activation_hook' );

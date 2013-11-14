@@ -226,3 +226,19 @@ function wc_gallery_remember_last_options_tab() {
 	}
 }
 add_action( 'admin_init', 'wc_gallery_remember_last_options_tab' );
+
+/*
+ * Activation
+ */
+function wc_gallery_options_activation_hook() {
+	global $wc_gallery_options;
+
+	foreach ( $wc_gallery_options as $o ) {
+		foreach ( $o['sections'] as $oo ) {
+			foreach ( $oo['options'] as $ooo ) {
+				$option_name = WC_GALLERY_PREFIX . $ooo['id'];
+				add_option( $option_name, $ooo['default'] );
+			}
+		}
+	}
+}
