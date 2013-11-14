@@ -2,7 +2,7 @@
 /*
 Plugin Name: WordPress Canvas Gallery
 Plugin URI: http://wordpresscanvas.com/features/gallery/
-Description: Extend WordPress galleries to display masonry galleries, carousel galleries, and slider galleries
+Description: Extend WordPress galleries to display masonry gallery, carousel gallery, and slider gallery
 Author: Chris Baldelomar
 Author URI: http://webplantmedia.com/
 Version: 1.1
