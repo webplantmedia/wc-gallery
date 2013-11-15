@@ -46,6 +46,10 @@ Insert a gallery through your dashboard. You will see extra dropdown settings wh
 
 == Changelog ==
 
+### Version 1.2
+
+* Removed fancybox and added another image popup library with a friendly license.
+
 ### Version 1.1
 
 * Plugin released.  Everything is new!
