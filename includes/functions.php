@@ -191,7 +191,7 @@ function wc_gallery_shortcode($blank, $attr) {
 		$output .= "</ul></div>\n";
 	}
 	else {
-		wp_enqueue_script( 'wc-gallery-fancybox' );
+		wp_enqueue_script( 'wc-gallery-popup' );
 		wp_enqueue_script( 'wc-gallery' );
 
 		if ( in_array( $size, array( 'thumbnail', 'wcsquare' ) ) )
@@ -206,7 +206,7 @@ function wc_gallery_shortcode($blank, $attr) {
 		$class[] = "galleryid-{$id}";
 		$class[] = "gallery-columns-{$columns}";
 		$class[] = "gallery-size-{$size_class}";
-		// custom links should not call fancybox
+		// custom links should not call popup
 		if ( ! $customlink )
 			$class[] = "gallery-link-{$link}";
 

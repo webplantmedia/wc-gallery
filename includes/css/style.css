@@ -183,3 +183,15 @@
 	.wc-gallery .gallery.wcflexslider .wcflex-direction-nav .wcflex-prev { left: 10px;}
 	.wc-gallery .gallery.wcflexslider .wcflex-direction-nav .wcflex-next { right: 10px;}
 }
+
+/*
+ * Image Popup
+ */
+.mfp-close:hover,
+.mfp-close:active,
+.mfp-close:focus,
+.mfp-arrow:hover,
+.mfp-arrow:active,
+.mfp-arrow:focus {
+	background-color: transparent;
+}

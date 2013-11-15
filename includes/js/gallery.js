@@ -23,17 +23,20 @@
 			});
 		}
 
-		if( jQuery().fancybox) {
-			$('.gallery-link-file .gallery-icon a').fancybox({
-				openEffect  : 'none',
-				closeEffect : 'none',
-				prevEffect : 'none',
-				nextEffect : 'none',
-				beforeLoad : function() {
-					this.title = $(this.element).parent().next('.gallery-caption').html();
-				},
-				afterShow : function() {
-				}
+		if( jQuery().magnificPopup) {
+			$('.gallery-link-file').each( function() {
+				$(this).magnificPopup({
+					delegate: '.gallery-icon a',
+					gallery: {
+						enabled: true
+					},
+					type:'image',
+					image: {
+						titleSrc: function(item) {
+							return $(item.el).parent().next('.gallery-caption').html();
+						}
+					}
+				});
 			});
 		}
 
