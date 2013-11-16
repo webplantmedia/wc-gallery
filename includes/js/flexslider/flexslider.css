@@ -61,7 +61,7 @@ html[xmlns] .slides {display: block;}
 
 /* Direction Nav */
 .wcflex-direction-nav {*height: 0;}
-.wcflex-direction-nav a  { display: block; width: 100px; height: 100px; margin: -50px 0 0; position: absolute; top: 50%; z-index: 10; overflow: hidden; opacity: 0; cursor: pointer; -webkit-transition: all .3s ease; -moz-transition: all .3s ease; transition: all .3s ease; }
+.wcflex-direction-nav a  { display: block; width: 100px; height: 100px; margin: -66px 0 0; position: absolute; top: 50%; z-index: 10; overflow: hidden; opacity: 0; cursor: pointer; -webkit-transition: all .3s ease; -moz-transition: all .3s ease; transition: all .3s ease; }
 .wcflex-direction-nav .wcflex-prev { background: url("images/slide-arrows.png") no-repeat 0 0; left: 0; }
 .wcflex-direction-nav .wcflex-next { background: url("images/slide-arrows.png") no-repeat 0 -100px; right: 0; text-align: right; }
 .wcflexslider:hover .wcflex-prev { opacity: 1; left: 0px; }
@@ -78,7 +78,7 @@ html[xmlns] .slides {display: block;}
 /* .wcflex-pauseplay a.wcflex-play:before { content: '\f003'; } */
 
 /* Control Nav */
-.wcflex-control-nav {width: 100%; position: relative; text-align: center; padding-top: 20px;}
+.wcflex-control-nav {font-size: 11px; line-height: 11px; width: 100%; position: relative; text-align: center; padding-top: 20px;}
 .wcflex-control-nav li {margin: 0 6px; display: inline-block; zoom: 1; *display: inline;}
 .wcflex-control-paging li a {width: 11px; height: 11px; display: block; background: #666; background: rgba(0,0,0,0.5); cursor: pointer; text-indent: -9999px; -webkit-border-radius: 20px; -moz-border-radius: 20px; -o-border-radius: 20px; border-radius: 20px; -webkit-box-shadow: inset 0 0 3px rgba(0,0,0,0.3); -moz-box-shadow: inset 0 0 3px rgba(0,0,0,0.3); -o-box-shadow: inset 0 0 3px rgba(0,0,0,0.3); box-shadow: inset 0 0 3px rgba(0,0,0,0.3); }
 .wcflex-control-paging li a:hover { background: #333; background: rgba(0,0,0,0.7); }
@@ -90,8 +90,11 @@ html[xmlns] .slides {display: block;}
 .wcflex-control-thumbs img:hover {opacity: 1;}
 .wcflex-control-thumbs .wcflex-active {opacity: 1; cursor: default;}
 
-.wcflexslider-hidecontrols .wcflex-control-nav {
+.wcflexslider-hidecontrols .wcflex-control-paging {
 	display: none;
+}
+.wcflexslider-hidecontrols .wcflex-direction-nav a {
+	margin-top: -50px;
 }
 
 /* @media screen and (max-width: 860px) {

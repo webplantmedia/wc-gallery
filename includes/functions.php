@@ -286,7 +286,7 @@ function wc_gallery_print_media_templates() {
 		</label>
 
 		<label class="setting">
-			<span><?php _e( 'Size', 'wc_gallery' ); ?></span>
+			<span><?php _e( 'Image Size', 'wc_gallery' ); ?></span>
 			<select class="size" name="size" data-setting="size">
 				<?
 				$sizes = apply_filters( 'image_size_names_choose', array(
@@ -304,7 +304,7 @@ function wc_gallery_print_media_templates() {
 		</label>
 
 		<label class="setting">
-			<span><?php _e( 'Popup', 'wc_gallery' ); ?></span>
+			<span><?php _e( 'Popup Size', 'wc_gallery' ); ?></span>
 			<select class="targetsize" name="targetsize" data-setting="targetsize">
 				<?php foreach ( $sizes as $key => $name ) : ?>
 					<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $key, 'large' ); ?>><?php echo esc_html( $name ); ?></option>
