@@ -16,6 +16,7 @@
 			media.gallery.defaults.size = 'thumbnail'; // lil hack that lets media know there's a layout attribute.
 			media.gallery.defaults.targetsize = 'large'; // lil hack that lets media know there's a layout attribute.
 			media.gallery.defaults.captions = 'show'; // lil hack that lets media know there's a layout attribute.
+			media.gallery.defaults.captiontype = 'p'; // lil hack that lets media know there's a layout attribute.
 			media.gallery.defaults.customlink = false; // lil hack that lets media know there's a layout attribute.
 			media.gallery.defaults.bottomspace = 'default'; // lil hack that lets media know there's a layout attribute.
 			media.gallery.defaults.hidecontrols = false; // lil hack that lets media know there's a layout attribute.
@@ -24,6 +25,7 @@
 			this.update.apply( this, ['size'] );
 			this.update.apply( this, ['targetsize'] );
 			this.update.apply( this, ['captions'] );
+			this.update.apply( this, ['captiontype'] );
 			this.update.apply( this, ['customlink'] );
 			this.update.apply( this, ['bottomspace'] );
 			this.update.apply( this, ['hidecontrols'] );

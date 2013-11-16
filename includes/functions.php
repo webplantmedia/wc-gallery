@@ -27,10 +27,8 @@ function wc_gallery_shortcode($blank, $attr) {
 		'order'      => 'ASC',
 		'orderby'    => 'menu_order ID',
 		'id'         => $post ? $post->ID : 0,
-		'itemtag'    => 'dl',
-		'icontag'    => 'dt',
-		'captiontag' => 'dd',
 		'captions'   => 'show',
+		'captiontype' => 'p',
 		'columns'    => 3,
 		'link'       => 'post',
 		'size'       => 'thumbnail',
@@ -43,6 +41,11 @@ function wc_gallery_shortcode($blank, $attr) {
 		'include'    => '',
 		'exclude'    => ''
 	), $attr, 'gallery'));
+
+	$custom_class = trim( $class );
+	$valid_caption_types = array( 'p', 'h2', 'h3', 'h4', 'h5', 'h6' );
+	$captiontype = in_array( $captiontype, $valid_caption_types ) ? $captiontype : 'p';
+	$captiontype = tag_escape($captiontype);
 
 	$id = intval($id);
 	if ( 'RAND' == $order )
@@ -71,17 +74,6 @@ function wc_gallery_shortcode($blank, $attr) {
 		return $output;
 	}
 
-	$itemtag = tag_escape($itemtag);
-	$captiontag = tag_escape($captiontag);
-	$icontag = tag_escape($icontag);
-	$valid_tags = wp_kses_allowed_html( 'post' );
-	if ( ! isset( $valid_tags[ $itemtag ] ) )
-		$itemtag = 'dl';
-	if ( ! isset( $valid_tags[ $captiontag ] ) )
-		$captiontag = 'dd';
-	if ( ! isset( $valid_tags[ $icontag ] ) )
-		$icontag = 'dt';
-
 	$columns = intval($columns);
 	$itemwidth = $columns > 0 ? floor(100/$columns) : 100;
 	$float = is_rtl() ? 'right' : 'left';
@@ -92,8 +84,12 @@ function wc_gallery_shortcode($blank, $attr) {
 
 	$showcaptions = 'hide' == $captions ? false : true;
 	$customlink = 'true' == $customlink ? true : false;
-	$class = explode( ' ', $class );
+	$class = array();
+	$class[] = 'gallery';
 	$class[] = 'wc-gallery-bottomspace-' . $bottomspace;
+	$class[] = 'wc-gallery-captions-' . $captions;
+	if ( ! empty( $custom_class ) )
+		$class[] = esc_attr( $custom_class );
 
 	$sliders = array( 'slider', 'slider2', 'carousel' );
 
@@ -101,8 +97,6 @@ function wc_gallery_shortcode($blank, $attr) {
 		wp_enqueue_script( 'wc-gallery-flexslider' );
 		wp_enqueue_script( 'wc-gallery' );
 
-		$class[] = 'wc-gallery';
-		$class[] = 'gallery';
 		$class[] = 'wc' . $display;
 		$class[] = 'wcflexslider';
 		if ( 'true' == $hidecontrols )
@@ -143,10 +137,12 @@ function wc_gallery_shortcode($blank, $attr) {
 			$output .= "
 				<li class='wcflex-slide-item'>
 					$image_output";
-			if ( $showcaptions && $captiontag && trim($attachment->post_excerpt) ) {
+			if ( $showcaptions && trim($attachment->post_excerpt) ) {
 				$output .= "
 					<div class='wp-caption-text gallery-caption'>
+					<{$captiontype}>
 					" . wptexturize($attachment->post_excerpt) . "
+					</{$captiontype}>
 					</div>";
 			}
 			$output .= "</li>";
@@ -160,8 +156,6 @@ function wc_gallery_shortcode($blank, $attr) {
 
 		$display = 'float' == $display ? 'default' : $display;
 
-		$class[] = "wc-gallery";
-		$class[] = "gallery";
 		$class[] = "gallery-{$display}";
 		$class[] = "galleryid-{$id}";
 		$class[] = "gallery-columns-{$columns}";
@@ -169,9 +163,6 @@ function wc_gallery_shortcode($blank, $attr) {
 		// custom links should not call popup
 		if ( ! $customlink )
 			$class[] = "gallery-link-{$link}";
-
-		if ( 'onhover' == $captions )
-			$class[] = 'gallery-captions-on-hover';
 
 		$class = implode( ' ', $class );
 
@@ -194,18 +185,20 @@ function wc_gallery_shortcode($blank, $attr) {
 			if ( isset( $image_meta['height'], $image_meta['width'] ) )
 				$orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
 
-			$output .= "<{$itemtag} class='gallery-item'>";
+			$output .= "<div class='gallery-item'>";
 			$output .= "
-				<{$icontag} class='gallery-icon {$orientation}'>
+				<div class='gallery-icon {$orientation}'>
 					$image_output
-				</{$icontag}>";
-			if ( $showcaptions && $captiontag && trim($attachment->post_excerpt) ) {
+				</div>";
+			if ( $showcaptions && trim($attachment->post_excerpt) ) {
 				$output .= "
-					<{$captiontag} class='wp-caption-text gallery-caption'>
-					" . wptexturize($attachment->post_excerpt) . "
-					</{$captiontag}>";
+					<div class='wp-caption-text gallery-caption'>
+						<{$captiontype}>
+						" . wptexturize($attachment->post_excerpt) . "
+						</{$captiontype}>
+					</div>";
 			}
-			$output .= "</{$itemtag}>";
+			$output .= "</div>";
 		}
 
 		$output .= "</div>\n";
@@ -314,16 +307,36 @@ function wc_gallery_print_media_templates() {
 
 		<?php
 		$captions = array( 
-			'show' => __( 'Show', 'wc_gallery' ),
+			'show' => __( 'Show Below Image', 'wc_gallery' ),
+			'showon' => __( 'Show On Image', 'wc_gallery' ),
 			'onhover' => __( 'On Image Hover', 'wc_gallery' ),
 			'hide' => __( 'Hide', 'wc_gallery' )
 		);
 		?>
 		<label class="setting">
-			<span><?php _e( 'Show Captions', 'wc_gallery' ); ?></span>
+			<span><?php _e( 'Captions', 'wc_gallery' ); ?></span>
 			<select class="captions" name="captions" data-setting="captions">
 				<?php foreach ( $captions as $key => $value ) : ?>
 					<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $key, 'show' ); ?>><?php echo esc_html( $value ); ?></option>
+				<?php endforeach; ?>
+			</select>
+		</label>
+
+		<?php
+		$caption_tags = array( 
+			'p' => __( 'p', 'wc_gallery' ),
+			'h2' => __( 'h2', 'wc_gallery' ),
+			'h3' => __( 'h3', 'wc_gallery' ),
+			'h4' => __( 'h4', 'wc_gallery' ),
+			'h5' => __( 'h5', 'wc_gallery' ),
+			'h6' => __( 'h6', 'wc_gallery' ),
+		);
+		?>
+		<label class="setting">
+			<span><?php _e( 'Caption Type', 'wc_gallery' ); ?></span>
+			<select class="captiontype" name="captiontype" data-setting="captiontype">
+				<?php foreach ( $caption_tags as $key => $value ) : ?>
+					<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $key, 'p' ); ?>><?php echo esc_html( $value ); ?></option>
 				<?php endforeach; ?>
 			</select>
 		</label>

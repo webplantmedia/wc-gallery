@@ -52,47 +52,36 @@
 }
 
 /* firefox can't handle more than 5 decimals */
-.wc-gallery.gallery.gallery-columns-1 .gallery-item {
+.wc-gallery .gallery.gallery-columns-1 .gallery-item {
   width: 100%;
 }
-.wc-gallery.gallery.gallery-columns-2 .gallery-item {
+.wc-gallery .gallery.gallery-columns-2 .gallery-item {
   width: 50%;
 }
-.wc-gallery.gallery.gallery-columns-3 .gallery-item {
+.wc-gallery .gallery.gallery-columns-3 .gallery-item {
   width: 33.33333%;
 }
-.wc-gallery.gallery.gallery-columns-4 .gallery-item {
+.wc-gallery .gallery.gallery-columns-4 .gallery-item {
   width: 25%;
 }
-.wc-gallery.gallery.gallery-columns-5 .gallery-item {
+.wc-gallery .gallery.gallery-columns-5 .gallery-item {
   width: 20%;
 }
-.wc-gallery.gallery.gallery-columns-6 .gallery-item {
+.wc-gallery .gallery.gallery-columns-6 .gallery-item {
   width: 16.66666%;
 }
-.wc-gallery.gallery.gallery-columns-7 .gallery-item {
+.wc-gallery .gallery.gallery-columns-7 .gallery-item {
   width: 14.28571%;
 }
-.wc-gallery.gallery.gallery-columns-8 .gallery-item {
+.wc-gallery .gallery.gallery-columns-8 .gallery-item {
   width: 12.5%;
 }
-.wc-gallery.gallery.gallery-columns-9 .gallery-item {
+.wc-gallery .gallery.gallery-columns-9 .gallery-item {
   width: 11.11111%;
 }
 
 .wc-gallery .gallery-caption {
 	margin: 0;
-	max-height: 50%;
-	min-height: 0;
-	box-shadow: none;
-	opacity: 1;
-	position: relative;
-	background-color: #eeeeee;
-	color: #666666;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	text-align: left;
 	/* -webkit-transition: opacity 400ms ease; */
 	/* transition:         opacity 400ms ease; */
 
@@ -108,21 +97,53 @@
 
 	width: auto;
 }
-.wc-gallery .gallery-caption:after,
-.wc-gallery .gallery-caption:before {
+.wc-gallery .gallery-caption h2,
+.wc-gallery .gallery-caption h3,
+.wc-gallery .gallery-caption h4,
+.wc-gallery .gallery-caption h5,
+.wc-gallery .gallery-caption h6,
+.wc-gallery .gallery-caption p {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+
+.wc-gallery .gallery-caption p {
+	text-align: left;
+}
+
+.wc-gallery-captions-onhover .gallery-caption,
+.wc-gallery-captions-showon .gallery-caption {
+	max-height: 50%;
+	min-height: 0;
+	box-shadow: none;
+	opacity: 1;
+	position: relative;
+	background-color: #eeeeee;
+	color: #666666;
+	bottom: 0;
+	left: 0;
+	right: 0;
+}
+.wc-gallery-captions-onhover .gallery-caption:after,
+.wc-gallery-captions-showon .gallery-caption:after,
+.wc-gallery-captions-onhover .gallery-caption:before,
+.wc-gallery-captions-showon .gallery-caption:before {
 	box-shadow: none;
 	min-height: 0;
 	position:relative;
 	display: none;
 }
 
-.wc-gallery .gallery-captions-on-hover .gallery-caption {
+.wc-gallery-captions-showon .gallery-caption,
+.wc-gallery-captions-onhover .gallery-caption {
 	background: rgba(255, 255, 255, .8);
 	position: absolute;
 	display: none;
 }
 
-.wc-gallery .gallery-captions-on-hover .gallery-item:hover .gallery-caption {
+.wc-gallery-captions-showon .gallery-caption,
+.wc-gallery-captions-onhover .gallery-item:hover .gallery-caption {
 	display: block;
 }
 
