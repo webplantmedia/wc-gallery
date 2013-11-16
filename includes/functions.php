@@ -37,6 +37,8 @@ function wc_gallery_shortcode($blank, $attr) {
 		'targetsize' => 'large',
 		'display'    => 'masonry',
 		'customlink' => 'false',
+		'bottomspace' => 'default',
+		'hidecontrols' => 'false',
 		'class'	     => '',
 		'include'    => '',
 		'exclude'    => ''
@@ -86,51 +88,52 @@ function wc_gallery_shortcode($blank, $attr) {
 
 	$selector = "gallery-{$instance}";
 
-	$gallery_style = $gallery_div = '';
-	if ( apply_filters( 'use_default_gallery_style', true ) )
-		$gallery_style = "
-		<style type='text/css'>
-			#{$selector} {
-				margin: auto;
-			}
-			#{$selector} .gallery-item {
-				float: {$float};
-				margin-top: 10px;
-				text-align: center;
-				width: {$itemwidth}%;
-			}
-			#{$selector} img {
-				border: 2px solid #cfcfcf;
-			}
-			#{$selector} .gallery-caption {
-				margin-left: 0;
-			}
-			/* see gallery_shortcode() in wp-includes/media.php */
-		</style>";
 	$size_class = sanitize_html_class( $size );
 
 	$showcaptions = 'hide' == $captions ? false : true;
 	$customlink = 'true' == $customlink ? true : false;
 	$class = explode( ' ', $class );
+	$class[] = 'wc-gallery-bottomspace-' . $bottomspace;
 
-	if ( 'slider' == $display ) {
+	$sliders = array( 'slider', 'slider2', 'carousel' );
+
+	if ( in_array( $display, $sliders ) ) {
 		wp_enqueue_script( 'wc-gallery-flexslider' );
 		wp_enqueue_script( 'wc-gallery' );
 
 		$class[] = 'wc-gallery';
 		$class[] = 'gallery';
-		$class[] = 'wcslider';
+		$class[] = 'wc' . $display;
 		$class[] = 'wcflexslider';
-		$gallery_div = "<div class='".implode( ' ', $class )."'>";
-		$gallery_div .= "<ul id='$selector' class='slides'>";
-		$output = apply_filters( 'gallery_style', $gallery_style . "\n\t\t" . $gallery_div );
+		if ( 'true' == $hidecontrols )
+			$class[] = 'wcflexslider-hidecontrols';
+
+		$output = "<div class='".implode( ' ', $class )."'>";
+		$output .= "<ul id='$selector' class='slides'>";
 
 		$i = 0;
 		foreach ( $attachments as $id => $attachment ) {
 			if ( ! $img = wp_get_attachment_image_src( $id, $size ) )
 				continue;
+
 			list($src, $width, $height) = $img;
 			$image_output = "<img src='{$src}' width='{$width}' height='{$height}' />";
+
+			if ( ! empty( $link ) ) {
+				if ( $customlink ) {
+					$url = get_post_meta( $id, _WC_GALLERY_PREFIX . 'custom_image_link', true );
+					$image_output = '<a href="'.$url.'">' . $image_output . '</a>';
+				}
+				else if ( 'post' === $link ) {
+					$url = get_attachment_link( $id );
+					$image_output = '<a href="'.$url.'">' . $image_output . '</a>';
+				}
+				else if ( 'file' === $link ) {
+					$url = wp_get_attachment_url( $id );
+					$image_output = '<a href="'.$url.'">' . $image_output . '</a>';
+				}
+			}
+
 			$image_meta  = wp_get_attachment_metadata( $id );
 
 			$orientation = '';
@@ -151,54 +154,11 @@ function wc_gallery_shortcode($blank, $attr) {
 
 		$output .= "</ul></div>\n";
 	}
-	else if ( 'carousel' == $display ) {
-		wp_enqueue_script( 'wc-gallery-flexslider' );
-		wp_enqueue_script( 'wc-gallery' );
-
-		$class[] = 'wc-gallery';
-		$class[] = 'gallery';
-		$class[] = 'wccarousel';
-		$class[] = 'wcflexslider';
-		$gallery_div = "<div class='".implode( ' ', $class )."'>";
-		$gallery_div .= "<ul id='$selector' class='slides'>";
-		$output = apply_filters( 'gallery_style', $gallery_style . "\n\t\t" . $gallery_div );
-
-		$i = 0;
-		foreach ( $attachments as $id => $attachment ) {
-			if ( ! $img = wp_get_attachment_image_src( $id, $size ) )
-				continue;
-			list($src, $width, $height) = $img;
-			$image_output = "<img src='{$src}' width='{$width}' height='{$height}' />";
-			$image_meta  = wp_get_attachment_metadata( $id );
-
-			$orientation = '';
-			if ( isset( $image_meta['height'], $image_meta['width'] ) )
-				$orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
-
-			$output .= "
-				<li class='wcflex-slide-item'>
-				<div class='wcflex-center-slide' style='width:{$width}px'>
-					$image_output";
-			if ( $showcaptions && $captiontag && trim($attachment->post_excerpt) ) {
-				$output .= "
-					<div class='wp-caption-text gallery-caption'>
-					" . wptexturize($attachment->post_excerpt) . "
-					</div>";
-			}
-			$output .= "</div></li>";
-		}
-
-		$output .= "</ul></div>\n";
-	}
 	else {
 		wp_enqueue_script( 'wc-gallery-popup' );
 		wp_enqueue_script( 'wc-gallery' );
 
-		if ( in_array( $size, array( 'thumbnail', 'wcsquare' ) ) )
-			$display = 'default';
-
-		if ( 'large' == $size && 1 == $columns )
-			$display = 'default';
+		$display = 'float' == $display ? 'default' : $display;
 
 		$class[] = "wc-gallery";
 		$class[] = "gallery";
@@ -215,8 +175,7 @@ function wc_gallery_shortcode($blank, $attr) {
 
 		$class = implode( ' ', $class );
 
-		$gallery_div .= "<div id='$selector' class='{$class}'>";
-		$output = apply_filters( 'gallery_style', $gallery_style . "\n\t\t" . $gallery_div );
+		$output = "<div id='$selector' class='{$class}'>";
 
 		$i = 0;
 		foreach ( $attachments as $id => $attachment ) {
@@ -309,9 +268,11 @@ function wc_gallery_get_attachment_link( $id = 0, $size = 'thumbnail', $permalin
  */
 function wc_gallery_print_media_templates() {
 	$display_types = array( 
-		'masonry' => __( 'Gallery', 'wc_gallery' ),
+		'masonry' => __( 'Masonry', 'wc_gallery' ),
+		'slider' => __( 'Slider (Fade)', 'wc_gallery' ),
+		'slider2' => __( 'Slider (Slide)', 'wc_gallery' ),
 		'carousel' => __( 'Carousel', 'wc_gallery' ),
-		'slider' => __( 'Slider', 'wc_gallery' ),
+		'float' => __( 'Float', 'wc_gallery' ),
 	);
 	?>
 	<script type="text/html" id="tmpl-wc-gallery-settings">
@@ -343,7 +304,7 @@ function wc_gallery_print_media_templates() {
 		</label>
 
 		<label class="setting">
-			<span><?php _e( 'Target Size', 'wc_gallery' ); ?></span>
+			<span><?php _e( 'Popup', 'wc_gallery' ); ?></span>
 			<select class="targetsize" name="targetsize" data-setting="targetsize">
 				<?php foreach ( $sizes as $key => $name ) : ?>
 					<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $key, 'large' ); ?>><?php echo esc_html( $name ); ?></option>
@@ -370,6 +331,28 @@ function wc_gallery_print_media_templates() {
 		<label class="setting">
 			<span><?php _e( 'Custom Link', 'wc_gallery' ); ?></span>
 			<input type="checkbox" name="customlink" data-setting="customlink" />
+		</label>
+
+		<?php
+		$space = array( 
+			'default' => __( '20px', 'wc_gallery' ),
+			'ten' => __( '10px', 'wc_gallery' ),
+			'five' => __( '5px', 'wc_gallery' ),
+			'none' => __( '0px', 'wc_gallery' ),
+		);
+		?>
+		<label class="setting">
+			<span><?php _e( 'Bottom Space', 'wc_gallery' ); ?></span>
+			<select class="bottomspace" name="bottomspace" data-setting="bottomspace">
+				<?php foreach ( $space as $key => $value ) : ?>
+					<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $key, 'default' ); ?>><?php echo esc_html( $value ); ?></option>
+				<?php endforeach; ?>
+			</select>
+		</label>
+
+		<label class="setting">
+			<span><?php _e( 'Hide Controls', 'wc_gallery' ); ?></span>
+			<input type="checkbox" name="hidecontrols" data-setting="hidecontrols" />
 		</label>
 
 		<label class="setting">

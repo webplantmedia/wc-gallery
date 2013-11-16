@@ -43,14 +43,28 @@
 		if( jQuery().wcflexslider) {
 			$(window).load(function() {
 				$('.gallery.wcslider.wcflexslider').wcflexslider({
+					prevText: "",
+					nextText: "",
 					smoothHeight: false,
 					slideshow: false,
 					animation:"fade"
 				});
+				$('.gallery.wcslider2.wcflexslider').wcflexslider({
+					prevText: "",
+					nextText: "",
+					smoothHeight: true,
+					slideshow: false,
+					animation:"slide"
+				});
 				$('.gallery.wccarousel.wcflexslider').wcflexslider({
+					prevText: "",
+					nextText: "",
 					smoothHeight: false,
+					slideshow: false,
 					animation: "slide",
-					slideshow: false
+					animationLoop: false,
+					itemWidth: 270,
+					itemMargin: 5
 				});
 			});
 		}
