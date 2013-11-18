@@ -343,7 +343,7 @@ function wc_gallery_print_media_templates() {
 
 		<label class="setting">
 			<span><?php _e( 'Custom Link', 'wc_gallery' ); ?></span>
-			<input type="checkbox" name="customlink" data-setting="customlink" />
+			<input class="customlink" type="checkbox" name="customlink" data-setting="customlink" />
 		</label>
 
 		<?php
@@ -365,12 +365,12 @@ function wc_gallery_print_media_templates() {
 
 		<label class="setting">
 			<span><?php _e( 'Hide Controls', 'wc_gallery' ); ?></span>
-			<input type="checkbox" name="hidecontrols" data-setting="hidecontrols" />
+			<input class="hidecontrols" type="checkbox" name="hidecontrols" data-setting="hidecontrols" />
 		</label>
 
 		<label class="setting">
 			<span><?php _e( 'Class', 'wc_gallery' ); ?></span>
-			<input type="text" name="class" data-setting="class" />
+			<input class="class" type="text" name="class" data-setting="class" />
 		</label>
 	</script>
 	<?php
