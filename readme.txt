@@ -46,6 +46,10 @@ Insert a gallery through your dashboard. You will see extra dropdown settings wh
 
 == Changelog ==
 
+### Version 1.6
+
+* Fixed bug with masonry gallery not resizing defined widths and heights on images
+
 ### Version 1.5
 
 * Enhanced Gallery Options
