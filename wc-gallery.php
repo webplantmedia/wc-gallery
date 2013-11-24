@@ -5,7 +5,7 @@ Plugin URI: http://wordpresscanvas.com/features/gallery/
 Description: Extend WordPress galleries to display masonry gallery, carousel gallery, and slider gallery
 Author: Chris Baldelomar
 Author URI: http://webplantmedia.com/
-Version: 1.5
+Version: 1.6
 License: GPLv2 or later
 */
 
