@@ -47,6 +47,13 @@
 	display: block;
 }
 
+.wc-gallery .gallery .gallery-icon a img {
+	/* some theme files do not have proper reset settings */
+	max-width: 100%;
+	height: auto;
+	vertical-align: middle;
+}
+
 .wc-gallery .gallery.gallery-with-border .gallery-icon a {
 	border: 1px solid #eeeeee;
 }
