@@ -26,9 +26,9 @@ if( !function_exists ('wc_gallery_scripts') ) :
 		wp_enqueue_script('jquery');
 
 		// Gallery Shortcode
-		wp_enqueue_style( 'wc-gallery-popup-style', plugin_dir_url( __FILE__ ) . 'css/magnific-popup.css', array( ), '2.1.5' );
+		wp_enqueue_style( 'wc-gallery-popup-style', plugin_dir_url( __FILE__ ) . 'css/magnific-popup.css', array( ), '0.9.9' );
 		wp_enqueue_style( 'wc-gallery-flexslider-style', plugin_dir_url( __FILE__ ) . 'js/flexslider/flexslider.css', array( ), '2.2.0' );
-		wp_register_script( 'wc-gallery-popup', plugin_dir_url( __FILE__ ) . 'js/jquery.magnific-popup.min.js', array ( 'jquery' ), '0.9.8', true );
+		wp_register_script( 'wc-gallery-popup', plugin_dir_url( __FILE__ ) . 'js/jquery.magnific-popup.min.js', array ( 'jquery' ), '0.9.9', true );
 		wp_register_script( 'wc-gallery-flexslider', plugin_dir_url( __FILE__ ) . 'js/flexslider/jquery.flexslider-min.js', array ( 'jquery' ), '2.2.0', true );
 		wp_register_script( 'wc-gallery', plugin_dir_url( __FILE__ ) . 'js/gallery.js', array ( 'jquery' ), $ver, true );
 		wp_register_script( 'wc-gallery-woocommerce-product', plugin_dir_url( __FILE__ ) . 'js/woocommerce.product.js', array( 'jquery' ), $ver, true );
