@@ -237,3 +237,8 @@
 .mfp-arrow:focus {
 	background-color: transparent;
 }
+
+.mfp-bottom-bar *,
+.mfp-bottom-bar p {
+	margin-bottom: 0;
+}
