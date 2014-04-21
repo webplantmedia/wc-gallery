@@ -183,11 +183,15 @@ function wc_gallery_shortcode($blank, $attr) {
 
 		$i = 0;
 		foreach ( $attachments as $id => $attachment ) {
-			if ( ! empty( $link ) && 'file' === $link ) {
+			if ( $customlink ) {
 				$image_output = wc_gallery_get_attachment_link( $id, $size, false, false, false, $targetsize, $customlink );
 				$image_output = preg_replace( '/^<a /', '<a rel="gallery-'.$instance.'" ', $image_output );
 			}
-			elseif ( ! empty( $link ) && 'none' === $link )
+			else if ( ! empty( $link ) && 'file' === $link ) {
+				$image_output = wc_gallery_get_attachment_link( $id, $size, false, false, false, $targetsize, $customlink );
+				$image_output = preg_replace( '/^<a /', '<a rel="gallery-'.$instance.'" ', $image_output );
+			}
+			else if ( ! empty( $link ) && 'none' === $link )
 				$image_output = wp_get_attachment_image( $id, $size, false );
 			else
 				$image_output = wp_get_attachment_link( $id, $size, true, false );
