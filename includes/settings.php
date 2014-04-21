@@ -29,11 +29,11 @@ function wc_gallery_options_admin_menu() {
 	global $wc_gallery_options;
 
 	foreach ( $wc_gallery_options as $tab => $o ) {
-		$view_hook_name = add_submenu_page( 'options.php', $o['title'], $o['title'], 'read', 'wc-gallery-options-' . $tab, 'wc_gallery_options_display_page' );
+		$view_hook_name = add_submenu_page( 'options.php', $o['title'], $o['title'], 'manage_options', 'wc-gallery-options-' . $tab, 'wc_gallery_options_display_page' );
 	}
 
 	// add_submenu_page( $parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function );
-	$view_hook_name = add_submenu_page( 'themes.php', 'WC Gallery', 'WC Gallery', 'read', 'wc-gallery-options', 'wc_gallery_options_display_page' );
+	$view_hook_name = add_submenu_page( 'themes.php', 'WC Gallery', 'WC Gallery', 'manage_options', 'wc-gallery-options', 'wc_gallery_options_display_page' );
 }
 add_action( 'admin_menu', 'wc_gallery_options_admin_menu' );
 

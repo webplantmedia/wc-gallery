@@ -161,7 +161,9 @@ function wc_gallery_shortcode($blank, $attr) {
 		$output .= "</ul></div>\n";
 	}
 	else {
-		wp_enqueue_script( 'wc-gallery-popup' );
+		if ( get_option( WC_GALLERY_PREFIX . 'enable_image_popup', true ) ) {
+			wp_enqueue_script( 'wc-gallery-popup' );
+		}
 		wp_enqueue_script( 'wc-gallery' );
 
 		// getting rid of float
