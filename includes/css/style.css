@@ -7,9 +7,12 @@
 	margin-left: 0px;
 	margin-right: 0px;
 }
+.wc-gallery .gallery.gallery-masonry {
+	visibility: hidden;
+}
 .wc-gallery .gallery.gallery-masonry,
 .wc-gallery .gallery.gallery-default {
-	margin-right: -5px;
+	/* margin-right: -5px; */
 }
 
 .wc-gallery .gallery.wc-gallery-bottomspace-ten {
@@ -35,12 +38,12 @@
 	margin: 0;
 	overflow: hidden;
 	position: relative;
-	margin-bottom: 5px;
+	/* margin-bottom: 5px; */
 	max-width: none !important;
 }
 .wc-gallery .gallery-item .gallery-icon,
 .wc-gallery .gallery-item .gallery-caption {
-	margin-right: 5px;
+	/* margin-right: 5px; */
 }
 
 .wc-gallery .gallery .gallery-icon a {
@@ -56,35 +59,6 @@
 
 .wc-gallery .gallery.gallery-with-border .gallery-icon a {
 	border: 1px solid #eeeeee;
-}
-
-/* firefox can't handle more than 5 decimals */
-.wc-gallery .gallery.gallery-columns-1 .gallery-item {
-  width: 100%;
-}
-.wc-gallery .gallery.gallery-columns-2 .gallery-item {
-  width: 50%;
-}
-.wc-gallery .gallery.gallery-columns-3 .gallery-item {
-  width: 33.33333%;
-}
-.wc-gallery .gallery.gallery-columns-4 .gallery-item {
-  width: 25%;
-}
-.wc-gallery .gallery.gallery-columns-5 .gallery-item {
-  width: 20%;
-}
-.wc-gallery .gallery.gallery-columns-6 .gallery-item {
-  width: 16.66666%;
-}
-.wc-gallery .gallery.gallery-columns-7 .gallery-item {
-  width: 14.28571%;
-}
-.wc-gallery .gallery.gallery-columns-8 .gallery-item {
-  width: 12.5%;
-}
-.wc-gallery .gallery.gallery-columns-9 .gallery-item {
-  width: 11.11111%;
 }
 
 .wc-gallery .gallery-caption {
@@ -154,20 +128,6 @@
 	display: block;
 }
 
-@media (max-width: 480px) {
-	body .wc-gallery .gallery.gallery-columns-9 .gallery-item,
-	body .wc-gallery .gallery.gallery-columns-8 .gallery-item,
-	body .wc-gallery .gallery.gallery-columns-7 .gallery-item,
-	body .wc-gallery .gallery.gallery-columns-6 .gallery-item,
-	body .wc-gallery .gallery.gallery-columns-5 .gallery-item,
-	body .wc-gallery .gallery.gallery-columns-4 .gallery-item,
-	body .wc-gallery .gallery.gallery-columns-3 .gallery-item,
-	body .wc-gallery .gallery.gallery-columns-2 .gallery-item,
-	body .wc-gallery .gallery.gallery-columns-1 .gallery-item {
-		width: 99.9%;
-	}
-}
-
 /**
  * [gallery flexslider]
  * ----------------------------------------------------------------------------
@@ -208,7 +168,7 @@
 	margin-right: auto;
 }
 .wc-gallery .gallery.wcflexslider .wcflex-slide-item .wp-caption-text {
-	padding: 5px 10px;
+	padding: 0 10px;
 	opacity: 0.7;
 	position: absolute;
 	bottom: 0;

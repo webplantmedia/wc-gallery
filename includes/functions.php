@@ -30,6 +30,7 @@ function wc_gallery_shortcode($blank, $attr) {
 		'captions'   => 'show',
 		'captiontype' => 'p',
 		'columns'    => 3,
+		'gutterwidth' => '0.005',
 		'link'       => 'post',
 		'size'       => 'thumbnail',
 		'targetsize' => 'large',
@@ -75,6 +76,15 @@ function wc_gallery_shortcode($blank, $attr) {
 	}
 
 	$columns = intval($columns);
+
+	if ( ! is_numeric( $gutterwidth ) ) {
+		$gutterwidth = 0.005;
+	}
+	$gutterwidth = number_format( $gutterwidth, 3 );
+	if ( $gutterwidth > 0.05 || $gutterwidth < 0.000 ) {
+		$gutterwidth = 0.005;
+	}
+
 	$itemwidth = $columns > 0 ? floor(100/$columns) : 100;
 	$float = is_rtl() ? 'right' : 'left';
 
@@ -154,7 +164,8 @@ function wc_gallery_shortcode($blank, $attr) {
 		wp_enqueue_script( 'wc-gallery-popup' );
 		wp_enqueue_script( 'wc-gallery' );
 
-		$display = 'float' == $display ? 'default' : $display;
+		// getting rid of float
+		$display = 'float' == $display ? 'masonry' : $display;
 
 		$class[] = "gallery-{$display}";
 		$class[] = "galleryid-{$id}";
@@ -166,7 +177,7 @@ function wc_gallery_shortcode($blank, $attr) {
 
 		$class = implode( ' ', $class );
 
-		$output = "<div id='$selector' class='{$class}'>";
+		$output = "<div id='$selector' data-gutter-width='".$gutterwidth."' data-columns='".$columns."' class='{$class}'>";
 
 		$i = 0;
 		foreach ( $attachments as $id => $attachment ) {
@@ -265,7 +276,6 @@ function wc_gallery_print_media_templates() {
 		'slider' => __( 'Slider (Fade)', 'wc_gallery' ),
 		'slider2' => __( 'Slider (Slide)', 'wc_gallery' ),
 		'carousel' => __( 'Carousel', 'wc_gallery' ),
-		'float' => __( 'Float', 'wc_gallery' ),
 	);
 	?>
 	<script type="text/html" id="tmpl-wc-gallery-settings">
@@ -347,6 +357,21 @@ function wc_gallery_print_media_templates() {
 		</label>
 
 		<?php
+		$gutterwidth = array();
+		for ( $i = 0; $i <= 50; $i++ ) {
+			$gutterwidth[ $i ] = number_format( ( $i / 1000 ), 3 );
+		}
+		?>
+		<label class="setting">
+			<span><?php _e( 'Gutter Width', 'wc_gallery' ); ?></span>
+			<select class="gutterwidth" name="gutterwidth" data-setting="gutterwidth">
+				<?php foreach ( $gutterwidth as $key => $value ) : ?>
+					<option value="<?php echo esc_attr( $value ); ?>" <?php selected( $key, '5' ); ?>><?php echo esc_html( $value ); ?>%</option>
+				<?php endforeach; ?>
+			</select>
+		</label>
+
+		<?php
 		$space = array( 
 			'default' => __( '20px', 'wc_gallery' ),
 			'ten' => __( '10px', 'wc_gallery' ),
@@ -370,7 +395,7 @@ function wc_gallery_print_media_templates() {
 
 		<label class="setting">
 			<span><?php _e( 'Class', 'wc_gallery' ); ?></span>
-			<input class="class" type="text" name="class" data-setting="class" />
+			<input class="class" type="text" name="class" style="float:left;" data-setting="class" />
 		</label>
 	</script>
 	<?php
