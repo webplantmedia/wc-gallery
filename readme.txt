@@ -46,6 +46,10 @@ Insert a gallery through your dashboard. You will see extra dropdown settings wh
 
 == Changelog ==
 
+### Version 1.10
+
+* Made an update to the responsive behavior of galleries
+
 ### Version 1.9
 
 * HTML5 compliant gallery structure
