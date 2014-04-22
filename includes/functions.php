@@ -121,7 +121,8 @@ function wc_gallery_shortcode($blank, $attr) {
 				continue;
 
 			list($src, $width, $height) = $img;
-			$image_output = "<img src='{$src}' width='{$width}' height='{$height}' />";
+			$alt = trim( strip_tags( get_post_meta($id, '_wp_attachment_image_alt', true) ) ); // Use Alt field first
+			$image_output = "<img src='{$src}' width='{$width}' height='{$height}' alt='{$alt}' />";
 
 			if ( ! empty( $link ) ) {
 				if ( $customlink ) {
