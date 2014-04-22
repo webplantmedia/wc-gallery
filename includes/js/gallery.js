@@ -42,7 +42,6 @@
 
 		var allGutters = gutterWidth * ( columns - 1 );
 		var contentWidth = containerWidth - allGutters;
-		console.log(allGutters);
 
 		var columnWidth = Math.floor( contentWidth / columns );
 
