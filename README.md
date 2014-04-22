@@ -46,6 +46,10 @@ Insert a gallery through your dashboard. You will see extra dropdown settings wh
 
 ## Changelog ##
 
+### Version 1.9
+
+* HTML5 compliant gallery structure
+
 ### Version 1.8
 
 * Fixed bug where custom links only worked when link was set to media
