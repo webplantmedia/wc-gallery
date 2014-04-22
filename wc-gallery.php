@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: WordPress Canvas Gallery
+Plugin Name: WP Canvas - Gallery
 Plugin URI: http://wordpresscanvas.com/features/gallery/
 Description: Extend WordPress galleries to display masonry gallery, carousel gallery, and slider gallery
 Author: Chris Baldelomar
 Author URI: http://webplantmedia.com/
-Version: 1.7
+Version: 1.8
 License: GPLv2 or later
 */
 
@@ -13,7 +13,7 @@ function wc_gallery_using_woocommerce() {
 	return in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) );
 }
 
-define( 'WC_GALLERY_VERSION', '1.7' );
+define( 'WC_GALLERY_VERSION', '1.8' );
 define( 'WC_GALLERY_PREFIX', 'wc_gallery_' );
 define( '_WC_GALLERY_PREFIX', '_wc_gallery_' );
 define( 'WC_GALLERY_PLUGIN_URL', plugin_dir_url( __FILE__ ) );

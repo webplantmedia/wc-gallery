@@ -1,4 +1,4 @@
-=== WordPress Canvas Gallery ===
+=== WP Canvas - Gallery ===
 
 Contributors: cbaldelomar
 Donate link: http://webplantmedia.com/pay-now/
@@ -15,13 +15,13 @@ Extend WordPress galleries to display masonry gallery, carousel gallery, and sli
 
 See the galleries in action.
 
-1. [WordPress Canvas Galleries](http://wordpresscanvas.com/features/gallery/)
-2. [WordPress Canvas Slider & Carousel](http://wordpresscanvas.com/features/gallery/slider-carousel/)
-3. [WordPress Canvas Gallery Columns](http://wordpresscanvas.com/features/gallery/gallery-columns/)
+1. [WP Canvas Galleries](http://wordpresscanvas.com/features/gallery/)
+2. [WP Canvas Slider & Carousel](http://wordpresscanvas.com/features/gallery/slider-carousel/)
+3. [WP Canvas Gallery Columns](http://wordpresscanvas.com/features/gallery/gallery-columns/)
 
 ### Professional Support
 
-If you need professional plugin support from me, the plugin author, you can contact me at [WordPress Canvas](http://wordpresscanvas.com/).
+If you need professional plugin support from me, the plugin author, you can contact me at [WP Canvas](http://wordpresscanvas.com/).
 
 ### Plugin Development
 
@@ -36,7 +36,7 @@ Yes, I do accept donations.  If you want to buy me a sandwich or something, you 
 1. Uzip the `wc-gallery.zip` folder.
 2. Upload the `wc-gallery` folder to your `/wp-content/plugins` directory.
 3. In your WordPress dashboard, head over to the *Plugins* section.
-4. Activate *WordPress Canvas Gallery*.
+4. Activate *WP Canvas - Gallery*.
 
 == Frequently Asked Questions ==
 
@@ -45,6 +45,13 @@ Yes, I do accept donations.  If you want to buy me a sandwich or something, you 
 Insert a gallery through your dashboard. You will see extra dropdown settings when configuring your gallery
 
 == Changelog ==
+
+### Version 1.8
+
+* Fixed bug where custom links only worked when link was set to media
+* Added option to disable integrated popup script
+* updated masonry library
+* Fixed permission bug with options
 
 ### Version 1.7
 
