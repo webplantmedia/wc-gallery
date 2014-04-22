@@ -29,9 +29,9 @@
 					columns = 4;
 				}
 			}
-			else if ( containerWidth < 768 ) { 
+			/* else if ( containerWidth < 768 ) { 
 				columns -= 1;
-			}
+			} */
 
 			if ( columns < 2 ) {
 				columns = 2;
