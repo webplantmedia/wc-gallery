@@ -46,6 +46,11 @@ Insert a gallery through your dashboard. You will see extra dropdown settings wh
 
 == Changelog ==
 
+### Version 1.11
+
+* Fixed a very obscure bug that kept image sizes from displaying.
+* removed rel tag
+
 ### Version 1.10
 
 * Made an update to the responsive behavior of galleries
