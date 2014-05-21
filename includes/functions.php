@@ -298,7 +298,7 @@ function wc_gallery_print_media_templates() {
 		<label class="setting">
 			<span><?php _e( 'Image Size', 'wc_gallery' ); ?></span>
 			<select class="size" name="size" data-setting="size">
-				<?
+				<?php
 				$sizes = apply_filters( 'image_size_names_choose', array(
 					'thumbnail' => __('Thumbnail'),
 					'medium'    => __('Medium'),
