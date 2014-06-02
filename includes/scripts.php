@@ -18,8 +18,6 @@ if( !function_exists ('wc_gallery_scripts') ) :
 		}
 
 		// Masonry
-		wp_deregister_script( 'jquery-masonry' );
-		wp_register_script( 'jquery-masonry', plugin_dir_url( __FILE__ ) . 'js/masonry.pkgd.min.js', array( ), '3.1.5', true );
 		wp_enqueue_script( 'jquery-masonry' );
 
 		// jQuery
