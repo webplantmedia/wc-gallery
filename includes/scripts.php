@@ -17,11 +17,11 @@ if( !function_exists ('wc_gallery_scripts') ) :
 			wp_enqueue_style( 'wc-gallery-style', plugin_dir_url( __FILE__ ) . 'css/style.css', array( ), $ver );
 		}
 
-		// Masonry
-		wp_enqueue_script( 'jquery-masonry' );
-
 		// jQuery
 		wp_enqueue_script('jquery');
+
+		// Masonry
+		wp_enqueue_script( 'jquery-masonry' );
 
 		// images loaded
 		wp_register_script( 'wordpresscanvas-imagesloaded', plugin_dir_url( __FILE__ ) . 'js/imagesloaded.pkgd.min.js', array (), '3.1.5', true );
