@@ -1,4 +1,19 @@
 <?php
+function wc_gallery_check_supports() {
+	global $wc_shortcodes_theme_support;
+
+	if ( current_theme_supports( 'wpc-gallery' ) ) {
+		$supports = get_theme_support( 'wpc-gallery' );
+
+		if ( isset( $supports[0] ) && is_array( $supports[0] ) ) {
+			foreach ( $supports[0] as $key => $value ) {
+				$wc_gallery_theme_support[ $key ] = $value;
+			}
+		}
+	}
+}
+add_action( 'init', 'wc_gallery_check_supports' );
+
 /**
  * The Gallery shortcode.
  *
@@ -445,3 +460,27 @@ add_filter( "attachment_fields_to_save", "wc_gallery_attachment_fields_to_save",
 
 // This theme uses its own gallery styles.
 add_filter( 'use_default_gallery_style', '__return_false' );
+
+function wc_gallery_after_setup_theme() {
+	global $wc_gallery_image_sizes;
+
+	$defined_sizes = get_intermediate_image_sizes();
+
+	foreach ( $wc_gallery_image_sizes as $size ) {
+		if ( in_array( $size, $defined_sizes ) ) {
+			continue;
+		}
+		$name_w = $size . '_size_w';
+		$name_h = $size . '_size_h';
+		$name_crop = $size . '_crop';
+
+		/* $width = get_option( WORDPRESSCANVAS_PREFIX . $name_w );
+		$height = get_option( WORDPRESSCANVAS_PREFIX . $name_h );
+		$crop = get_option( WORDPRESSCANVAS_PREFIX . $name_crop );
+		if ( $width && $height ) {
+			$crop = $crop ? true : false;
+			add_image_size( 'wc' . $size, $width, $height, $crop );
+		} */
+	}
+}
+add_action( 'after_setup_theme', 'wc_gallery_after_setup_theme', 99 );

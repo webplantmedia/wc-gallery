@@ -20,6 +20,52 @@ define( 'WC_GALLERY_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'WC_GALLERY_USING_WOOCOMMERCE', wc_gallery_using_woocommerce() );
 
 global $wc_gallery_options;
+global $wc_gallery_image_sizes;
+$wc_gallery_image_sizes = array();
+$wc_shortcodes_theme_support = array(
+	'image_sizes' => array(
+		'wcicon' => array(
+			'size_w' => '',
+			'size_h' => '',
+			'crop' => '',
+		),
+		'wcsquare' => array(
+			'size_w' => '',
+			'size_h' => '',
+			'crop' => '',
+		),
+		'wcsmall' => array(
+			'size_w' => '',
+			'size_h' => '',
+			'crop' => '',
+		),
+		'wcstandard' => array(
+			'size_w' => '',
+			'size_h' => '',
+			'crop' => '',
+		),
+		'wcbig' => array(
+			'size_w' => '',
+			'size_h' => '',
+			'crop' => '',
+		),
+		'wcfixedheight' => array(
+			'size_w' => '',
+			'size_h' => '',
+			'crop' => '',
+		),
+		'wccarousel' => array(
+			'size_w' => '',
+			'size_h' => '',
+			'crop' => '',
+		),
+		'wcslider' => array(
+			'size_w' => '',
+			'size_h' => '',
+			'crop' => '',
+		),
+	),
+);
 
 require_once( dirname(__FILE__) . '/includes/functions.php' ); // Adds basic filters and actions
 require_once( dirname(__FILE__) . '/includes/options.php' ); // define options array

@@ -14,11 +14,30 @@ function wc_gallery_options_init() {
 	foreach ( $wc_gallery_options as $tab => $o ) {
 		foreach ( $o['sections'] as $oo ) {
 			add_settings_section( $oo['section'], $oo['title'], '', 'wc-gallery-options' . $tab );
-			foreach ( $oo['options'] as $ooo ) {
-				$ooo['option_name'] = WC_GALLERY_PREFIX . $ooo['id'];
-				$callback = wc_gallery_options_find_sanitize_callback( $ooo['type'] );
-				register_setting( 'wc-gallery-options-'.$tab.'group', WC_GALLERY_PREFIX . $ooo['id'], $callback );
-				add_settings_field('wc_gallery_'.$ooo['id'].'', '<label for="wc_gallery_'.$ooo['id'].'">'.__($ooo['title'] , 'wc_gallery' ).'</label>' , 'wc_gallery_options_display_setting', 'wc-gallery-options'.$tab, $oo['section'], $ooo );
+			foreach( $oo['options'] as $ooo ) {
+				if ( isset( $ooo['group'] ) && is_array( $ooo['group'] ) ) {
+					foreach ( $ooo['group'] as $key => $oooo ) {
+						$oooo['option_name'] = WC_GALLERY_PREFIX . $oooo['id'];
+						$ooo['group'][ $key ]['option_name'] = WC_GALLERY_PREFIX . $oooo['id'];
+
+						if ( isset( $oooo['option_name'] ) ) {
+							$callback = wc_gallery_options_find_sanitize_callback( $oooo['type'] );
+							register_setting( 'wc-gallery-options-'.$tab.'group', $oooo['option_name'], $callback );
+						}
+					}
+					if ( isset( $ooo['id'] ) && isset( $ooo['title'] ) ) {
+						add_settings_field('wc_gallery_'.$ooo['id'].'', '<label for="wc_gallery_'.$ooo['id'].'">'.__($ooo['title'] , 'wc_gallery' ).'</label>' , 'wc_gallery_options_display_group', 'wc-gallery-options'.$tab, $oo['section'], $ooo );
+					}
+				}
+				else {
+					$ooo['option_name'] = WC_GALLERY_PREFIX . $ooo['id'];
+
+					if ( isset( $ooo['option_name'] ) ) {
+						$callback = wc_gallery_options_find_sanitize_callback( $ooo['type'] );
+						register_setting( 'wc-gallery-options-'.$tab.'group', $ooo['option_name'], $callback );
+						add_settings_field('wc_gallery_'.$ooo['option_name'].'', '<label for="wc_gallery_'.$ooo['option_name'].'">'.__($ooo['title'] , 'wc_gallery' ).'</label>' , 'wc_gallery_options_display_setting', 'wc-gallery-options'.$tab, $oo['section'], $ooo );
+					}
+				}
 			}
 		}
 	}
@@ -91,6 +110,29 @@ function wc_gallery_options_display_page() {
 	<?php
 }
 
+/**
+ * Call all the options displays in a given option
+ * group
+ *
+ * @since 3.5.2
+ * @access public
+ *
+ * @param array $args 
+ * @return void
+ */
+function wc_gallery_options_display_group( $args ) {
+	foreach ( $args['group'] as $g ) {
+		wc_gallery_options_display_setting( $g );
+	}
+	?>
+
+	<?php if ( isset( $args['description'] ) ) : ?>
+		<p class="description"><?php echo $args['description']; ?></p>
+	<?php endif; ?>
+
+	<?php
+}
+
 /*
  * Display Options 
  */
@@ -110,6 +152,9 @@ function wc_gallery_options_display_setting( $args ) {
 			break;
 		case 'checkbox' :
 			wc_gallery_options_display_checkbox_field( $args );
+			break;
+		case 'positive_number' :
+			wc_gallery_options_display_positive_number_input_field( $args );
 			break;
 		default :
 			wc_gallery_options_input_field( $args );
@@ -180,6 +225,35 @@ function wc_gallery_options_display_checkbox_field( $args ) {
 	<?php
 }
 
+/**
+ * Display positive pixel input field.
+ *
+ * @since 3.5.2
+ * @access public
+ *
+ * @param array $args 
+ * @return void
+ */
+function wc_gallery_options_display_positive_number_input_field( $args ) {
+	extract( $args );
+
+	$val = get_option( $option_name, $default );
+	$val = preg_replace("/[^0-9]/", "",$val);
+	?>
+
+	<?php if ( isset( $label ) ) : ?>
+		<label for="<?php echo $option_name; ?>"><?php echo $label; ?></label>&nbsp;
+	<?php endif; ?>
+
+	<input type="number" min="0" class="small-text" name="<?php echo esc_attr($option_name); ?>" id="<?php echo $option_name; ?>" value="<?php echo esc_attr($val); ?>" />&nbsp;
+
+	<?php if ( isset( $description ) && !empty( $description ) ) : ?>
+		<p class="description"><?php echo $description; ?></p>
+	<?php endif; ?>
+
+	<?php
+}
+
 /*
  * Sanitize Options
  */
@@ -191,9 +265,31 @@ function wc_gallery_options_find_sanitize_callback( $type ) {
 			return 'esc_url_raw';
 		case 'checkbox' :
 			return 'wc_gallery_options_sanitize_checkbox';
+		case 'positive_number' :
+			return 'wc_gallery_options_sanitize_positive_number';
 	}
 
 	return '';
+}
+
+/**
+ * Strips all non numerica characters and returns
+ * intval() of string. Only allows for positive values.
+ *
+ * @since 3.6
+ * @access public
+ *
+ * @param string $value 
+ * @return void
+ */
+function wc_gallery_options_sanitize_positive_number( $value ) {
+	$value = preg_replace("/[^0-9]/", "",$value);
+	$value = intval( $value );
+
+	if ( empty( $value ) )
+		$value = '0';
+
+	return $value;
 }
 
 function wc_gallery_options_sanitize_checkbox( $val ) {
