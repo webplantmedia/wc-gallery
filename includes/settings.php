@@ -52,7 +52,7 @@ function wc_gallery_options_admin_menu() {
 	}
 
 	// add_submenu_page( $parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function );
-	$view_hook_name = add_submenu_page( 'themes.php', 'WC Gallery', 'WC Gallery', 'manage_options', 'wc-gallery-options', 'wc_gallery_options_display_page' );
+	$view_hook_name = add_submenu_page( 'themes.php', 'Gallery', 'Gallery', 'manage_options', 'wc-gallery-options', 'wc_gallery_options_display_page' );
 }
 add_action( 'admin_menu', 'wc_gallery_options_admin_menu' );
 
@@ -329,12 +329,34 @@ add_action( 'admin_init', 'wc_gallery_remember_last_options_tab' );
 function wc_gallery_options_activation_hook() {
 	global $wc_gallery_options;
 
-	foreach ( $wc_gallery_options as $o ) {
-		foreach ( $o['sections'] as $oo ) {
-			foreach ( $oo['options'] as $ooo ) {
-				$option_name = WC_GALLERY_PREFIX . $ooo['id'];
-				add_option( $option_name, $ooo['default'] );
+	$initialize = false;
+
+	if ( ! WC_GALLERY_CURRENT_VERSION ) {
+		$initialize = true;
+	}
+	else if ( version_compare( WC_GALLERY_VERSION, WC_GALLERY_CURRENT_VERSION ) > 0 ) {
+		$initialize = true;
+	}
+
+	if ( $initialize ) {
+		update_option( WC_GALLERY_PREFIX . 'current_version', WC_GALLERY_VERSION );
+
+		foreach ( $wc_gallery_options as $o ) {
+			foreach ( $o['sections'] as $oo ) {
+				foreach ( $oo['options'] as $ooo ) {
+					if ( isset( $ooo['group'] ) && is_array( $ooo['group'] ) ) {
+						foreach ( $ooo['group'] as $key => $oooo ) {
+							$option_name = WC_GALLERY_PREFIX . $oooo['id'];
+							add_option( $option_name, $oooo['default'] );
+						}
+					}
+					else {
+						$option_name = WC_GALLERY_PREFIX . $ooo['id'];
+						add_option( $option_name, $ooo['default'] );
+					}
+				}
 			}
 		}
 	}
 }
+add_action( 'init', 'wc_gallery_options_activation_hook' );

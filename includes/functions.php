@@ -1,6 +1,6 @@
 <?php
 function wc_gallery_check_supports() {
-	global $wc_shortcodes_theme_support;
+	global $wc_gallery_theme_support;
 
 	if ( current_theme_supports( 'wpc-gallery' ) ) {
 		$supports = get_theme_support( 'wpc-gallery' );
@@ -462,11 +462,11 @@ add_filter( "attachment_fields_to_save", "wc_gallery_attachment_fields_to_save",
 add_filter( 'use_default_gallery_style', '__return_false' );
 
 function wc_gallery_after_setup_theme() {
-	global $wc_gallery_image_sizes;
+	global $wc_gallery_theme_support;
 
 	$defined_sizes = get_intermediate_image_sizes();
 
-	foreach ( $wc_gallery_image_sizes as $size ) {
+	foreach ( $wc_gallery_theme_support as $size => $value ) {
 		if ( in_array( $size, $defined_sizes ) ) {
 			continue;
 		}

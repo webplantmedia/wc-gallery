@@ -18,52 +18,51 @@ define( 'WC_GALLERY_PREFIX', 'wc_gallery_' );
 define( '_WC_GALLERY_PREFIX', '_wc_gallery_' );
 define( 'WC_GALLERY_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'WC_GALLERY_USING_WOOCOMMERCE', wc_gallery_using_woocommerce() );
+define( 'WC_GALLERY_CURRENT_VERSION', get_option( WC_GALLERY_PREFIX . 'current_version' ) );
 
 global $wc_gallery_options;
-global $wc_gallery_image_sizes;
-$wc_gallery_image_sizes = array();
-$wc_shortcodes_theme_support = array(
-	'image_sizes' => array(
-		'wcicon' => array(
-			'size_w' => '',
-			'size_h' => '',
-			'crop' => '',
-		),
-		'wcsquare' => array(
-			'size_w' => '',
-			'size_h' => '',
-			'crop' => '',
-		),
-		'wcsmall' => array(
-			'size_w' => '',
-			'size_h' => '',
-			'crop' => '',
-		),
-		'wcstandard' => array(
-			'size_w' => '',
-			'size_h' => '',
-			'crop' => '',
-		),
-		'wcbig' => array(
-			'size_w' => '',
-			'size_h' => '',
-			'crop' => '',
-		),
-		'wcfixedheight' => array(
-			'size_w' => '',
-			'size_h' => '',
-			'crop' => '',
-		),
-		'wccarousel' => array(
-			'size_w' => '',
-			'size_h' => '',
-			'crop' => '',
-		),
-		'wcslider' => array(
-			'size_w' => '',
-			'size_h' => '',
-			'crop' => '',
-		),
+global $wc_gallery_theme_support;
+
+$wc_gallery_theme_support = array(
+	'wcicon' => array(
+		'size_w' => '48',
+		'size_h' => '48',
+		'crop' => true,
+	),
+	'wcsquare' => array(
+		'size_w' => '300',
+		'size_h' => '300',
+		'crop' => true,
+	),
+	'wcsmall' => array(
+		'size_w' => '250',
+		'size_h' => '9999',
+		'crop' => false,
+	),
+	'wcstandard' => array(
+		'size_w' => '550',
+		'size_h' => '9999',
+		'crop' => false,
+	),
+	'wcbig' => array(
+		'size_w' => '800',
+		'size_h' => '9999',
+		'crop' => false,
+	),
+	'wcfixedheight' => array(
+		'size_w' => '9999',
+		'size_h' => '600',
+		'crop' => false,
+	),
+	'wccarousel' => array(
+		'size_w' => '400',
+		'size_h' => '285',
+		'crop' => true,
+	),
+	'wcslider' => array(
+		'size_w' => '1100',
+		'size_h' => '500',
+		'crop' => true,
 	),
 );
 
@@ -72,5 +71,3 @@ require_once( dirname(__FILE__) . '/includes/options.php' ); // define options a
 require_once( dirname(__FILE__) . '/includes/settings.php' ); // Adds settings
 require_once( dirname(__FILE__) . '/includes/scripts.php' ); // Adds plugin JS and CSS
 require_once( dirname(__FILE__) . '/includes/widgets.php' ); // include any widgets
-
-register_activation_hook( __FILE__, 'wc_gallery_options_activation_hook' );
