@@ -474,13 +474,43 @@ function wc_gallery_after_setup_theme() {
 		$name_h = $size . '_size_h';
 		$name_crop = $size . '_crop';
 
-		/* $width = get_option( WORDPRESSCANVAS_PREFIX . $name_w );
-		$height = get_option( WORDPRESSCANVAS_PREFIX . $name_h );
-		$crop = get_option( WORDPRESSCANVAS_PREFIX . $name_crop );
+		$width = get_option( WC_GALLERY_PREFIX . $name_w );
+		$height = get_option( WC_GALLERY_PREFIX . $name_h );
+		$crop = get_option( WC_GALLERY_PREFIX . $name_crop );
 		if ( $width && $height ) {
 			$crop = $crop ? true : false;
 			add_image_size( 'wc' . $size, $width, $height, $crop );
-		} */
+		}
 	}
 }
 add_action( 'after_setup_theme', 'wc_gallery_after_setup_theme', 99 );
+
+/**
+ * Allow users to select our custom image sizes
+ *
+ * @since 3.6.1
+ * @access public
+ *
+ * @param array $sizes
+ * @return array
+ */
+function wc_gallery_image_size_names_choose( $sizes ) {
+	global $wc_gallery_theme_support;
+
+	foreach ( $wc_gallery_theme_support as $size => $value ) {
+		$name_w = $size . '_size_w';
+		$name_h = $size . '_size_h';
+
+		$width = get_option( WC_GALLERY_PREFIX . $name_w );
+		$height = get_option( WC_GALLERY_PREFIX . $name_h );
+		if ( $width && $height ) {
+			$name = 'wc' . $size;
+			if ( ! array_key_exists( $name, $sizes ) ) {
+				$sizes[ $name ] = ucwords( $size );
+			}
+		}
+	}
+ 
+	return $sizes;
+}
+add_filter( 'image_size_names_choose', 'wc_gallery_image_size_names_choose', 99 );

@@ -24,42 +24,42 @@ global $wc_gallery_options;
 global $wc_gallery_theme_support;
 
 $wc_gallery_theme_support = array(
-	'wcicon' => array(
+	'icon' => array(
 		'size_w' => '48',
 		'size_h' => '48',
 		'crop' => true,
 	),
-	'wcsquare' => array(
+	'square' => array(
 		'size_w' => '300',
 		'size_h' => '300',
 		'crop' => true,
 	),
-	'wcsmall' => array(
+	'small' => array(
 		'size_w' => '250',
 		'size_h' => '9999',
 		'crop' => false,
 	),
-	'wcstandard' => array(
+	'standard' => array(
 		'size_w' => '550',
 		'size_h' => '9999',
 		'crop' => false,
 	),
-	'wcbig' => array(
+	'big' => array(
 		'size_w' => '800',
 		'size_h' => '9999',
 		'crop' => false,
 	),
-	'wcfixedheight' => array(
+	'fixedheight' => array(
 		'size_w' => '9999',
 		'size_h' => '600',
 		'crop' => false,
 	),
-	'wccarousel' => array(
+	'carousel' => array(
 		'size_w' => '400',
 		'size_h' => '285',
 		'crop' => true,
 	),
-	'wcslider' => array(
+	'slider' => array(
 		'size_w' => '1100',
 		'size_h' => '500',
 		'crop' => true,
