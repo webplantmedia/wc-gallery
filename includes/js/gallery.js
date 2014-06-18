@@ -146,7 +146,7 @@
 						$flex.wcflexslider({
 							prevText: "",
 							nextText: "",
-							smoothHeight: true,
+							smoothHeight: false,
 							slideshow: true,
 							animation:"slide"
 						});
