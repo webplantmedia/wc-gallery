@@ -231,7 +231,7 @@ function wc_gallery_shortcode($blank, $attr) {
 							<div class='wp-caption-text gallery-caption'>
 								<h3>
 								" . wptexturize($caption_text) . "
-								<h3>
+								</h3>
 							</div>";
 					}
 				$output .= "</div>";
