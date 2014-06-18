@@ -61,13 +61,13 @@ html[xmlns] .slides {display: block;}
 
 /* Direction Nav */
 .wcflex-direction-nav {*height: 0;}
-.wcflex-direction-nav a  { display: block; width: 100px; height: 100px; margin: -66px 0 0; position: absolute; top: 50%; z-index: 10; overflow: hidden; opacity: 0; cursor: pointer; -webkit-transition: all .3s ease; -moz-transition: all .3s ease; transition: all .3s ease; }
-.wcflex-direction-nav .wcflex-prev { background: url("images/slide-arrows.png") no-repeat 0 0; left: 0; }
-.wcflex-direction-nav .wcflex-next { background: url("images/slide-arrows.png") no-repeat 0 -100px; right: 0; text-align: right; }
+.wcflex-direction-nav a  { display: block; width: 50px; height: 50px; margin: -25px 0 0; position: absolute; top: 50%; z-index: 10; overflow: hidden; opacity: 0; cursor: pointer; -webkit-transition: all .3s ease; -moz-transition: all .3s ease; transition: all .3s ease; }
+.wcflex-direction-nav .wcflex-prev { background: url("images/slide-arrow-left.png") no-repeat center center; left: 0; }
+.wcflex-direction-nav .wcflex-next { background: url("images/slide-arrow-right.png") no-repeat center center; right: 0; text-align: right; }
 .wcflexslider:hover .wcflex-prev { opacity: 1; left: 0px; }
 .wcflexslider:hover .wcflex-next { opacity: 1; right: 0px; }
 .wcflexslider:hover .wcflex-next:hover, .wcflexslider:hover .wcflex-prev:hover { opacity: 1; }
-.wcflex-direction-nav .wcflex-disabled { opacity: 0!important; filter:alpha(opacity=0); cursor: default; }
+.wcflex-direction-nav .wcflex-disabled { /*opacity: 0!important; filter:alpha(opacity=0); cursor: default;*/ }
 /* .wcflex-direction-nav a:before  { display: inline-block; background-image:url("images/leftarrow.png"); } */
 /* .wcflex-direction-nav a.wcflex-next:before  { background-image:url("images/rightarrow.png"); } */
 
@@ -94,14 +94,14 @@ html[xmlns] .slides {display: block;}
 	display: none;
 }
 .wcflexslider-hidecontrols .wcflex-direction-nav a {
-	margin-top: -50px;
+	margin-top: -25px;
 }
 
 /* @media screen and (max-width: 860px) {
   .wcflex-direction-nav .wcflex-prev { opacity: 1; left: 10px;}
   .wcflex-direction-nav .wcflex-next { opacity: 1; right: 10px;}
 } */
-@media screen and (max-width: 480px) {
+/* @media screen and (max-width: 480px) {
   .wcflex-direction-nav .wcflex-prev { background: none; }
   .wcflex-direction-nav .wcflex-next { background: none; }
-}
+} */

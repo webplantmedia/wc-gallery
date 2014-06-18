@@ -45,7 +45,7 @@ function wc_gallery_shortcode($blank, $attr) {
 		'captions'   => 'show',
 		'captiontype' => 'p',
 		'columns'    => 3,
-		'gutterwidth' => '0.005',
+		'gutterwidth' => '5',
 		'link'       => 'post',
 		'size'       => 'thumbnail',
 		'targetsize' => 'large',
@@ -93,11 +93,11 @@ function wc_gallery_shortcode($blank, $attr) {
 	$columns = intval($columns);
 
 	if ( ! is_numeric( $gutterwidth ) ) {
-		$gutterwidth = 0.005;
+		$gutterwidth = 5;
 	}
-	$gutterwidth = number_format( $gutterwidth, 3 );
-	if ( $gutterwidth > 0.05 || $gutterwidth < 0.000 ) {
-		$gutterwidth = 0.005;
+	$gutterwidth = (int) $gutterwidth;
+	if ( $gutterwidth > 30 || $gutterwidth < 0 ) {
+		$gutterwidth = 5;
 	}
 
 	$itemwidth = $columns > 0 ? floor(100/$columns) : 100;
@@ -115,8 +115,16 @@ function wc_gallery_shortcode($blank, $attr) {
 	$class[] = 'wc-gallery-captions-' . $captions;
 	if ( ! empty( $custom_class ) )
 		$class[] = esc_attr( $custom_class );
+	// custom links should not call popup
+	if ( ! $customlink )
+		$class[] = "gallery-link-{$link}";
 
 	$sliders = array( 'slider', 'slider2', 'carousel' );
+	$owlcarousel = array( 'owlautowidth', 'owlcolumns', 'owlslider' );
+
+	if ( get_option( WC_GALLERY_PREFIX . 'enable_image_popup', true ) && 'file' == $link ) {
+		wp_enqueue_script( 'wc-gallery-popup' );
+	}
 
 	if ( in_array( $display, $sliders ) ) {
 		wp_enqueue_script( 'wc-gallery-flexslider' );
@@ -162,7 +170,9 @@ function wc_gallery_shortcode($blank, $attr) {
 
 			$output .= "
 				<li class='wcflex-slide-item'>
-					$image_output";
+					<div class='gallery-icon {$orientation}'>
+						$image_output
+					</div>";
 			if ( $showcaptions && trim($attachment->post_excerpt) ) {
 				$output .= "
 					<div class='wp-caption-text gallery-caption'>
@@ -176,10 +186,69 @@ function wc_gallery_shortcode($blank, $attr) {
 
 		$output .= "</ul></div>\n";
 	}
-	else {
-		if ( get_option( WC_GALLERY_PREFIX . 'enable_image_popup', true ) ) {
-			wp_enqueue_script( 'wc-gallery-popup' );
+	else if ( in_array( $display, $owlcarousel ) ) {
+		wp_enqueue_script( 'wc-gallery-owlcarousel' );
+		wp_enqueue_script( 'wc-gallery' );
+
+		$class[] = 'wc' . $display;
+		$class[] = 'wcowlcarousel';
+
+		$output = "<div class='".implode( ' ', $class )."'>";
+		$output .= "<div id='$selector' class='owl-carousel' data-gutter-width='".$gutterwidth."' data-columns='".$columns."' data-hide-controls='".$hidecontrols."'>";
+
+		$i = 0;
+		foreach ( $attachments as $id => $attachment ) {
+			if ( ! $img = wp_get_attachment_image_src( $id, $size ) )
+				continue;
+
+			list($src, $width, $height) = $img;
+			$alt = trim( strip_tags( get_post_meta($id, '_wp_attachment_image_alt', true) ) ); // Use Alt field first
+			$image_output = "<img src='{$src}' width='{$width}' height='{$height}' alt='{$alt}' />";
+
+			if ( ! empty( $link ) ) {
+				if ( $customlink ) {
+					$url = get_post_meta( $id, _WC_GALLERY_PREFIX . 'custom_image_link', true );
+					$image_output = '<a href="'.$url.'">' . $image_output . '</a>';
+				}
+				else if ( 'post' === $link ) {
+					$url = get_attachment_link( $id );
+					$image_output = '<a href="'.$url.'">' . $image_output . '</a>';
+				}
+				else if ( 'file' === $link ) {
+					$url = wp_get_attachment_url( $id );
+					$image_output = '<a href="'.$url.'">' . $image_output . '</a>';
+				}
+			}
+
+			$image_meta  = wp_get_attachment_metadata( $id );
+
+			$orientation = '';
+			if ( isset( $image_meta['height'], $image_meta['width'] ) )
+				$orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
+
+			if ( 'owlautowidth' == $display ) {
+				$output .= "<div class='gallery-item item' style='width:".$width."px'>";
+			}
+			else {
+				$output .= "<div class='gallery-item item'>";
+			}
+
+			$output .= "<div class='gallery-icon {$orientation}'>$image_output</div>";
+
+			if ( $showcaptions && trim($attachment->post_excerpt) ) {
+				$output .= "
+					<div class='wp-caption-text gallery-caption'>
+					<{$captiontype}>
+					" . wptexturize($attachment->post_excerpt) . "
+					</{$captiontype}>
+					</div>";
+			}
+			$output .= "</div>";
 		}
+
+		$output .= "</div></div>\n";
+	}
+	else {
 		wp_enqueue_script( 'wc-gallery' );
 
 		// getting rid of float
@@ -189,9 +258,6 @@ function wc_gallery_shortcode($blank, $attr) {
 		$class[] = "galleryid-{$id}";
 		$class[] = "gallery-columns-{$columns}";
 		$class[] = "gallery-size-{$size_class}";
-		// custom links should not call popup
-		if ( ! $customlink )
-			$class[] = "gallery-link-{$link}";
 
 		$class = implode( ' ', $class );
 
@@ -295,7 +361,9 @@ function wc_gallery_print_media_templates() {
 		'masonry' => __( 'Masonry', 'wc_gallery' ),
 		'slider' => __( 'Slider (Fade)', 'wc_gallery' ),
 		'slider2' => __( 'Slider (Slide)', 'wc_gallery' ),
-		'carousel' => __( 'Carousel', 'wc_gallery' ),
+		'owlautowidth' => __( 'Owl Carousel (Auto Width)', 'wc_gallery' ),
+		'owlcolumns' => __( 'Owl Carousel (Columns)', 'wc_gallery' ),
+		'carousel' => __( 'Carousel (Deprecated)', 'wc_gallery' ),
 	);
 	?>
 	<script type="text/html" id="tmpl-wc-gallery-settings">
@@ -378,15 +446,15 @@ function wc_gallery_print_media_templates() {
 
 		<?php
 		$gutterwidth = array();
-		for ( $i = 0; $i <= 50; $i++ ) {
-			$gutterwidth[ $i ] = number_format( ( $i / 1000 ), 3 );
+		for ( $i = 0; $i <= 30; $i++ ) {
+			$gutterwidth[ $i ] = $i;
 		}
 		?>
 		<label class="setting">
 			<span><?php _e( 'Gutter Width', 'wc_gallery' ); ?></span>
 			<select class="gutterwidth" name="gutterwidth" data-setting="gutterwidth">
 				<?php foreach ( $gutterwidth as $key => $value ) : ?>
-					<option value="<?php echo esc_attr( $value ); ?>" <?php selected( $key, '5' ); ?>><?php echo esc_html( $value ); ?>%</option>
+					<option value="<?php echo esc_attr( $value ); ?>" <?php selected( $key, '5' ); ?>><?php echo esc_html( $value ); ?>px</option>
 				<?php endforeach; ?>
 			</select>
 		</label>
@@ -506,7 +574,7 @@ function wc_gallery_image_size_names_choose( $sizes ) {
 		if ( $width && $height ) {
 			$name = 'wc' . $size;
 			if ( ! array_key_exists( $name, $sizes ) ) {
-				$sizes[ $name ] = ucwords( $size );
+				$sizes[ $name ] = wc_gallery_return_proper_size_name( $size );
 			}
 		}
 	}
@@ -514,3 +582,20 @@ function wc_gallery_image_size_names_choose( $sizes ) {
 	return $sizes;
 }
 add_filter( 'image_size_names_choose', 'wc_gallery_image_size_names_choose', 99 );
+
+function wc_gallery_return_proper_size_name( $key ) {
+	switch ( $key ) {
+		case 'fixedheightsmall' :
+			return 'Fixed Height (Small)';
+		case 'fixedheightmedium' :
+			return 'Fixed Height (Medium)';
+		case 'fixedheight' :
+			return 'Fixed Height (Large)';
+		case 'carouselsmall' :
+			return 'Carousel (Small)';
+		case 'carousel' :
+			return 'Carousel (Large)';
+	}
+
+	return ucwords( $key );
+}

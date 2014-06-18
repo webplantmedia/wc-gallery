@@ -49,10 +49,25 @@ $wc_gallery_theme_support = array(
 		'size_h' => '9999',
 		'crop' => false,
 	),
+	'fixedheightsmall' => array(
+		'size_w' => '9999',
+		'size_h' => '180',
+		'crop' => false,
+	),
+	'fixedheightmedium' => array(
+		'size_w' => '9999',
+		'size_h' => '300',
+		'crop' => false,
+	),
 	'fixedheight' => array(
 		'size_w' => '9999',
-		'size_h' => '600',
+		'size_h' => '500',
 		'crop' => false,
+	),
+	'carouselsmall' => array(
+		'size_w' => '210',
+		'size_h' => '150',
+		'crop' => true,
 	),
 	'carousel' => array(
 		'size_w' => '400',

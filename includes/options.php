@@ -150,8 +150,46 @@ function wc_gallery_set_options() {
 						),
 					),
 					array(
+						'id' => 'fixedheightsmall_size',
+						'title' => 'Fixed Height Small Size',
+						'description' => '',
+						'group' => array(
+							array(
+								'id' => 'fixedheightsmall_size_w',
+								'label' => 'Max Width',
+								'default' => $wc_gallery_theme_support['fixedheightsmall']['size_w'],
+								'type' => 'positive_number',
+							),
+							array(
+								'id' => 'fixedheightsmall_size_h',
+								'label' => 'Max Height',
+								'default' => $wc_gallery_theme_support['fixedheightsmall']['size_h'],
+								'type' => 'positive_number',
+							),
+						),
+					),
+					array(
+						'id' => 'fixedheightmedium_size',
+						'title' => 'Fixed Height Medium Size',
+						'description' => '',
+						'group' => array(
+							array(
+								'id' => 'fixedheightmedium_size_w',
+								'label' => 'Max Width',
+								'default' => $wc_gallery_theme_support['fixedheightmedium']['size_w'],
+								'type' => 'positive_number',
+							),
+							array(
+								'id' => 'fixedheightmedium_size_h',
+								'label' => 'Max Height',
+								'default' => $wc_gallery_theme_support['fixedheightmedium']['size_h'],
+								'type' => 'positive_number',
+							),
+						),
+					),
+					array(
 						'id' => 'fixedheight_size',
-						'title' => 'Fixed Height Size',
+						'title' => 'Fixed Height Large Size',
 						'description' => '',
 						'group' => array(
 							array(
@@ -169,8 +207,34 @@ function wc_gallery_set_options() {
 						),
 					),
 					array(
+						'id' => 'carouselsmall_size',
+						'title' => 'Carousel Small Size',
+						'description' => '',
+						'group' => array(
+							array(
+								'id' => 'carouselsmall_size_w',
+								'label' => 'Max Width',
+								'default' => $wc_gallery_theme_support['carouselsmall']['size_w'],
+								'type' => 'positive_number',
+							),
+							array(
+								'id' => 'carouselsmall_size_h',
+								'label' => 'Max Height',
+								'default' => $wc_gallery_theme_support['carouselsmall']['size_h'],
+								'type' => 'positive_number',
+							),
+							array(
+								'id' => 'carouselsmall_crop',
+								'label' => 'Crop to exact dimensions',
+								'default' => $wc_gallery_theme_support['carouselsmall']['crop'],
+								'description' => '',
+								'type' => 'checkbox',
+							),
+						),
+					),
+					array(
 						'id' => 'carousel_size',
-						'title' => 'Carousel Size',
+						'title' => 'Carousel Large Size',
 						'description' => '',
 						'group' => array(
 							array(
