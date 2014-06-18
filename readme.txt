@@ -46,6 +46,15 @@ Insert a gallery through your dashboard. You will see extra dropdown settings wh
 
 == Changelog ==
 
+### Version 1.12
+
+* Use masonry library provided by WordPress
+* loading jquery before masonry
+* Added image sizes
+* Replaced percentage gutter width with pixel value.
+* Added Owl Carousel
+* Added 2 more slider displays
+
 ### Version 1.11
 
 * Fixed a very obscure bug that kept image sizes from displaying.
