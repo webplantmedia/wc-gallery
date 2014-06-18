@@ -111,7 +111,6 @@ function wc_gallery_shortcode($blank, $attr) {
 	$customlink = 'true' == $customlink ? true : false;
 	$class = array();
 	$class[] = 'gallery';
-	$class[] = 'wc-gallery-bottomspace-' . $bottomspace;
 	$class[] = 'wc-gallery-captions-' . $captions;
 	if ( ! empty( $custom_class ) )
 		$class[] = esc_attr( $custom_class );
@@ -119,7 +118,7 @@ function wc_gallery_shortcode($blank, $attr) {
 	if ( ! $customlink )
 		$class[] = "gallery-link-{$link}";
 
-	$sliders = array( 'slider', 'slider2', 'carousel' );
+	$sliders = array( 'slider', 'slider2', 'carousel', 'slider3bottomlinks', 'slider4bottomlinks' );
 	$owlcarousel = array( 'owlautowidth', 'owlcolumns', 'owlslider' );
 
 	if ( get_option( WC_GALLERY_PREFIX . 'enable_image_popup', true ) && 'file' == $link ) {
@@ -135,10 +134,19 @@ function wc_gallery_shortcode($blank, $attr) {
 		if ( 'true' == $hidecontrols )
 			$class[] = 'wcflexslider-hidecontrols';
 
-		$output = "<div class='".implode( ' ', $class )."'>";
-		$output .= "<ul id='$selector' class='slides'>";
+		$wrap_class = array();
+		$wrap_class[] = 'wcflexslider-container';
+		$wrap_class[] = 'wc-gallery-bottomspace-' . $bottomspace;
+		$wrap_class[] = 'wc-gallery-clear';
 
-		$i = 0;
+		$output = "";
+
+		$output .= "<div class='".implode( ' ', $wrap_class )."'>";
+		$output .= "<div id='$selector' class='".implode( ' ', $class )."' data-gutter-width='".$gutterwidth."' data-columns='".$columns."' data-hide-controls='".$hidecontrols."'>";
+		$output .= "<ul class='slides'>";
+
+		list( $attachments, $links ) = wc_gallery_seperate_attachments_links( $attachments, $display );
+
 		foreach ( $attachments as $id => $attachment ) {
 			if ( ! $img = wp_get_attachment_image_src( $id, $size ) )
 				continue;
@@ -183,8 +191,58 @@ function wc_gallery_shortcode($blank, $attr) {
 			}
 			$output .= "</li>";
 		}
-
 		$output .= "</ul></div>\n";
+		// End of Flex Slider
+
+		// Begin Links
+		$size = 'wccarousel';
+		$size_class = sanitize_html_class( $size );
+
+		$class = array();
+		$class[] = 'wc-image-links';
+		$class[] = 'wc-gallery-clear';
+		$class[] = 'wc-image-links-' . str_replace( array( 'slider3', 'slider4' ), '', $display );
+		$class[] = 'wc-image-links-' . $display;
+		$class[] = 'wc-image-links-gutter-space-' . $gutterwidth;
+
+		$output .= "<div class='".implode( ' ', $class )."'>";
+
+		$i = 1;
+		foreach ( $links as $key => $attachment ) {
+			$id = $attachment->ID;
+			$image_output = wc_gallery_get_attachment_link( $id, $size, false, false, false, $targetsize, true );
+
+			$image_meta  = wp_get_attachment_metadata( $id );
+
+			$orientation = '';
+			if ( isset( $image_meta['height'], $image_meta['width'] ) )
+				$orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
+
+			$output .= "<div class='gallery-item gallery-item-".$i."'>";
+				$output .= "<div class='gallery-block'>";
+					$output .= "
+						<div class='gallery-icon {$orientation}'>
+							$image_output
+						</div>";
+					$caption_text = trim($attachment->post_excerpt);
+
+					if ( ! empty( $caption_text ) ) {
+						$output .= "
+							<div class='wp-caption-text gallery-caption'>
+								<h3>
+								" . wptexturize($caption_text) . "
+								<h3>
+							</div>";
+					}
+				$output .= "</div>";
+			$output .= "</div>";
+			$i++;
+		}
+
+		$output .= "</div>\n";
+		// End of Links
+
+		$output .= "</div>\n";
 	}
 	else if ( in_array( $display, $owlcarousel ) ) {
 		wp_enqueue_script( 'wc-gallery-owlcarousel' );
@@ -192,6 +250,8 @@ function wc_gallery_shortcode($blank, $attr) {
 
 		$class[] = 'wc' . $display;
 		$class[] = 'wcowlcarousel';
+		$class[] = 'wc-gallery-bottomspace-' . $bottomspace;
+		$class[] = 'wc-gallery-clear';
 
 		$output = "<div class='".implode( ' ', $class )."'>";
 		$output .= "<div id='$selector' class='owl-carousel' data-gutter-width='".$gutterwidth."' data-columns='".$columns."' data-hide-controls='".$hidecontrols."'>";
@@ -258,6 +318,8 @@ function wc_gallery_shortcode($blank, $attr) {
 		$class[] = "galleryid-{$id}";
 		$class[] = "gallery-columns-{$columns}";
 		$class[] = "gallery-size-{$size_class}";
+		$class[] = 'wc-gallery-bottomspace-' . $bottomspace;
+		$class[] = 'wc-gallery-clear';
 
 		$class = implode( ' ', $class );
 
@@ -305,6 +367,34 @@ function wc_gallery_shortcode($blank, $attr) {
 }
 add_filter( 'post_gallery', 'wc_gallery_shortcode', 10, 2 );
 
+function wc_gallery_seperate_attachments_links( $attachments, $display ) {
+	$links = array();
+
+	switch ( $display ) {
+		case 'slider3rightlinks' :
+		case 'slider3bottomlinks' :
+			$i = 3;
+			$links[] = array_pop( $attachments );
+			$links[] = array_pop( $attachments );
+			$links[] = array_pop( $attachments );
+			break;
+		case 'slider4rightlinks' :
+		case 'slider4bottomlinks' :
+			$links[] = array_pop( $attachments );
+			$links[] = array_pop( $attachments );
+			$links[] = array_pop( $attachments );
+			$links[] = array_pop( $attachments );
+			break;
+	}
+
+	if ( empty( $links ) ) {
+		return array( $attachments, $links );
+	}
+
+	$links = array_reverse( $links );
+
+	return array( $attachments, $links );
+}
 
 /**
  * Retrieve an attachment page link using an image or icon, if possible.
@@ -364,6 +454,8 @@ function wc_gallery_print_media_templates() {
 		'owlautowidth' => __( 'Owl Carousel (Auto Width)', 'wc_gallery' ),
 		'owlcolumns' => __( 'Owl Carousel (Columns)', 'wc_gallery' ),
 		'carousel' => __( 'Carousel (Deprecated)', 'wc_gallery' ),
+		'slider3bottomlinks' => __( 'Slider + 3 Bottom Links', 'wc_gallery' ),
+		'slider4bottomlinks' => __( 'Slider + 4 Bottom Links', 'wc_gallery' ),
 	);
 	?>
 	<script type="text/html" id="tmpl-wc-gallery-settings">
