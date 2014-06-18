@@ -47,7 +47,6 @@
 .wc-gallery .gallery-item {
 	float: left; /* added this so images don't stack before masonry kicks in */
 	margin: 0;
-	/* overflow: hidden; */
 	position: relative;
 	/* margin-bottom: 5px; */
 	max-width: none !important;
@@ -85,6 +84,7 @@
 
 	width: auto;
 	padding: 5px 10px;
+	overflow: hidden;
 }
 .wc-gallery .gallery-caption h2,
 .wc-gallery .gallery-caption h3,
