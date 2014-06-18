@@ -118,7 +118,7 @@ function wc_gallery_shortcode($blank, $attr) {
 	if ( ! $customlink )
 		$class[] = "gallery-link-{$link}";
 
-	$sliders = array( 'slider', 'slider2', 'carousel', 'slider3bottomlinks', 'slider4bottomlinks' );
+	$sliders = array( 'slider', 'slider2', 'sliderauto', 'carousel', 'slider3bottomlinks', 'slider4bottomlinks' );
 	$owlcarousel = array( 'owlautowidth', 'owlcolumns', 'owlslider' );
 
 	if ( get_option( WC_GALLERY_PREFIX . 'enable_image_popup', true ) && 'file' == $link ) {
@@ -177,7 +177,7 @@ function wc_gallery_shortcode($blank, $attr) {
 				$orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
 
 			$output .= "
-				<li class='wcflex-slide-item'>
+				<li class='gallery-item wcflex-slide-item'>
 					<div class='gallery-icon {$orientation}'>
 						$image_output
 					</div>";
@@ -451,6 +451,7 @@ function wc_gallery_print_media_templates() {
 		'masonry' => __( 'Masonry', 'wc_gallery' ),
 		'slider' => __( 'Slider (Fade)', 'wc_gallery' ),
 		'slider2' => __( 'Slider (Slide)', 'wc_gallery' ),
+		'sliderauto' => __( 'Slider (Auto Start)', 'wc_gallery' ),
 		'owlautowidth' => __( 'Owl Carousel (Auto Width)', 'wc_gallery' ),
 		'owlcolumns' => __( 'Owl Carousel (Columns)', 'wc_gallery' ),
 		'carousel' => __( 'Carousel (Deprecated)', 'wc_gallery' ),

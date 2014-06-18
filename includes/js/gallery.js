@@ -130,6 +130,15 @@
 							animation:"slide"
 						});
 					}
+					else if ( $flex.hasClass('wcsliderauto') ) {
+						$flex.wcflexslider({
+							prevText: "",
+							nextText: "",
+							smoothHeight: true,
+							slideshow: true,
+							animation:"slide"
+						});
+					}
 					else if ( $flex.hasClass('wccarousel') ) {
 						$flex.wcflexslider({
 							prevText: "",
