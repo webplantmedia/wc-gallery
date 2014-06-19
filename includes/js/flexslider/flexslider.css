@@ -61,7 +61,7 @@ html[xmlns] .slides {display: block;}
 
 /* Direction Nav */
 .wcflex-direction-nav {*height: 0;}
-.wcflex-direction-nav a  { display: block; width: 50px; height: 50px; margin: -25px 0 0; position: absolute; top: 50%; z-index: 10; overflow: hidden; opacity: 0; cursor: pointer; -webkit-transition: all .3s ease; -moz-transition: all .3s ease; transition: all .3s ease; }
+.wcflex-direction-nav a  { display: block; width: 50px; height: 50px; margin: -25px 0 0; position: absolute; top: 50%; z-index: 10; overflow: hidden; opacity: 0; cursor: pointer; /*-webkit-transition: all .3s ease; -moz-transition: all .3s ease; transition: all .3s ease;*/ }
 .wcflex-direction-nav .wcflex-prev { background: url("images/slide-arrow-left.png") no-repeat center center !important; left: 0; }
 .wcflex-direction-nav .wcflex-next { background: url("images/slide-arrow-right.png") no-repeat center center !important; right: 0; text-align: right; }
 .wcflexslider:hover .wcflex-prev { opacity: 1; left: 0px; }

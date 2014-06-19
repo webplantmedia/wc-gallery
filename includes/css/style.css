@@ -268,10 +268,6 @@
 	background-color: #cccccc;
 }
 
-/* .wc-gallery .gallery.wcflexslider .wcflex-direction-nav a {
-	color: rgba(0,0,0,0.8);
-} */
-
 .wc-gallery .gallery.wcflexslider .wcflex-slide-item {
 	position: relative;
 }
@@ -281,24 +277,6 @@
 	margin-left: auto;
 	margin-right: auto;
 }
-.wc-gallery .gallery.wcflexslider .wcflex-slide-item .wp-caption-text {
-	padding: 5px 10px;
-	opacity: 0.7;
-	position: absolute;
-	bottom: 0;
-	left: 0;
-	right: 0;
-}
-
-/* .wc-gallery .gallery.wcflexslider .wcflex-direction-nav .wcflex-prev { left: 0px; }
-.wc-gallery .gallery.wcflexslider .wcflex-direction-nav .wcflex-next { right: 0px; }
-.wc-gallery .gallery.wcflexslider:hover .wcflex-prev { left: 10px; }
-.wc-gallery .gallery.wcflexslider:hover .wcflex-next { right: 10px; }
-
-@media screen and (max-width: 860px) {
-	.wc-gallery .gallery.wcflexslider .wcflex-direction-nav .wcflex-prev { left: 10px;}
-	.wc-gallery .gallery.wcflexslider .wcflex-direction-nav .wcflex-next { right: 10px;}
-} */
 
 /*
  * Image Popup
