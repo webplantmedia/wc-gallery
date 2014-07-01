@@ -628,7 +628,7 @@ function wc_gallery_after_setup_theme() {
 	$defined_sizes = get_intermediate_image_sizes();
 
 	foreach ( $wc_gallery_theme_support as $size => $value ) {
-		if ( in_array( $size, $defined_sizes ) ) {
+		if ( in_array( 'wc' . $size, $defined_sizes ) ) {
 			continue;
 		}
 		$name_w = $size . '_size_w';
