@@ -289,4 +289,4 @@ function wc_gallery_set_options() {
 		),
 	);
 }
-add_action( 'after_setup_theme', 'wc_gallery_set_options', 100 );
+add_action( 'init', 'wc_gallery_set_options', 100 );
