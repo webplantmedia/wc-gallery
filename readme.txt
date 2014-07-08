@@ -46,6 +46,10 @@ Insert a gallery through your dashboard. You will see extra dropdown settings wh
 
 == Changelog ==
 
+### Version 1.17
+
+* Bug fix
+
 ### Version 1.16
 
 * Bug fix on checking for defined images sizes
