@@ -1,6 +1,10 @@
 (function ($) {
 	"use strict";
 
+	if ( 'undefined' == typeof( wp.media ) ) {
+		return;
+	}
+
 	var media = wp.media;
 
 	// Wrap the render() function to append controls.

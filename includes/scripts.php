@@ -53,7 +53,11 @@ if( !function_exists ('wc_gallery_scripts') ) :
 endif;
 
 function wc_gallery_enqueue_admin_scripts() {
-	wp_register_script( 'wc-gallery-admin-js', plugin_dir_url( __FILE__ ) . 'js/admin.js', array ( 'jquery' ), WC_GALLERY_VERSION, true );
-	wp_enqueue_script( 'wc-gallery-admin-js' );
+	$screen = get_current_screen();
+
+	if ( 'post' == $screen->base ) {
+		wp_register_script( 'wc-gallery-admin-js', plugin_dir_url( __FILE__ ) . 'js/admin.js', array ( 'jquery' ), WC_GALLERY_VERSION, true );
+		wp_enqueue_script( 'wc-gallery-admin-js' );
+	}
 }
 add_action('admin_enqueue_scripts', 'wc_gallery_enqueue_admin_scripts' );
