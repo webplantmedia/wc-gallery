@@ -91,6 +91,7 @@ function wc_gallery_shortcode($blank, $attr) {
 		'customlink' => 'false',
 		'bottomspace' => 'default',
 		'hidecontrols' => 'false',
+		'newtab' => 'false',
 		'class'	     => '',
 		'include'    => '',
 		'exclude'    => ''
@@ -147,6 +148,12 @@ function wc_gallery_shortcode($blank, $attr) {
 
 	$showcaptions = 'hide' == $captions ? false : true;
 	$customlink = 'true' == $customlink ? true : false;
+	$newtab = 'true' == $newtab ? true : false;
+	$link_target = '_self';
+	if ( $newtab ) {
+		$link_target = '_blank';
+	}
+
 	$class = array();
 	$class[] = 'gallery';
 	$class[] = 'wc-gallery-captions-' . $captions;
@@ -169,8 +176,9 @@ function wc_gallery_shortcode($blank, $attr) {
 
 		$class[] = 'wc' . $display;
 		$class[] = 'wcflexslider';
-		if ( 'true' == $hidecontrols )
+		if ( 'true' == $hidecontrols ) {
 			$class[] = 'wcflexslider-hidecontrols';
+		}
 
 		$wrap_class = array();
 		$wrap_class[] = 'wcflexslider-container';
@@ -196,15 +204,15 @@ function wc_gallery_shortcode($blank, $attr) {
 			if ( ! empty( $link ) ) {
 				if ( $customlink ) {
 					$url = get_post_meta( $id, _WC_GALLERY_PREFIX . 'custom_image_link', true );
-					$image_output = '<a href="'.$url.'">' . $image_output . '</a>';
+					$image_output = '<a href="'.$url.'" target="'.$link_target.'">' . $image_output . '</a>';
 				}
 				else if ( 'post' === $link ) {
 					$url = get_attachment_link( $id );
-					$image_output = '<a href="'.$url.'">' . $image_output . '</a>';
+					$image_output = '<a href="'.$url.'" target="'.$link_target.'">' . $image_output . '</a>';
 				}
 				else if ( 'file' === $link ) {
 					$url = wp_get_attachment_url( $id );
-					$image_output = '<a href="'.$url.'">' . $image_output . '</a>';
+					$image_output = '<a href="'.$url.'" target="'.$link_target.'">' . $image_output . '</a>';
 				}
 			}
 
@@ -248,7 +256,7 @@ function wc_gallery_shortcode($blank, $attr) {
 		$i = 1;
 		foreach ( $links as $key => $attachment ) {
 			$id = $attachment->ID;
-			$image_output = wc_gallery_get_attachment_link( $id, $size, false, false, false, $targetsize, true );
+			$image_output = wc_gallery_get_attachment_link( $id, $size, false, false, false, $targetsize, true, $link_target );
 
 			$image_meta  = wp_get_attachment_metadata( $id );
 
@@ -306,15 +314,15 @@ function wc_gallery_shortcode($blank, $attr) {
 			if ( ! empty( $link ) ) {
 				if ( $customlink ) {
 					$url = get_post_meta( $id, _WC_GALLERY_PREFIX . 'custom_image_link', true );
-					$image_output = '<a href="'.$url.'">' . $image_output . '</a>';
+					$image_output = '<a href="'.$url.'" target="'.$link_target.'">' . $image_output . '</a>';
 				}
 				else if ( 'post' === $link ) {
 					$url = get_attachment_link( $id );
-					$image_output = '<a href="'.$url.'">' . $image_output . '</a>';
+					$image_output = '<a href="'.$url.'" target="'.$link_target.'">' . $image_output . '</a>';
 				}
 				else if ( 'file' === $link ) {
 					$url = wp_get_attachment_url( $id );
-					$image_output = '<a href="'.$url.'">' . $image_output . '</a>';
+					$image_output = '<a href="'.$url.'" target="'.$link_target.'">' . $image_output . '</a>';
 				}
 			}
 
@@ -366,15 +374,17 @@ function wc_gallery_shortcode($blank, $attr) {
 		$i = 0;
 		foreach ( $attachments as $id => $attachment ) {
 			if ( $customlink ) {
-				$image_output = wc_gallery_get_attachment_link( $id, $size, false, false, false, $targetsize, $customlink );
+				$image_output = wc_gallery_get_attachment_link( $id, $size, false, false, false, $targetsize, $customlink, $link_target );
 			}
 			else if ( ! empty( $link ) && 'file' === $link ) {
-				$image_output = wc_gallery_get_attachment_link( $id, $size, false, false, false, $targetsize, $customlink );
+				$image_output = wc_gallery_get_attachment_link( $id, $size, false, false, false, $targetsize, $customlink, $link_target );
 			}
-			else if ( ! empty( $link ) && 'none' === $link )
+			else if ( ! empty( $link ) && 'none' === $link ) {
 				$image_output = wp_get_attachment_image( $id, $size, false );
-			else
-				$image_output = wp_get_attachment_link( $id, $size, true, false );
+			}
+			else {
+				$image_output = wc_gallery_get_attachment_link( $id, $size, true, false, false, 'large', false, $link_target );
+			}
 
 			$image_meta  = wp_get_attachment_metadata( $id );
 
@@ -447,7 +457,7 @@ function wc_gallery_seperate_attachments_links( $attachments, $display ) {
  * @param string|bool $text Optional, default is false. If string, then will be link text.
  * @return string HTML content.
  */
-function wc_gallery_get_attachment_link( $id = 0, $size = 'thumbnail', $permalink = false, $icon = false, $text = false, $targetsize = 'large', $customlink = false ) {
+function wc_gallery_get_attachment_link( $id = 0, $size = 'thumbnail', $permalink = false, $icon = false, $text = false, $targetsize = 'large', $customlink = false, $link_target = '_self' ) {
 	$id = intval( $id );
 	$_post = get_post( $id );
 
@@ -477,7 +487,7 @@ function wc_gallery_get_attachment_link( $id = 0, $size = 'thumbnail', $permalin
 	if ( trim( $link_text ) == '' )
 		$link_text = $_post->post_title;
 
-	return apply_filters( 'wp_get_attachment_link', "<a href='$url' title='$post_title'>$link_text</a>", $id, $size, $permalink, $icon, $text );
+	return apply_filters( 'wp_get_attachment_link', "<a href='$url' title='$post_title' target='$link_target'>$link_text</a>", $id, $size, $permalink, $icon, $text );
 }
 
 
@@ -610,6 +620,11 @@ function wc_gallery_print_media_templates() {
 		<label class="setting">
 			<span><?php _e( 'Hide Controls', 'wc_gallery' ); ?></span>
 			<input class="hidecontrols" type="checkbox" name="hidecontrols" data-setting="hidecontrols" />
+		</label>
+
+		<label class="setting">
+			<span><?php _e( 'New Tab', 'wc_gallery' ); ?></span>
+			<input class="newtab" type="checkbox" name="newtab" data-setting="newtab" />
 		</label>
 
 		<label class="setting">

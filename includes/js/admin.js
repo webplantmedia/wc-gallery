@@ -25,6 +25,7 @@
 			media.gallery.defaults.bottomspace = 'default'; // lil hack that lets media know there's a layout attribute.
 			media.gallery.defaults.gutterwidth = '0.005'; // lil hack that lets media know there's a layout attribute.
 			media.gallery.defaults.hidecontrols = false; // lil hack that lets media know there's a layout attribute.
+			media.gallery.defaults.newtab = false; // lil hack that lets media know there's a layout attribute.
 			media.gallery.defaults.class = ''; // lil hack that lets media know there's a layout attribute.
 			this.update.apply( this, ['display'] );
 			this.update.apply( this, ['size'] );
@@ -35,6 +36,7 @@
 			this.update.apply( this, ['bottomspace'] );
 			this.update.apply( this, ['gutterwidth'] );
 			this.update.apply( this, ['hidecontrols'] );
+			this.update.apply( this, ['newtab'] );
 			this.update.apply( this, ['class'] );
 
 			return this;
