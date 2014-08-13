@@ -46,6 +46,11 @@ Insert a gallery through your dashboard. You will see extra dropdown settings wh
 
 ## Changelog ##
 
+### Version 1.19
+
+* Updated image popup library
+* Made all own carousels to loop back to beginning when end is reached
+
 ### Version 1.18
 
 * Added option to open images in new tab
