@@ -186,7 +186,7 @@
 				if ( $this.hasClass('wcowlautowidth') ) {
 					$owl.owlCarousel({
 						margin: gutterWidth,
-						loop: false,
+						loop: true,
 						dots: false,
 						autoWidth: true,
 						responsive: {
@@ -202,7 +202,7 @@
 				else if ( $this.hasClass('wcowlcolumns') ) {
 					$owl.owlCarousel({
 						margin: gutterWidth,
-						loop: false,
+						loop: true,
 						dots: false,
 						items: columns,
 						responsive: {
@@ -218,7 +218,7 @@
 				else if ( $this.hasClass('wcowlslider') ) {
 					$owl.owlCarousel({
 						margin: 0,
-						loop: false,
+						loop: true,
 						dots: false,
 						items: 1,
 						autoHeight:true,
