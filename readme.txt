@@ -46,6 +46,14 @@ Insert a gallery through your dashboard. You will see extra dropdown settings wh
 
 == Changelog ==
 
+### Version 1.20
+
+* Galleries now work inside WC Shortcodes accordion, tabs, and toggle shortcodes
+* Added gallery support for infinite scroll
+* caption only display on one line now.
+* Gallery now defaults to show captions on image hover
+* removed duplicate call to admin.js
+
 ### Version 1.19
 
 * Updated image popup library

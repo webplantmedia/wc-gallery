@@ -36,7 +36,7 @@ Yes, I do accept donations.  If you want to buy me a sandwich or something, you 
 1. Uzip the `wc-gallery.zip` folder.
 2. Upload the `wc-gallery` folder to your `/wp-content/plugins` directory.
 3. In your WordPress dashboard, head over to the *Plugins* section.
-4. Activate *WP Canvas Gallery*.
+4. Activate *WP Canvas - Gallery*.
 
 ## Frequently Asked Questions ##
 
@@ -45,6 +45,14 @@ Yes, I do accept donations.  If you want to buy me a sandwich or something, you 
 Insert a gallery through your dashboard. You will see extra dropdown settings when configuring your gallery
 
 ## Changelog ##
+
+### Version 1.20
+
+* Galleries now work inside WC Shortcodes accordion, tabs, and toggle shortcodes
+* Added gallery support for infinite scroll
+* caption only display on one line now.
+* Gallery now defaults to show captions on image hover
+* removed duplicate call to admin.js
 
 ### Version 1.19
 
