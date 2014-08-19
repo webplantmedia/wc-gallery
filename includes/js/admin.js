@@ -19,11 +19,11 @@
 			media.gallery.defaults.display = 'masonry'; // lil hack that lets media know there's a layout attribute.
 			media.gallery.defaults.size = 'thumbnail'; // lil hack that lets media know there's a layout attribute.
 			media.gallery.defaults.targetsize = 'large'; // lil hack that lets media know there's a layout attribute.
-			media.gallery.defaults.captions = 'show'; // lil hack that lets media know there's a layout attribute.
+			media.gallery.defaults.captions = 'onhover'; // lil hack that lets media know there's a layout attribute.
 			media.gallery.defaults.captiontype = 'p'; // lil hack that lets media know there's a layout attribute.
 			media.gallery.defaults.customlink = false; // lil hack that lets media know there's a layout attribute.
 			media.gallery.defaults.bottomspace = 'default'; // lil hack that lets media know there's a layout attribute.
-			media.gallery.defaults.gutterwidth = '0.005'; // lil hack that lets media know there's a layout attribute.
+			media.gallery.defaults.gutterwidth = '5'; // lil hack that lets media know there's a layout attribute.
 			media.gallery.defaults.hidecontrols = false; // lil hack that lets media know there's a layout attribute.
 			media.gallery.defaults.newtab = false; // lil hack that lets media know there's a layout attribute.
 			media.gallery.defaults.class = ''; // lil hack that lets media know there's a layout attribute.

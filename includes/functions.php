@@ -80,7 +80,7 @@ function wc_gallery_shortcode($blank, $attr) {
 		'order'      => 'ASC',
 		'orderby'    => 'menu_order ID',
 		'id'         => $post ? $post->ID : 0,
-		'captions'   => 'show',
+		'captions'   => 'onhover',
 		'captiontype' => 'p',
 		'columns'    => 3,
 		'gutterwidth' => '5',
@@ -546,9 +546,9 @@ function wc_gallery_print_media_templates() {
 
 		<?php
 		$captions = array( 
+			'onhover' => __( 'On Image Hover', 'wc_gallery' ),
 			'show' => __( 'Show Below Image', 'wc_gallery' ),
 			'showon' => __( 'Show On Image', 'wc_gallery' ),
-			'onhover' => __( 'On Image Hover', 'wc_gallery' ),
 			'hide' => __( 'Hide', 'wc_gallery' )
 		);
 		?>
@@ -556,7 +556,7 @@ function wc_gallery_print_media_templates() {
 			<span><?php _e( 'Captions', 'wc_gallery' ); ?></span>
 			<select class="captions" name="captions" data-setting="captions">
 				<?php foreach ( $captions as $key => $value ) : ?>
-					<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $key, 'show' ); ?>><?php echo esc_html( $value ); ?></option>
+					<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $key, 'onhover' ); ?>><?php echo esc_html( $value ); ?></option>
 				<?php endforeach; ?>
 			</select>
 		</label>
