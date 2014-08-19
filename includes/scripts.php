@@ -58,6 +58,9 @@ function wc_gallery_enqueue_admin_scripts() {
 	if ( 'post' == $screen->base ) {
 		wp_register_script( 'wc-gallery-admin-js', plugin_dir_url( __FILE__ ) . 'js/admin.js', array ( 'jquery' ), WC_GALLERY_VERSION, true );
 		wp_enqueue_script( 'wc-gallery-admin-js' );
+		wp_register_style( 'wc-gallery-admin', WC_GALLERY_PLUGIN_URL . 'includes/css/admin.css', array(), WC_GALLERY_VERSION, 'all' );
+		wp_enqueue_style( 'wc-gallery-admin' );
+
 	}
 }
 add_action('admin_enqueue_scripts', 'wc_gallery_enqueue_admin_scripts' );

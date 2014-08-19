@@ -1,13 +1,4 @@
 <?php
-function wc_gallery_options_enqueue_scripts() {
-	wp_register_style( 'wc-gallery-options', WC_GALLERY_PLUGIN_URL . 'includes/css/admin.css', array(), WC_GALLERY_VERSION, 'all' );
-	wp_enqueue_style( 'wc-gallery-options' );
-
-	wp_register_script( 'wc-gallery-options-js', WC_GALLERY_PLUGIN_URL . 'includes/js/admin.js', array('jquery'), WC_GALLERY_VERSION, true );
-	wp_enqueue_script( 'wc-gallery-options-js' );
-}
-add_action('admin_enqueue_scripts', 'wc_gallery_options_enqueue_scripts' );
-
 function wc_gallery_options_init() {
 	global $wc_gallery_options;
 
