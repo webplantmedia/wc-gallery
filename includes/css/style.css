@@ -96,7 +96,6 @@
 	padding: 0;
 	text-align: center;
 	text-overflow: ellipsis;
-	width: 100%;
 	white-space: nowrap;
 	overflow: hidden;
 }
