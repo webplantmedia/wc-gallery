@@ -15,13 +15,13 @@ Extend WordPress galleries to display masonry gallery, carousel gallery, and sli
 
 See the galleries in action.
 
-1. [WP Canvas Galleries](http://wordpresscanvas.com/features/gallery/)
-2. [WP Canvas Slider & Carousel](http://wordpresscanvas.com/features/gallery/slider-carousel/)
-3. [WP Canvas Gallery Columns](http://wordpresscanvas.com/features/gallery/gallery-columns/)
+1. [WP Canvas Galleries](http://webplantmedia.com/starter-themes/wordpresscanvas/features/gallery/)
+2. [WP Canvas Slider & Carousel](http://webplantmedia.com/starter-themes/wordpresscanvas/features/gallery/slider-carousel/)
+3. [WP Canvas Gallery Columns](http://webplantmedia.com/starter-themes/wordpresscanvas/features/gallery/gallery-columns/)
 
 ### Professional Support
 
-If you need professional plugin support from me, the plugin author, you can contact me at [WP Canvas](http://wordpresscanvas.com/).
+If you need professional plugin support from me, the plugin author, you can contact me at [Web Plant Media](http://webplantmedia.com/).
 
 ### Plugin Development
 
@@ -45,6 +45,10 @@ Yes, I do accept donations.  If you want to buy me a sandwich or something, you 
 Insert a gallery through your dashboard. You will see extra dropdown settings when configuring your gallery
 
 ## Changelog ##
+
+### Version 1.21
+
+* minor style update fix for previous version
 
 ### Version 1.20
 
