@@ -68,6 +68,10 @@
 		$('.gallery-masonry').each( function() {
 			var $container = $(this);
 
+			if ( $container.is(':hidden') ) {
+				return;
+			}
+
 			if ( $container.hasClass( 'masonry' ) ) {
 				return;
 			}
@@ -86,7 +90,13 @@
 
 		if( jQuery().magnificPopup) {
 			$('.gallery-link-file').each( function() {
-				$(this).magnificPopup({
+				var $this = $(this);
+
+				if ( $this.hasClass( 'magnificpopup-is-active' ) ) {
+					return;
+				}
+
+				$this.magnificPopup({
 					delegate: '.gallery-icon a',
 					gallery: {
 						enabled: true
@@ -98,78 +108,96 @@
 						}
 					}
 				});
+
+				$this.addClass( 'magnificpopup-is-active' );
 			});
 		}
 
 		if( jQuery().wcflexslider) {
-			$(window).load(function() {
-				$('.wcflexslider-container').each( function() {
-					var $this = $(this);
-					var $flex = $(this).children('.gallery.wcflexslider');
-					var columns = parseInt( $flex.data('columns') );
-					var columnsTablet = columns - 1;
-					var columnsPhone = columns - 2;
-					var gutterWidth = $flex.data('gutterWidth');
-					var hideControls = $flex.data('hideControls');
-					var showNav = hideControls ? false : true;
-					var containerWidth = $this.width();
+			$('.wcflexslider-container').each( function() {
+				var $this = $(this);
+				if ( $this.is(':hidden') ) {
+					return;
+				}
 
-					gutterWidth = parseInt( gutterWidth );
+				if ( $this.hasClass( 'wcflexslider-is-active' ) ) {
+					return;
+				}
 
-					if ( $flex.hasClass('wcslider') ) {
-						$flex.wcflexslider({
-							prevText: "",
-							nextText: "",
-							smoothHeight: false,
-							slideshow: false,
-							animation:"fade"
-						});
-					}
-					else if ( $flex.hasClass('wcslider2') ) {
-						$flex.wcflexslider({
-							prevText: "",
-							nextText: "",
-							smoothHeight: true,
-							slideshow: false,
-							animation:"slide"
-						});
-					}
-					else if ( $flex.hasClass('wcsliderauto') ) {
-						$flex.wcflexslider({
-							prevText: "",
-							nextText: "",
-							smoothHeight: true,
-							slideshow: true,
-							animation:"slide"
-						});
-					}
-					else if ( $flex.hasClass('wccarousel') ) {
-						$flex.wcflexslider({
-							prevText: "",
-							nextText: "",
-							smoothHeight: false,
-							slideshow: false,
-							animation: "slide",
-							animationLoop: false,
-							itemWidth: 270,
-							itemMargin: gutterWidth 
-						});
-					}
-					else if ( $flex.hasClass('wcslider3bottomlinks') || $flex.hasClass('wcslider4bottomlinks') ) {
-						$flex.wcflexslider({
-							prevText: "",
-							nextText: "",
-							smoothHeight: false,
-							slideshow: true,
-							animation:"slide"
-						});
-					}
-				});
+				var $flex = $(this).children('.gallery.wcflexslider');
+				var columns = parseInt( $flex.data('columns') );
+				var columnsTablet = columns - 1;
+				var columnsPhone = columns - 2;
+				var gutterWidth = $flex.data('gutterWidth');
+				var hideControls = $flex.data('hideControls');
+				var showNav = hideControls ? false : true;
+				var containerWidth = $this.width();
+
+				$this.addClass('wcflexslider-is-active');
+
+				gutterWidth = parseInt( gutterWidth );
+
+				if ( $flex.hasClass('wcslider') ) {
+					$flex.wcflexslider({
+						prevText: "",
+						nextText: "",
+						smoothHeight: false,
+						slideshow: false,
+						animation:"fade"
+					});
+				}
+				else if ( $flex.hasClass('wcslider2') ) {
+					$flex.wcflexslider({
+						prevText: "",
+						nextText: "",
+						smoothHeight: true,
+						slideshow: false,
+						animation:"slide"
+					});
+				}
+				else if ( $flex.hasClass('wcsliderauto') ) {
+					$flex.wcflexslider({
+						prevText: "",
+						nextText: "",
+						smoothHeight: true,
+						slideshow: true,
+						animation:"slide"
+					});
+				}
+				else if ( $flex.hasClass('wccarousel') ) {
+					$flex.wcflexslider({
+						prevText: "",
+						nextText: "",
+						smoothHeight: false,
+						slideshow: false,
+						animation: "slide",
+						animationLoop: false,
+						itemWidth: 270,
+						itemMargin: gutterWidth 
+					});
+				}
+				else if ( $flex.hasClass('wcslider3bottomlinks') || $flex.hasClass('wcslider4bottomlinks') ) {
+					$flex.wcflexslider({
+						prevText: "",
+						nextText: "",
+						smoothHeight: false,
+						slideshow: true,
+						animation:"slide"
+					});
+				}
 			});
 		}
 		if( jQuery().owlCarousel) {
 			$('.wcowlcarousel').each( function() {
 				var $this = $(this);
+				if ( $this.is(':hidden') ) {
+					return;
+				}
+
+				if ( $this.hasClass( 'wcowlcarousel-is-active' ) ) {
+					return;
+				}
+
 				var $owl = $this.children('.owl-carousel');
 				var columns = parseInt( $owl.data('columns') );
 				var columnsTablet = columns - 1;
@@ -178,6 +206,8 @@
 				var hideControls = $owl.data('hideControls');
 				var showNav = hideControls ? false : true;
 				var containerWidth = $this.width();
+
+				$this.addClass('wcowlcarousel-is-active');
 
 				gutterWidth = parseInt( gutterWidth );
 				if ( 1 > columnsTablet ) {
@@ -244,6 +274,11 @@
 
 	// Triggers re-layout on infinite scroll
 	$( document.body ).on( 'post-load', function () {
+		initGallery();
+	}); 
+
+	// Triggers re-layout on accordion, tabs, toggle
+	$( document.body ).on( 'wcs-toggled', function () {
 		initGallery();
 	}); 
 
