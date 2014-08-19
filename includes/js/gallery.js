@@ -64,9 +64,13 @@
 	}
 
 
-	$(document).ready(function(){
+	var initGallery = function() {
 		$('.gallery-masonry').each( function() {
 			var $container = $(this);
+
+			if ( $container.hasClass( 'masonry' ) ) {
+				return;
+			}
 
 			imagesLoaded( $container, function() {
 				runMasonry(0, $container);
@@ -233,7 +237,14 @@
 					});
 				}
 			});
-
 		}
-	});
+	};
+
+	$(document).ready( initGallery );
+
+	// Triggers re-layout on infinite scroll
+	$( document.body ).on( 'post-load', function () {
+		initGallery();
+	}); 
+
 } )( jQuery );
