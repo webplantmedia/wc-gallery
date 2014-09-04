@@ -247,7 +247,7 @@
 	overflow: hidden;
 }
 .wc-gallery .gallery.wcflexslider {
-	line-height: 1;
+	/* line-height: 1; */
 	border-width: 0;
 	-webkit-border-radius: 0px;
 	-moz-border-radius: 0px;
