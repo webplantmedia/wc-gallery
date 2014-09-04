@@ -46,6 +46,11 @@ Insert a gallery through your dashboard. You will see extra dropdown settings wh
 
 == Changelog ==
 
+### Version 1.22
+
+* Gallery captions and image sizes now are the same width
+* Fixed style bug in gallery caption
+
 ### Version 1.21
 
 * minor style update fix for previous version
