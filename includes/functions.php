@@ -229,7 +229,7 @@ function wc_gallery_shortcode($blank, $attr) {
 					</div>";
 			if ( $showcaptions && trim($attachment->post_excerpt) ) {
 				$output .= "
-					<div class='wp-caption-text gallery-caption'>
+					<div class='wp-caption-text gallery-caption' style='width:{$width}px;'>
 					<{$captiontype}>
 					" . wptexturize($attachment->post_excerpt) . "
 					</{$captiontype}>
