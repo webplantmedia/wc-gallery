@@ -7,11 +7,11 @@
 (function ($) {
 
   //FlexSlider: Object Instance
-  $.flexslider = function(el, options) {
+  $.wcflexslider = function(el, options) {
     var slider = $(el);
 
     // making variables public
-    slider.vars = $.extend({}, $.flexslider.defaults, options);
+    slider.vars = $.extend({}, $.wcflexslider.defaults, options);
 
     var namespace = slider.vars.namespace,
         msGesture = window.navigator && window.navigator.msPointerEnabled && window.MSGesture,
@@ -30,7 +30,7 @@
         focused = true;
 
     // Store a reference to the slider object
-    $.data(el, "flexslider", slider);
+    $.data(el, "wcflexslider", slider);
 
     // Private slider methods
     methods = {
@@ -100,7 +100,7 @@
             if (!slider.animating && (keycode === 39 || keycode === 37)) {
               var target = (keycode === 39) ? slider.getTarget('next') :
                            (keycode === 37) ? slider.getTarget('prev') : false;
-              slider.flexAnimate(target, slider.vars.pauseOnAction);
+              slider.wcflexAnimate(target, slider.vars.pauseOnAction);
             }
           });
         }
@@ -109,7 +109,7 @@
           slider.bind('mousewheel', function(event, delta, deltaX, deltaY) {
             event.preventDefault();
             var target = (delta < 0) ? slider.getTarget('next') : slider.getTarget('prev');
-            slider.flexAnimate(target, slider.vars.pauseOnAction);
+            slider.wcflexAnimate(target, slider.vars.pauseOnAction);
           });
         }
 
@@ -164,10 +164,10 @@
                     target = $slide.index();
                 var posFromLeft = $slide.offset().left - $(slider).scrollLeft(); // Find position of slide relative to left of slider container
                 if( posFromLeft <= 0 && $slide.hasClass( namespace + 'active-slide' ) ) {
-                  slider.flexAnimate(slider.getTarget("prev"), true);
-                } else if (!$(slider.vars.asNavFor).data('flexslider').animating && !$slide.hasClass(namespace + "active-slide")) {
+                  slider.wcflexAnimate(slider.getTarget("prev"), true);
+                } else if (!$(slider.vars.asNavFor).data('wcflexslider').animating && !$slide.hasClass(namespace + "active-slide")) {
                   slider.direction = (slider.currentItem < target) ? "next" : "prev";
-                  slider.flexAnimate(target, slider.vars.pauseOnAction, false, true, true);
+                  slider.wcflexAnimate(target, slider.vars.pauseOnAction, false, true, true);
                 }
               });
           }else{
@@ -185,9 +185,9 @@
                       e.preventDefault();
                       var $slide = $(this),
                           target = $slide.index();
-                      if (!$(slider.vars.asNavFor).data('flexslider').animating && !$slide.hasClass('active')) {
+                      if (!$(slider.vars.asNavFor).data('wcflexslider').animating && !$slide.hasClass('active')) {
                           slider.direction = (slider.currentItem < target) ? "next" : "prev";
-                          slider.flexAnimate(target, slider.vars.pauseOnAction, false, true, true);
+                          slider.wcflexAnimate(target, slider.vars.pauseOnAction, false, true, true);
                       }
                   });
               });
@@ -238,7 +238,7 @@
 
               if (!$this.hasClass(namespace + 'active')) {
                 slider.direction = (target > slider.currentSlide) ? "next" : "prev";
-                slider.flexAnimate(target, slider.vars.pauseOnAction);
+                slider.wcflexAnimate(target, slider.vars.pauseOnAction);
               }
             }
 
@@ -263,7 +263,7 @@
 
               if (!$this.hasClass(namespace + 'active')) {
                 (target > slider.currentSlide) ? slider.direction = "next" : slider.direction = "prev";
-                slider.flexAnimate(target, slider.vars.pauseOnAction);
+                slider.wcflexAnimate(target, slider.vars.pauseOnAction);
               }
             }
 
@@ -314,7 +314,7 @@
 
             if (watchedEvent === "" || watchedEvent === event.type) {
               target = ($(this).hasClass(namespace + 'next')) ? slider.getTarget('next') : slider.getTarget('prev');
-              slider.flexAnimate(target, slider.vars.pauseOnAction);
+              slider.wcflexAnimate(target, slider.vars.pauseOnAction);
             }
 
             // setup flags to prevent event duplication
@@ -455,9 +455,9 @@
                     target = (updateDx > 0) ? slider.getTarget('next') : slider.getTarget('prev');
 
                 if (slider.canAdvance(target) && (Number(new Date()) - startT < 550 && Math.abs(updateDx) > 50 || Math.abs(updateDx) > cwidth/2)) {
-                  slider.flexAnimate(target, slider.vars.pauseOnAction);
+                  slider.wcflexAnimate(target, slider.vars.pauseOnAction);
                 } else {
-                  if (!fade) slider.flexAnimate(slider.currentSlide, slider.vars.pauseOnAction, true);
+                  if (!fade) slider.wcflexAnimate(slider.currentSlide, slider.vars.pauseOnAction, true);
                 }
               }
               el.removeEventListener('touchend', onTouchEnd, false);
@@ -540,9 +540,9 @@
                         target = (updateDx > 0) ? slider.getTarget('next') : slider.getTarget('prev');
 
                     if (slider.canAdvance(target) && (Number(new Date()) - startT < 550 && Math.abs(updateDx) > 50 || Math.abs(updateDx) > cwidth/2)) {
-                        slider.flexAnimate(target, slider.vars.pauseOnAction);
+                        slider.wcflexAnimate(target, slider.vars.pauseOnAction);
                     } else {
-                        if (!fade) slider.flexAnimate(slider.currentSlide, slider.vars.pauseOnAction, true);
+                        if (!fade) slider.wcflexAnimate(slider.currentSlide, slider.vars.pauseOnAction, true);
                     }
                 }
 
@@ -584,11 +584,11 @@
         }
       },
       sync: function(action) {
-        var $obj = $(slider.vars.sync).data("flexslider"),
+        var $obj = $(slider.vars.sync).data("wcflexslider"),
             target = slider.animatingTo;
 
         switch (action) {
-          case "animate": $obj.flexAnimate(target, slider.vars.pauseOnAction, false, true); break;
+          case "animate": $obj.wcflexAnimate(target, slider.vars.pauseOnAction, false, true); break;
           case "play": if (!$obj.playing && !$obj.asNav) { $obj.play(); } break;
           case "pause": $obj.pause(); break;
         }
@@ -638,7 +638,7 @@
     };
 
     // public methods
-    slider.flexAnimate = function(target, pause, override, withSync, fromNav) {
+    slider.wcflexAnimate = function(target, pause, override, withSync, fromNav) {
       if (!slider.vars.animationLoop && target !== slider.currentSlide) {
         slider.direction = (target > slider.currentSlide) ? "next" : "prev";
       }
@@ -647,9 +647,9 @@
 
       if (!slider.animating && (slider.canAdvance(target, fromNav) || override) && slider.is(":visible")) {
         if (asNav && withSync) {
-          var master = $(slider.vars.asNavFor).data('flexslider');
+          var master = $(slider.vars.asNavFor).data('wcflexslider');
           slider.atEnd = target === 0 || target === slider.count - 1;
-          master.flexAnimate(target, true, false, true, fromNav);
+          master.wcflexAnimate(target, true, false, true, fromNav);
           slider.direction = (slider.currentItem < target) ? "next" : "prev";
           master.direction = slider.direction;
 
@@ -775,7 +775,7 @@
 
     // SLIDESHOW:
     slider.animateSlides = function() {
-      if (!slider.animating && focused ) slider.flexAnimate(slider.getTarget("next"));
+      if (!slider.animating && focused ) slider.wcflexAnimate(slider.getTarget("next"));
     };
     // SLIDESHOW:
     slider.pause = function() {
@@ -1059,8 +1059,8 @@
   });
 
   //FlexSlider: Default Settings
-  $.flexslider.defaults = {
-    namespace: "flex-",             //{NEW} String: Prefix string attached to the class of every element generated by the plugin
+  $.wcflexslider.defaults = {
+    namespace: "wcflex-",             //{NEW} String: Prefix string attached to the class of every element generated by the plugin
     selector: ".slides > li",       //{NEW} Selector: Must match a simple pattern. '{container} > {slide}' -- Ignore pattern at your own peril
     animation: "fade",              //String: Select your animation type, "fade" or "slide"
     easing: "swing",                //{NEW} String: Determines the easing method used in jQuery transitions. jQuery easing plugin is supported!
@@ -1100,8 +1100,8 @@
     playText: "Play",               //String: Set the text for the "play" pausePlay item
 
     // Special properties
-    controlsContainer: "",          //{UPDATED} jQuery Object/Selector: Declare which container the navigation elements should be appended too. Default container is the FlexSlider element. Example use would be $(".flexslider-container"). Property is ignored if given element is not found.
-    manualControls: "",             //{UPDATED} jQuery Object/Selector: Declare custom control navigation. Examples would be $(".flex-control-nav li") or "#tabs-nav li img", etc. The number of elements in your controlNav should match the number of slides/tabs.
+    controlsContainer: "",          //{UPDATED} jQuery Object/Selector: Declare which container the navigation elements should be appended too. Default container is the FlexSlider element. Example use would be $(".wcflexslider-container"). Property is ignored if given element is not found.
+    manualControls: "",             //{UPDATED} jQuery Object/Selector: Declare custom control navigation. Examples would be $(".wcflex-control-nav li") or "#tabs-nav li img", etc. The number of elements in your controlNav should match the number of slides/tabs.
     sync: "",                       //{NEW} Selector: Mirror the actions performed on this slider with another slider. Use with care.
     asNavFor: "",                   //{NEW} Selector: Internal property exposed for turning the slider into a thumbnail navigation for another slider
 
@@ -1124,7 +1124,7 @@
   };
 
   //FlexSlider: Plugin Function
-  $.fn.flexslider = function(options) {
+  $.fn.wcflexslider = function(options) {
     if (options === undefined) options = {};
 
     if (typeof options === "object") {
@@ -1136,21 +1136,21 @@
       if ( ( $slides.length === 1 && options.allowOneSlide === true ) || $slides.length === 0 ) {
           $slides.fadeIn(400);
           if (options.start) options.start($this);
-        } else if ($this.data('flexslider') === undefined) {
-          new $.flexslider(this, options);
+        } else if ($this.data('wcflexslider') === undefined) {
+          new $.wcflexslider(this, options);
         }
       });
     } else {
       // Helper strings to quickly perform functions on the slider
-      var $slider = $(this).data('flexslider');
+      var $slider = $(this).data('wcflexslider');
       switch (options) {
         case "play": $slider.play(); break;
         case "pause": $slider.pause(); break;
         case "stop": $slider.stop(); break;
-        case "next": $slider.flexAnimate($slider.getTarget("next"), true); break;
+        case "next": $slider.wcflexAnimate($slider.getTarget("next"), true); break;
         case "prev":
-        case "previous": $slider.flexAnimate($slider.getTarget("prev"), true); break;
-        default: if (typeof options === "number") $slider.flexAnimate(options, true);
+        case "previous": $slider.wcflexAnimate($slider.getTarget("prev"), true); break;
+        default: if (typeof options === "number") $slider.wcflexAnimate(options, true);
       }
     }
   };
