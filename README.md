@@ -46,6 +46,12 @@ Insert a gallery through your dashboard. You will see extra dropdown settings wh
 
 ## Changelog ##
 
+### Version 1.23
+
+* Updated and customized flexslider library
+* supporting lightbox for WooCommerce galleries
+* code clean up
+
 ### Version 1.22
 
 * Gallery captions and image sizes now are the same width
