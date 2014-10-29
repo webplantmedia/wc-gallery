@@ -173,7 +173,7 @@
 						animation: "slide",
 						animationLoop: false,
 						itemWidth: 270,
-						itemMargin: gutterWidth 
+						itemMargin: gutterWidth
 					});
 				}
 				else if ( $flex.hasClass('wcslider3bottomlinks') || $flex.hasClass('wcslider4bottomlinks') ) {
