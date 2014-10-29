@@ -1,5 +1,5 @@
 /*
- * jQuery FlexSlider v2.2.2
+ * jQuery FlexSlider v2.2.2.1
  * Copyright 2012 WooThemes
  * Contributing Author: Tyler Smith
  */
@@ -580,7 +580,8 @@
       smoothHeight: function(dur) {
         if (!vertical || fade) {
           var $obj = (fade) ? slider : slider.viewport;
-          (dur) ? $obj.animate({"height": slider.slides.eq(slider.animatingTo).height()}, dur) : $obj.height(slider.slides.eq(slider.animatingTo).height());
+		  // (dur) ? $obj.animate({"height": slider.slides.eq(slider.animatingTo).height()}, dur) : $obj.height(slider.slides.eq(slider.animatingTo).height());
+		  $obj.css({"height": slider.slides.eq(slider.animatingTo).height()});
         }
       },
       sync: function(action) {
@@ -861,6 +862,8 @@
     };
 
     slider.setup = function(type) {
+	  slider.addClass(namespace + "loading");
+
       // SLIDE:
       if (!fade) {
         var sliderOffset, arr;
@@ -928,6 +931,9 @@
       // !CAROUSEL:
       // CANDIDATE: active slide
       if (!carousel) slider.slides.removeClass(namespace + "active-slide").eq(slider.currentSlide).addClass(namespace + "active-slide");
+
+	  slider.removeClass(namespace + "loading");
+	  slider.addClass(namespace + "dom-loaded");
 
       //FlexSlider: init() Callback
       slider.vars.init(slider);
