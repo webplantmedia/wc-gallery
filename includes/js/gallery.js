@@ -182,7 +182,22 @@
 						nextText: "",
 						smoothHeight: false,
 						slideshow: true,
-						animation:"slide"
+						animation:"slide",
+						init: function() {
+							$this.find('.wc-image-links .gallery-item').each( function() {
+								var $link = $(this);
+								var $a = $link.find('.gallery-icon a');
+								if ( 0 < $a.length ) {
+									var href = $a.attr('href');
+									if ( 'string' == typeof( href ) ) {
+										var $caption = $link.find('.gallery-caption');
+										if ( 0 < $caption.length ) {
+											$caption.wrap('<a href="'+href+'"></a>');
+										}
+									}
+								}
+							}); 
+						}
 					});
 				}
 			});
