@@ -46,6 +46,10 @@ Insert a gallery through your dashboard. You will see extra dropdown settings wh
 
 ## Changelog ##
 
+### Version 1.25
+
+* Now wrapping caption with href value in image links
+
 ### Version 1.24
 
 * Updated and customized flexslider library
