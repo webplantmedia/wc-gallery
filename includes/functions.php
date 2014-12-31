@@ -193,6 +193,8 @@ function wc_gallery_shortcode($blank, $attr) {
 
 		list( $attachments, $links ) = wc_gallery_seperate_attachments_links( $attachments, $display );
 
+		$pos = 1;
+
 		foreach ( $attachments as $id => $attachment ) {
 			if ( ! $img = wp_get_attachment_image_src( $id, $size ) )
 				continue;
@@ -223,7 +225,7 @@ function wc_gallery_shortcode($blank, $attr) {
 				$orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
 
 			$output .= "
-				<li class='gallery-item wcflex-slide-item'>
+				<li class='gallery-item gallery-item-position-".$pos." gallery-item-attachment-".$id." wcflex-slide-item'>
 					<div class='gallery-icon {$orientation}'>
 						$image_output
 					</div>";
@@ -236,6 +238,8 @@ function wc_gallery_shortcode($blank, $attr) {
 					</div>";
 			}
 			$output .= "</li>";
+
+			$pos++;
 		}
 		$output .= "</ul></div>\n";
 		// End of Flex Slider
@@ -264,7 +268,7 @@ function wc_gallery_shortcode($blank, $attr) {
 			if ( isset( $image_meta['height'], $image_meta['width'] ) )
 				$orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
 
-			$output .= "<div class='gallery-item gallery-item-".$i."'>";
+			$output .= "<div class='gallery-item gallery-item-".$i." gallery-item-position-".$pos." gallery-item-attachment-".$id."'>";
 				$output .= "<div class='gallery-block'>";
 					$output .= "
 						<div class='gallery-icon {$orientation}'>
@@ -283,6 +287,7 @@ function wc_gallery_shortcode($blank, $attr) {
 				$output .= "</div>";
 			$output .= "</div>";
 			$i++;
+			$pos++;
 		}
 
 		$output .= "</div>\n";
@@ -303,6 +308,7 @@ function wc_gallery_shortcode($blank, $attr) {
 		$output .= "<div id='$selector' class='owl-carousel' data-gutter-width='".$gutterwidth."' data-columns='".$columns."' data-hide-controls='".$hidecontrols."'>";
 
 		$i = 0;
+		$pos = 1;
 		foreach ( $attachments as $id => $attachment ) {
 			if ( ! $img = wp_get_attachment_image_src( $id, $size ) )
 				continue;
@@ -333,10 +339,10 @@ function wc_gallery_shortcode($blank, $attr) {
 				$orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
 
 			if ( 'owlautowidth' == $display ) {
-				$output .= "<div class='gallery-item item' style='width:".$width."px'>";
+				$output .= "<div class='gallery-item item gallery-item-position-".$pos." gallery-item-attachment-".$id."' style='width:".$width."px'>";
 			}
 			else {
-				$output .= "<div class='gallery-item item'>";
+				$output .= "<div class='gallery-item item gallery-item-position-".$pos." gallery-item-attachment-".$id."'>";
 			}
 
 			$output .= "<div class='gallery-icon {$orientation}'>$image_output</div>";
@@ -350,6 +356,8 @@ function wc_gallery_shortcode($blank, $attr) {
 					</div>";
 			}
 			$output .= "</div>";
+
+			$pos++;
 		}
 
 		$output .= "</div></div>\n";
@@ -372,6 +380,7 @@ function wc_gallery_shortcode($blank, $attr) {
 		$output = "<div id='$selector' data-gutter-width='".$gutterwidth."' data-columns='".$columns."' class='{$class}'>";
 
 		$i = 0;
+		$pos = 1;
 		foreach ( $attachments as $id => $attachment ) {
 			if ( $customlink ) {
 				$image_output = wc_gallery_get_attachment_link( $id, $size, false, false, false, $targetsize, $customlink, $link_target );
@@ -392,7 +401,7 @@ function wc_gallery_shortcode($blank, $attr) {
 			if ( isset( $image_meta['height'], $image_meta['width'] ) )
 				$orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
 
-			$output .= "<div class='gallery-item'>";
+			$output .= "<div class='gallery-item gallery-item-position-".$pos." gallery-item-attachment-".$id."'>";
 			$output .= "
 				<div class='gallery-icon {$orientation}'>
 					$image_output
@@ -406,6 +415,8 @@ function wc_gallery_shortcode($blank, $attr) {
 					</div>";
 			}
 			$output .= "</div>";
+
+			$pos++;
 		}
 
 		$output .= "</div>\n";
