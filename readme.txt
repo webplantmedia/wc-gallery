@@ -46,6 +46,10 @@ Insert a gallery through your dashboard. You will see extra dropdown settings wh
 
 == Changelog ==
 
+### Version 1.26
+
+* Added position number and attachment id class name to gallery items
+
 ### Version 1.25
 
 * Now wrapping caption with href value in image links
