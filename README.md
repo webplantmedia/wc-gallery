@@ -46,6 +46,10 @@ Insert a gallery through your dashboard. You will see extra dropdown settings wh
 
 ## Changelog ##
 
+### Version 1.27
+
+* Removed 'Image Size' from gallery option since WordPress includes it by default now.
+
 ### Version 1.26
 
 * Added position number and attachment id class name to gallery items
