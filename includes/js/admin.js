@@ -17,7 +17,6 @@
 			// Append the layout template and update the settings.
 			$el.append( media.template( 'wc-gallery-settings' ) );
 			media.gallery.defaults.display = 'masonry'; // lil hack that lets media know there's a layout attribute.
-			media.gallery.defaults.size = 'thumbnail'; // lil hack that lets media know there's a layout attribute.
 			media.gallery.defaults.targetsize = 'large'; // lil hack that lets media know there's a layout attribute.
 			media.gallery.defaults.captions = 'onhover'; // lil hack that lets media know there's a layout attribute.
 			media.gallery.defaults.captiontype = 'p'; // lil hack that lets media know there's a layout attribute.
@@ -28,7 +27,6 @@
 			media.gallery.defaults.newtab = false; // lil hack that lets media know there's a layout attribute.
 			media.gallery.defaults.class = ''; // lil hack that lets media know there's a layout attribute.
 			this.update.apply( this, ['display'] );
-			this.update.apply( this, ['size'] );
 			this.update.apply( this, ['targetsize'] );
 			this.update.apply( this, ['captions'] );
 			this.update.apply( this, ['captiontype'] );
