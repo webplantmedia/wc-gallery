@@ -302,3 +302,11 @@
 .mfp-bottom-bar p {
 	margin-bottom: 0;
 }
+.mfp-arrow:hover,
+.mfp-arrow:active,
+.mfp-arrow:focus {
+	top: 50%;
+}
+body .mfp-arrow:active {
+    margin-top: -55px;
+}
