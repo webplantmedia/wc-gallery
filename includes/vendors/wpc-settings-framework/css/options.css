@@ -1,0 +1,151 @@
+/**
+* CSS Hacks
+*
+* Needed common CSS trick
+*/
+
+.wpcsf-clearfix:after {
+     visibility: hidden;
+     display: block;
+     font-size: 0;
+     content: " ";
+     clear: both;
+     height: 0;
+ }
+
+.wpcsf-clearfix { display: inline-block; }
+
+* html .wpcsf-clearfix { 
+	height: 1%;
+}
+
+.wpcsf-clearfix { display: block; }
+
+
+/**
+* Border Fields
+*/
+
+.wpcsf-font-hover-fields .wpcsf-text-decoration,
+.wpcsf-border-fields .wpcsf-border-style,
+.wpcsf-border-fields .wp-border-width,
+.wpcsf-border-fields .wp-picker-container {
+	margin-bottom: 7px;
+}
+
+
+/**
+* Media Gallery
+*
+* Styles for media gallery
+*/
+
+.wpcsf-image-upload {
+	padding-left: 5px !important;
+}
+.wpcsf-image-upload .wp-media-buttons-icon {
+	background: none repeat scroll 0% 0% transparent;
+	display: inline-block;
+	width: 18px;
+	height: 18px;
+	vertical-align: text-top;
+	margin: 0px 2px;
+}
+.wpcsf-image-upload .wp-media-buttons-icon:before {
+	content: '\f104';
+	font: normal 18px/1 'dashicons';
+	speak: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	color: #888;
+}
+
+.wpcsf-preview-image img {
+	max-width: 700px;
+	max-height: 200px;
+	background: #FAFAFA;
+	border-color: #ccc #eee #eee #ccc;
+	border-style: solid;
+	border-width: 1px;
+	padding: 5px;
+}
+
+.wpcsf-preview-image {
+	margin-bottom: 5px;
+}
+
+.wpcsf-upload-font-textarea {
+	max-width: 900px;
+	height: 210px;
+	width: 97%;
+}
+
+.wpcsf-social-media-field .button,
+.wpcsf-social-media-field input,
+.wpcsf-image-field .button,
+.wpcsf-image-field input,
+.wpcsf-background-options .button,
+.wpcsf-background-options select,
+.wpcsf-background-options input {
+	margin-bottom: 7px;
+}
+
+
+/**
+* Theme Options Display
+*
+* Specific style for theme options pages
+*/
+
+.wpcsf-theme-options-display .form-table tr:nth-child(odd) {
+	background-color: #f2f2f2;
+}
+
+.wpcsf-wp-editor {
+	max-width: 900px;
+	width: 97%;
+}
+
+.wpcsf-textarea {
+	max-width: 900px;
+	height: 150px;
+	width: 97%;
+}
+
+/**
+* Nav Tabs
+*/
+
+.wpcsf-navigation .nav-tab {
+	border-bottom: 1px solid #ccc;
+	outline: none;
+	box-shadow: none;
+}
+.wpcsf-navigation .nav-tab.nav-tab-active {
+	border-bottom: 1px solid #f1f1f1;
+}
+
+/**
+* Tabs
+*/
+
+.wpcsf-tab {
+	display: none;
+}
+.wpcsf-tab.wpcsf-active-tab {
+	display: block;
+}
+
+/**
+ * Groups
+ */
+.wpcsf-group .wpcsf-input-field label,
+.wpcsf-group .wpcsf-image-field label {
+	display: inline-block;
+}
+.wpcsf-group .wpcsf-input-field {
+	margin-bottom: 5px;
+}
+.wpcsf-group .wpcsf-input-field .description {
+	display: inline-block;
+}

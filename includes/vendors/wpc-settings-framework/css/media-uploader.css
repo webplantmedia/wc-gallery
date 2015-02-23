@@ -1,0 +1,18 @@
+/**
+* Media Upload Popup
+*
+* Could not figure out how to disable the link to field in the
+* media manager, so I'm just hiding it for now
+*/
+
+/* .wpcsf-custom-uploader .attachment-details, */
+.wpcsf-custom-uploader .attachment-details label.setting,
+.wpcsf-custom-uploader .attachment-display-settings label.setting:nth-child(2),
+.wpcsf-custom-uploader .attachment-display-settings div.setting,
+.wpcsf-custom-uploader .compat-attachment-fields {
+	display: none;
+}
+
+.wpcsf-custom-uploader-gallery-library .gallery-settings {
+	display: none;
+}
