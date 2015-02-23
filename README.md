@@ -46,6 +46,14 @@ Insert a gallery through your dashboard. You will see extra dropdown settings wh
 
 ## Changelog ##
 
+### Version 1.28
+
+* Removed loading of widgets file
+* Updated options panel with settings framework
+* Fixed style bug with magnific popup
+* Updated Magnific Popup Library
+* FIxed bug with gallery insertion option not being referenced correctly
+
 ### Version 1.27
 
 * Removed 'Image Size' from gallery option since WordPress includes it by default now.
