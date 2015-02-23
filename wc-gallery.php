@@ -81,8 +81,7 @@ $wc_gallery_theme_support = array(
 	),
 );
 
+require_once( plugin_dir_path( __FILE__ ) . 'includes/vendors/wpc-settings-framework/init.php' );
 require_once( dirname(__FILE__) . '/includes/functions.php' ); // Adds basic filters and actions
 require_once( dirname(__FILE__) . '/includes/options.php' ); // define options array
-require_once( dirname(__FILE__) . '/includes/settings.php' ); // Adds settings
 require_once( dirname(__FILE__) . '/includes/scripts.php' ); // Adds plugin JS and CSS
-require_once( dirname(__FILE__) . '/includes/widgets.php' ); // include any widgets
