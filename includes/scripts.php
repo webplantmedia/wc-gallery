@@ -13,7 +13,7 @@ if( !function_exists ('wc_gallery_scripts') ) :
 	function wc_gallery_scripts() {
 		$ver = WC_GALLERY_VERSION;
 
-		if ( get_option( WC_GALLERY_PREFIX . 'enable_shortcode_css', true ) ) {
+		if ( get_option( WC_GALLERY_PREFIX . 'enable_gallery_css', true ) ) {
 			wp_enqueue_style( 'wc-gallery-style', plugin_dir_url( __FILE__ ) . 'css/style.css', array( ), $ver );
 		}
 
