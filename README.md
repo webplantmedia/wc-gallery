@@ -46,6 +46,10 @@ Insert a gallery through your dashboard. You will see extra dropdown settings wh
 
 ## Changelog ##
 
+### Version 1.29
+
+* Added Image size identifier for easy reference
+
 ### Version 1.28
 
 * Removed loading of widgets file
