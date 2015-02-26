@@ -26,7 +26,7 @@ function wc_gallery_options( $options ) {
 							array(
 								'id' => 'icon_size',
 								'title' => 'Icon Size',
-								'description' => '',
+								'description' => 'Image size identifier: <code>wcicon</code>',
 								'group' => array(
 									array(
 										'option_name' => 'icon_size_w',
@@ -52,7 +52,7 @@ function wc_gallery_options( $options ) {
 							array(
 								'id' => 'square_size',
 								'title' => 'Square Size',
-								'description' => '',
+								'description' => 'Image size identifier: <code>wcsquare</code>',
 								'group' => array(
 									array(
 										'option_name' => 'square_size_w',
@@ -80,7 +80,7 @@ function wc_gallery_options( $options ) {
 							array(
 								'id' => 'small_size',
 								'title' => 'Small Size',
-								'description' => '',
+								'description' => 'Image size identifier: <code>wcsmall</code>',
 								'group' => array(
 									array(
 										'option_name' => 'small_size_w',
@@ -99,7 +99,7 @@ function wc_gallery_options( $options ) {
 							array(
 								'id' => 'standard_size',
 								'title' => 'Standard Size',
-								'description' => '',
+								'description' => 'Image size identifier: <code>wcstandard</code>',
 								'group' => array(
 									array(
 										'option_name' => 'standard_size_w',
@@ -118,7 +118,7 @@ function wc_gallery_options( $options ) {
 							array(
 								'id' => 'big_size',
 								'title' => 'Big Size',
-								'description' => '',
+								'description' => 'Image size identifier: <code>wcbig</code>',
 								'group' => array(
 									array(
 										'option_name' => 'big_size_w',
@@ -137,7 +137,7 @@ function wc_gallery_options( $options ) {
 							array(
 								'id' => 'fixedheightsmall_size',
 								'title' => 'Fixed Height Small Size',
-								'description' => '',
+								'description' => 'Image size identifier: <code>wcfixedheightsmall</code>',
 								'group' => array(
 									array(
 										'option_name' => 'fixedheightsmall_size_w',
@@ -156,7 +156,7 @@ function wc_gallery_options( $options ) {
 							array(
 								'id' => 'fixedheightmedium_size',
 								'title' => 'Fixed Height Medium Size',
-								'description' => '',
+								'description' => 'Image size identifier: <code>wcfixedheightmedium</code>',
 								'group' => array(
 									array(
 										'option_name' => 'fixedheightmedium_size_w',
@@ -175,7 +175,7 @@ function wc_gallery_options( $options ) {
 							array(
 								'id' => 'fixedheight_size',
 								'title' => 'Fixed Height Large Size',
-								'description' => '',
+								'description' => 'Image size identifier: <code>wcfixedheight</code>',
 								'group' => array(
 									array(
 										'option_name' => 'fixedheight_size_w',
@@ -194,7 +194,7 @@ function wc_gallery_options( $options ) {
 							array(
 								'id' => 'carouselsmall_size',
 								'title' => 'Carousel Small Size',
-								'description' => '',
+								'description' => 'Image size identifier: <code>wccarouselsmall</code>',
 								'group' => array(
 									array(
 										'option_name' => 'carouselsmall_size_w',
@@ -220,7 +220,7 @@ function wc_gallery_options( $options ) {
 							array(
 								'id' => 'carousel_size',
 								'title' => 'Carousel Large Size',
-								'description' => '',
+								'description' => 'Image size identifier: <code>wccarousel</code>',
 								'group' => array(
 									array(
 										'option_name' => 'carousel_size_w',
@@ -246,7 +246,7 @@ function wc_gallery_options( $options ) {
 							array(
 								'id' => 'slider_size',
 								'title' => 'Slider Size',
-								'description' => '',
+								'description' => 'Image size identifier: <code>wcslider</code>',
 								'group' => array(
 									array(
 										'option_name' => 'slider_size_w',
