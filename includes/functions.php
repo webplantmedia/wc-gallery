@@ -482,15 +482,6 @@ function wc_gallery_print_media_templates() {
 	?>
 	<script type="text/html" id="tmpl-wc-gallery-settings">
 		<label class="setting">
-			<span><?php _e( 'Display', 'wc_gallery' ); ?></span>
-			<select class="display" name="display" data-setting="display">
-				<?php foreach ( $display_types as $key => $value ) : ?>
-					<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $key, 'default' ); ?>><?php echo esc_html( $value ); ?></option>
-				<?php endforeach; ?>
-			</select>
-		</label>
-
-		<label class="setting">
 			<span><?php _e( 'Popup Size', 'wc_gallery' ); ?></span>
 			<select class="targetsize" name="targetsize" data-setting="targetsize">
 				<?php
@@ -504,6 +495,15 @@ function wc_gallery_print_media_templates() {
 
 				<?php foreach ( $sizes as $key => $name ) : ?>
 					<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $key, 'large' ); ?>><?php echo esc_html( $name ); ?></option>
+				<?php endforeach; ?>
+			</select>
+		</label>
+
+		<label class="setting">
+			<span><?php _e( 'Display', 'wc_gallery' ); ?></span>
+			<select class="display" name="display" data-setting="display">
+				<?php foreach ( $display_types as $key => $value ) : ?>
+					<option value="<?php echo esc_attr( $key ); ?>" <?php selected( $key, 'default' ); ?>><?php echo esc_html( $value ); ?></option>
 				<?php endforeach; ?>
 			</select>
 		</label>
