@@ -141,7 +141,7 @@
 					$flex.wcflexslider({
 						prevText: "",
 						nextText: "",
-						smoothHeight: false,
+						smoothHeight: true,
 						slideshow: false,
 						animation:"fade"
 					});
@@ -180,7 +180,7 @@
 					$flex.wcflexslider({
 						prevText: "",
 						nextText: "",
-						smoothHeight: false,
+						smoothHeight: true,
 						slideshow: true,
 						animation:"slide",
 						init: function() {
