@@ -104,7 +104,11 @@
 					type:'image',
 					image: {
 						titleSrc: function(item) {
-							return $(item.el).parent().next('.gallery-caption').html();
+							var caption = $(item.el).parent().next('.gallery-caption').html();
+							if ( 'string' == typeof caption && caption.length > 0 )
+								return caption;
+
+							return '';
 						}
 					}
 				});
