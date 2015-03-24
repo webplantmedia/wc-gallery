@@ -69,7 +69,7 @@ class WC_Gallery_Settings_Framework {
 		add_action( 'admin_init', array( $this, 'set_plugin_info' ) );
 
 		add_action( 'init', array( $this, 'set_options' ), 100 );
-		add_action( 'admin_init', array( $this, 'options_init' ) );
+		add_action( 'admin_init', array( $this, 'register_settings' ) );
 		add_action( 'admin_init', array( $this, 'options_activation' ), 200 );
 		add_action( 'admin_menu', array( $this, 'options_admin_menu' ) );
 
@@ -199,7 +199,7 @@ class WC_Gallery_Settings_Framework {
 	 *
 	 * @return void
 	 */
-	public function options_init() {
+	public function register_settings() {
 		register_setting( $this->plugin_slug . '-wpcsf-current-version', $this->plugin_prefix . 'current_version' );
 
 		foreach ( $this->options as $menu_slug => $o ) {
