@@ -181,13 +181,7 @@ class WC_Gallery_Settings_Framework {
 	}
 
 	public function add_option( $option_name, $default ) {
-		if ( $this->plugin_prefix . 'social_icons_display' == $option_name ) {
-			// $default = wc_shortcodes_default_social_icons();
-			// add_option( $option_name, $default );
-		}
-		else {
-			add_option( $option_name, $default );
-		}
+		add_option( $option_name, $default );
 	}
 
 	/**
