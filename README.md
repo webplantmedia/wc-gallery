@@ -46,6 +46,17 @@ Insert a gallery through your dashboard. You will see extra dropdown settings wh
 
 ## Changelog ##
 
+### Version 1.30
+
+* Fixed bug with captions displaying when there are not any
+* Updated magnific popup gallery
+* Fixed bug with update in settings framework
+* Code clean up
+* Updated owl carousel
+* Rearranged gallery options
+* enabled smooth height
+* Updated flexslider library
+
 ### Version 1.29
 
 * Added Image size identifier for easy reference
