@@ -109,7 +109,6 @@ class WC_Gallery_Settings_Framework {
 	public function set_plugin_info() {
 		$this->plugin_current_version = get_option( $this->plugin_prefix . 'current_version' );
 
-		$active_plugins = get_option( 'active_plugins' );
 		$plugin = get_plugins( '/' . $this->plugin_slug );
 		if ( ! empty( $plugin ) ) {
 			$plugin = array_shift( $plugin );
