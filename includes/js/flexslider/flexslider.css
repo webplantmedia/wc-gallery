@@ -99,11 +99,11 @@ html[xmlns] .wcflexslider .slides {
 /* comment below except for max height if problems occur */
 .wcflex-viewport {
   max-height: 2000px;
-  /* -webkit-transition: all 1s ease; */
-  /* -moz-transition: all 1s ease; */
-  /* -ms-transition: all 1s ease; */
-  /* -o-transition: all 1s ease; */
-  /* transition: all 1s ease; */
+  -webkit-transition: all 1s ease;
+  -moz-transition: all 1s ease;
+  -ms-transition: all 1s ease;
+  -o-transition: all 1s ease;
+  transition: all 1s ease;
 }
 .loading .wcflex-viewport {
   max-height: 300px;
@@ -128,11 +128,11 @@ html[xmlns] .wcflexslider .slides {
   cursor: pointer;
   color: rgba(0, 0, 0, 0.8); /* disable possibly */
   /* text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.3); */
-  /* -webkit-transition: all 0.3s ease-in-out;
+  -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
   -ms-transition: all 0.3s ease-in-out;
   -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out; */
+  transition: all 0.3s ease-in-out;
 }
 /* .wcflex-direction-nav a:before {
   font-family: "wcflexslider-icon";
