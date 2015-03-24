@@ -125,7 +125,7 @@ class WC_Gallery_Settings_Framework {
 
 		$initialize = false;
 
-		if ( ! $this->plugin_current_version ) {
+		if ( ! isset( $this->plugin_current_version ) || empty( $this->plugin_current_version ) ) {
 			$initialize = true;
 		}
 		else if ( version_compare( $this->plugin_version, $this->plugin_current_version ) > 0 ) {
