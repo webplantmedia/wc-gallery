@@ -46,7 +46,7 @@ Insert a gallery through your dashboard. You will see extra dropdown settings wh
 
 == Changelog ==
 
-= Version 1.34 =
+= Version 1.35 =
 
 * fixed bug with hide control option not being applied to flex slider
 * fixed style bug with dynamic height content
