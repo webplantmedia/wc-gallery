@@ -52,6 +52,7 @@
   -moz-backface-visibility: hidden;
   backface-visibility: hidden;
 }
+.wcflexslider .slides > li.wcflex-slide-item.clone,
 .wcflexslider .slides > li.wcflex-active-slide {
   -webkit-backface-visibility: visible;
   -moz-backface-visibility: visible;
