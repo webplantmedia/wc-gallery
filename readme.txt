@@ -46,6 +46,10 @@ Insert a gallery through your dashboard. You will see extra dropdown settings wh
 
 == Changelog ==
 
+= Version 1.36 =
+
+* Fixed flicker blug with slider in chrome
+
 = Version 1.35 =
 
 * fixed bug with hide control option not being applied to flex slider
