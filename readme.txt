@@ -46,7 +46,7 @@ Insert a gallery through your dashboard. You will see extra dropdown settings wh
 
 == Changelog ==
 
-= Version 1.36 =
+= Version 1.37 =
 
 * Fixed flicker blug with slider in chrome
 
