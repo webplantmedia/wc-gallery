@@ -148,6 +148,7 @@
 							nextText: "",
 							smoothHeight: true,
 							slideshow: false,
+							directionNav: showNav,
 							animation:"fade"
 						});
 					}
@@ -157,6 +158,7 @@
 							nextText: "",
 							smoothHeight: true,
 							slideshow: false,
+							directionNav: showNav,
 							animation:"slide"
 						});
 					}
@@ -166,6 +168,7 @@
 							nextText: "",
 							smoothHeight: true,
 							slideshow: true,
+							directionNav: showNav,
 							animation:"slide"
 						});
 					}
@@ -175,6 +178,7 @@
 							nextText: "",
 							smoothHeight: false,
 							slideshow: false,
+							directionNav: showNav,
 							animation: "slide",
 							animationLoop: false,
 							itemWidth: 270,
@@ -187,6 +191,7 @@
 							nextText: "",
 							smoothHeight: true,
 							slideshow: true,
+							directionNav: showNav,
 							animation:"slide",
 							init: function() {
 								$this.find('.wc-image-links .gallery-item').each( function() {
