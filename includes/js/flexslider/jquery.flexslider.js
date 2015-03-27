@@ -580,8 +580,8 @@
       },
       smoothHeight: function(dur) {
         if (!vertical || fade) {
-          var $obj = (fade) ? slider : slider.viewport;
-		  $obj.height(slider.slides.eq(slider.animatingTo).height());
+          var $obj = slider.viewport;
+          $obj.height(slider.slides.eq(slider.animatingTo).height());
           // (dur) ? $obj.animate({"height": slider.slides.eq(slider.animatingTo).height()}, dur) : $obj.height(slider.slides.eq(slider.animatingTo).height());
         }
       },
@@ -936,6 +936,7 @@
       } else { // FADE:
         slider.slides.css({"width": "100%", "float": "left", "marginRight": "-100%", "position": "relative"});
         if (type === "init") {
+          slider.viewport = $('<div class="' + namespace + 'viewport"></div>').css({"overflow": "hidden", "position": "relative"}).appendTo(slider).append(slider.container);
           if (!touch) {
             //slider.slides.eq(slider.currentSlide).fadeIn(slider.vars.animationSpeed, slider.vars.easing);
             if (slider.vars.fadeFirstSlide == false) {
