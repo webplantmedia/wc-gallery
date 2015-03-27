@@ -152,6 +152,9 @@
 	body .wc-gallery .gallery-caption {
 		display: none;
 	}
+	body .wc-gallery .wc-image-links .gallery-caption {
+		display: block;
+	}
 }
 /**
  * Image Links
