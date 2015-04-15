@@ -13,7 +13,8 @@
 	var calculateGrid = function($container) {
 		var columns = parseInt( $container.data('columns') );
 		var gutterWidth = $container.data('gutterWidth');
-		var containerWidth = $container.width();
+		// need to return exact decimal width
+		var containerWidth = Math.floor($container[0].getBoundingClientRect().width);
 
 		if ( isNaN( gutterWidth ) ) {
 			gutterWidth = 5;
@@ -59,7 +60,7 @@
 			itemSelector: '.gallery-item',
 			columnWidth: o.columnWidth,
 			gutter: o.gutterWidth,
-			transitionDuration: duration 
+			transitionDuration: duration
 		} );
 	}
 
