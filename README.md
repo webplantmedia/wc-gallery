@@ -46,6 +46,10 @@ Insert a gallery through your dashboard. You will see extra dropdown settings wh
 
 ## Changelog ##
 
+### Version 1.39
+
+* Fixed bug with masonry shifting when container width was a decimal number
+
 ### Version 1.38
 
 * Show gallery captions on image links when viewing mobile devices
