@@ -46,6 +46,10 @@ Insert a gallery through your dashboard. You will see extra dropdown settings wh
 
 == Changelog ==
 
+= Version 1.40 =
+
+* Updated images loaded library to 3.1.8
+
 = Version 1.39 =
 
 * Fixed bug with masonry shifting when container width was a decimal number
