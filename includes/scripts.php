@@ -24,7 +24,7 @@ if( !function_exists ('wc_gallery_scripts') ) :
 		wp_enqueue_script( 'jquery-masonry' );
 
 		// images loaded
-		wp_register_script( 'wordpresscanvas-imagesloaded', plugin_dir_url( __FILE__ ) . 'js/imagesloaded.pkgd.min.js', array (), '3.1.5', true );
+		wp_register_script( 'wordpresscanvas-imagesloaded', plugin_dir_url( __FILE__ ) . 'js/imagesloaded.pkgd.min.js', array (), '3.1.8', true );
 
 		if ( get_option( WC_GALLERY_PREFIX . 'enable_image_popup', true ) ) {
 			wp_enqueue_style( 'wc-gallery-popup-style', plugin_dir_url( __FILE__ ) . 'css/magnific-popup.css', array( ), '0.9.9' );
