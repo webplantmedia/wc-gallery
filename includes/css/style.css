@@ -155,6 +155,9 @@
 	body .wc-gallery .wc-image-links .gallery-caption {
 		display: block;
 	}
+	body .wc-gallery .wc-image-links-bottomlinks {
+		margin: 0;
+	}
 }
 /**
  * Image Links
