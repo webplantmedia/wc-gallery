@@ -204,7 +204,7 @@ html[xmlns] .wcflexslider .slides {
 .wcflex-pauseplay a:hover {
   opacity: 1;
 }
-.wcflex-pauseplay a .wcflex-play:before {
+.wcflex-pauseplay a.wcflex-play:before {
   content: '\f003';
 } */
 .wcflex-control-nav {
