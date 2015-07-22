@@ -7,6 +7,31 @@
 ( function( $ ) {
 	"use strict";
 
+	$.fn.wcGalleryMasonryImagesReveal = function( $items ) {
+		var msnry = this.data('masonry');
+		var itemSelector = msnry.options.itemSelector;
+
+		// hide by default
+		$items.hide();
+
+		// append to container
+		this.append( $items );
+
+		$.each( $items, function( key, item ) {
+			var $item = $(this);
+
+			// un-hide item
+			$item.show();
+
+			$item.imagesLoaded().always( function( instance ) {
+				// masonry does its thing
+				msnry.appended( $item );
+			});
+		});
+
+		return this;
+	};
+
 	var body = $( 'body' ),
 		_window = $( window );
 
@@ -49,14 +74,12 @@
 		return {columnWidth: columnWidth, gutterWidth: gutterWidth, columns: columns};
 	}
 
-	var runMasonry = function( duration, $container) {
-		var $postBox = $container.children('.gallery-item');
-
+	var runMasonry = function( duration, $container, $posts ) {
 		var o = calculateGrid($container);
 
-		$postBox.css({'width':o.columnWidth+'px', 'margin-bottom':o.gutterWidth+'px', 'padding':'0'});
+		$posts.css({'width':o.columnWidth+'px', 'margin-bottom':o.gutterWidth+'px', 'padding':'0'});
 
-		$container.masonry( {
+		$container = $container.masonry( {
 			itemSelector: '.gallery-item',
 			columnWidth: o.columnWidth,
 			gutter: o.gutterWidth,
@@ -64,30 +87,25 @@
 		} );
 	}
 
-
 	var initGallery = function() {
 		$('.gallery-masonry').each( function() {
 			var $container = $(this);
+			var $posts = $container.children('.gallery-item');
 
-			if ( $container.is(':hidden') ) {
-				return;
-			}
+			// remove posts from element
+			$container.empty();
 
-			if ( $container.hasClass( 'masonry' ) ) {
-				return;
-			}
+			// keeps the media elements from calculating for the full width of the post
+			runMasonry(0, $container, $posts);
 
-			imagesLoaded( $container, function() {
-				runMasonry(0, $container);
-
-				$container.css('visibility', 'visible');
-			});
+			// we are going to append masonry items as the images load
+			$container.wcGalleryMasonryImagesReveal( $posts );
 
 			$(window).resize(function() {
-				runMasonry(0, $container);
-			});
-		});
+				runMasonry(0, $container, $posts);
+			}); 
 
+		});
 
 		if( jQuery().magnificPopup) {
 			$('.gallery-link-file').each( function() {
