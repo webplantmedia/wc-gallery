@@ -46,6 +46,12 @@ Insert a gallery through your dashboard. You will see extra dropdown settings wh
 
 == Changelog ==
 
+= Version 1.41 =
+
+* Updated Owl Carousel
+* Updated Flexslider
+* Fixed bug with bottom image links not responding correctly on mobile devices
+
 = Version 1.40 =
 
 * Updated images loaded library to 3.1.8
