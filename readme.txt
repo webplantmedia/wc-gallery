@@ -46,7 +46,7 @@ Insert a gallery through your dashboard. You will see extra dropdown settings wh
 
 == Changelog ==
 
-= Version 1.44 =
+= Version 1.45 =
 
 * Fixed bug with masonry being randomely sorted
 
