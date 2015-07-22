@@ -7,24 +7,6 @@
 ( function( $ ) {
 	"use strict";
 
-	$.fn.wcGalleryMasonryImagesReveal = function( $items ) {
-		var msnry = this.data('masonry');
-
-		$.each( $items, function( key, item ) {
-			var $item = $(this);
-
-			$item.imagesLoaded().always( function( instance ) {
-				// masonry does its thing
-				msnry.layout();
-				
-				// un-hide item
-				$item.show();
-			});
-		});
-
-		return this;
-	};
-
 	var body = $( 'body' ),
 		_window = $( window );
 
@@ -85,13 +67,14 @@
 			var $container = $(this);
 			var $posts = $container.children('.gallery-item');
 
-			$posts.hide();
-
 			// keeps the media elements from calculating for the full width of the post
 			runMasonry(0, $container, $posts);
 
-			// we are going to append masonry items as the images load
-			$container.wcGalleryMasonryImagesReveal( $posts );
+			// refresh layout when images are loaded
+			$posts.imagesLoaded().always( function( instance ) {
+				// masonry does its thing
+				$container.masonry('layout');
+			});
 
 			$(window).resize(function() {
 				runMasonry(0, $container, $posts);
