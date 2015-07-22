@@ -46,6 +46,13 @@ Insert a gallery through your dashboard. You will see extra dropdown settings wh
 
 ## Changelog ##
 
+### Version 1.42
+
+* Masonry gallery items now loads in series when each image is loaded
+* Removed text from nav buttons in owl carousel.
+* Moved flexslider and owl carousel to vendors folder
+* Wait for images to load before calling flexslider.
+
 ### Version 1.41
 
 * Updated Owl Carousel
