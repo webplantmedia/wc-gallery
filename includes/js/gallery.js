@@ -142,7 +142,7 @@
 
 				gutterWidth = parseInt( gutterWidth );
 
-				// imagesLoaded( $flex, function() {
+				imagesLoaded( $flex, function() {
 					if ( $flex.hasClass('wcslider') ) {
 						$flex.wcflexslider({
 							prevText: "",
@@ -211,7 +211,7 @@
 							}
 						});
 					}
-				// });
+				});
 			});
 		}
 		if( jQuery().owlCarousel) {
