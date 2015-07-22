@@ -9,23 +9,16 @@
 
 	$.fn.wcGalleryMasonryImagesReveal = function( $items ) {
 		var msnry = this.data('masonry');
-		var itemSelector = msnry.options.itemSelector;
-
-		// hide by default
-		$items.hide();
-
-		// append to container
-		this.append( $items );
 
 		$.each( $items, function( key, item ) {
 			var $item = $(this);
 
-			// un-hide item
-			$item.show();
-
 			$item.imagesLoaded().always( function( instance ) {
 				// masonry does its thing
-				msnry.appended( $item );
+				msnry.layout();
+				
+				// un-hide item
+				$item.show();
 			});
 		});
 
@@ -92,8 +85,7 @@
 			var $container = $(this);
 			var $posts = $container.children('.gallery-item');
 
-			// remove posts from element
-			$container.empty();
+			$posts.hide();
 
 			// keeps the media elements from calculating for the full width of the post
 			runMasonry(0, $container, $posts);
