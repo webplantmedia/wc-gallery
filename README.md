@@ -46,6 +46,10 @@ Insert a gallery through your dashboard. You will see extra dropdown settings wh
 
 ## Changelog ##
 
+### Version 1.44
+
+* Fixed bug with masonry being randomely sorted
+
 ### Version 1.43
 
 * Masonry gallery items now loads in series when each image is loaded
