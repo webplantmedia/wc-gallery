@@ -18,6 +18,9 @@
 }
 .wc-gallery .gallery.gallery-masonry {
 }
+.wc-gallery .gallery.gallery-masonry .gallery-item {
+	display: none;
+}
 .wc-gallery .gallery.gallery-masonry,
 .wc-gallery .gallery.gallery-default {
 }
