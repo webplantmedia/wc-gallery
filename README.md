@@ -46,6 +46,10 @@ Insert a gallery through your dashboard. You will see extra dropdown settings wh
 
 ## Changelog ##
 
+### Version 1.47
+
+* Hide masonry gallery by default in CSS
+
 ### Version 1.46
 
 * Fixed bug with masonry being randomely sorted
