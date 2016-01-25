@@ -515,6 +515,7 @@ function wc_gallery_print_media_templates() {
 			'onhover' => __( 'On Image Hover', 'wc_gallery' ),
 			'show' => __( 'Show Below Image', 'wc_gallery' ),
 			'showon' => __( 'Show On Image', 'wc_gallery' ),
+			'onpopup' => __( 'Show On Image Pop-up', 'wc_gallery' ),
 			'hide' => __( 'Hide', 'wc_gallery' )
 		);
 		?>

@@ -136,6 +136,7 @@
 }
 
 .wc-image-links .gallery-caption,
+.wc-gallery-captions-onpopup .gallery-caption,
 .wc-gallery-captions-showon .gallery-caption,
 .wc-gallery-captions-onhover .gallery-caption {
 	background: rgba(255, 255, 255, .8);
