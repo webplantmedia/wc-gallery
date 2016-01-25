@@ -4,7 +4,7 @@ Contributors: cbaldelomar
 Donate link: http://webplantmedia.com/pay-now/
 Tags: masonry gallery, pinterest style gallery, pinterest gallery, gallery slider, slider gallery, carousel gallery, carousel, slider
 Requires at least: 3.7
-Tested up to: 3.7.1
+Tested up to: 4.4.2
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -45,6 +45,10 @@ Yes, I do accept donations.  If you want to buy me a sandwich or something, you 
 Insert a gallery through your dashboard. You will see extra dropdown settings when configuring your gallery
 
 == Changelog ==
+
+= Version 1.48 =
+
+* Added new caption option: Show On Image Pop-up
 
 = Version 1.47 =
 
