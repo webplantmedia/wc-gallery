@@ -484,7 +484,7 @@ function wc_gallery_print_media_templates() {
 	?>
 	<script type="text/html" id="tmpl-wc-gallery-settings">
 		<label class="setting">
-			<span><?php _e( 'Popup Size', 'wc_gallery' ); ?></span>
+			<span><?php _e( 'Pop-up Size', 'wc_gallery' ); ?></span>
 			<select class="targetsize" name="targetsize" data-setting="targetsize">
 				<?php
 				$sizes = apply_filters( 'image_size_names_choose', array(
