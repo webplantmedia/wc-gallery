@@ -151,8 +151,15 @@
 }
 
 @media screen and (max-width: 568px) {
-	body .wc-gallery .gallery-caption {
-		display: none;
+	body .wc-gallery-captions-onpopup .gallery-caption,
+	body .wc-gallery-captions-showon .gallery-caption,
+	body .wc-gallery-captions-onhover .gallery-caption {
+		position: static;
+		opacity: 1;
+		-moz-transform: translate(0, 0);
+		-ms-transform: translate(0, 0);
+		-webkit-transform: translate(0, 0);
+		transform: translate(0, 0);
 	}
 	body .wc-gallery .wc-image-links .gallery-caption {
 		display: block;

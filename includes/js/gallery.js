@@ -29,6 +29,7 @@
 		_window = $( window );
 
 	var calculateGrid = function($container) {
+		var windowWidth = _window.width();
 		var columns = parseInt( $container.data('columns') );
 		var gutterWidth = $container.data('gutterWidth');
 		// need to return exact decimal width
@@ -42,18 +43,8 @@
 		}
 
 		if ( columns > 1 ) {
-			if ( containerWidth < 568 ) {
-				columns -= 2;
-				if ( columns > 4 ) {
-					columns = 4;
-				}
-			}
-			/* else if ( containerWidth < 768 ) { 
-				columns -= 1;
-			} */
-
-			if ( columns < 2 ) {
-				columns = 2;
+			if ( windowWidth < 568 ) {
+				columns = 1
 			}
 		}
 
@@ -71,7 +62,6 @@
 		var o = calculateGrid($container);
 
 		$posts.css({'width':o.columnWidth+'px', 'margin-bottom':o.gutterWidth+'px', 'padding':'0'});
-
 		$container = $container.masonry( {
 			itemSelector: '.gallery-item',
 			columnWidth: o.columnWidth,
