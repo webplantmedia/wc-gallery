@@ -46,6 +46,11 @@ Insert a gallery through your dashboard. You will see extra dropdown settings wh
 
 ## Changelog ##
 
+### Version 1.49
+
+* Single column galleries on mobile displays
+* Always show captions on mobile displays
+
 ### Version 1.48
 
 * Added new caption option: Show On Image Pop-up
