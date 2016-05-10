@@ -14,7 +14,7 @@ if( !function_exists ('wc_gallery_scripts') ) :
 		$ver = WC_GALLERY_VERSION;
 
 		if ( get_option( WC_GALLERY_PREFIX . 'enable_gallery_css', true ) ) {
-			wp_enqueue_style( 'wc-gallery-style', plugin_dir_url( __FILE__ ) . 'css/style.css', array( ), $ver );
+			wp_enqueue_style( 'wc-gallery-style', plugin_dir_url( __FILE__ ) . 'css/style.min.css', array( ), $ver );
 		}
 
 		// jQuery
@@ -27,13 +27,13 @@ if( !function_exists ('wc_gallery_scripts') ) :
 		wp_register_script( 'wordpresscanvas-imagesloaded', plugin_dir_url( __FILE__ ) . 'js/imagesloaded.pkgd.min.js', array (), '3.1.8', true );
 
 		if ( get_option( WC_GALLERY_PREFIX . 'enable_image_popup', true ) ) {
-			wp_enqueue_style( 'wc-gallery-popup-style', plugin_dir_url( __FILE__ ) . 'css/magnific-popup.css', array( ), '0.9.9' );
+			wp_enqueue_style( 'wc-gallery-popup-style', plugin_dir_url( __FILE__ ) . 'css/magnific-popup.min.css', array( ), '0.9.9' );
 			wp_register_script( 'wc-gallery-popup', plugin_dir_url( __FILE__ ) . 'js/jquery.magnific-popup.min.js', array ( 'jquery' ), '0.9.9', true );
 		}
 
 		// Gallery Shortcode
-		wp_enqueue_style( 'wc-gallery-flexslider-style', plugin_dir_url( __FILE__ ) . 'vendors/flexslider/flexslider.css', array( ), '2.5.0' );
-		wp_enqueue_style( 'wc-gallery-owlcarousel-style', plugin_dir_url( __FILE__ ) . 'vendors/owlcarousel/assets/owl.carousel.css', array( ), '2.0.0-beta.3.0' );
+		wp_enqueue_style( 'wc-gallery-flexslider-style', plugin_dir_url( __FILE__ ) . 'vendors/flexslider/flexslider.min.css', array( ), '2.5.0' );
+		wp_enqueue_style( 'wc-gallery-owlcarousel-style', plugin_dir_url( __FILE__ ) . 'vendors/owlcarousel/assets/owl.carousel.min.css', array( ), '2.0.0-beta.3.0' );
 		wp_enqueue_style( 'wc-gallery-owlcarousel-theme-style', plugin_dir_url( __FILE__ ) . 'vendors/owlcarousel/assets/owl.theme.default.css', array( ), '2.0.0-beta.3.0' );
 		wp_register_script( 'wc-gallery-flexslider', plugin_dir_url( __FILE__ ) . 'vendors/flexslider/jquery.flexslider-min.js', array ( 'jquery' ), '2.5', true );
 		wp_register_script( 'wc-gallery-owlcarousel', plugin_dir_url( __FILE__ ) . 'vendors/owlcarousel/owl.carousel.min.js', array ( 'jquery' ), '2.0.0-beta.3.0', true );
