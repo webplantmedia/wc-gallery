@@ -6,8 +6,15 @@ function wc_gallery_check_supports() {
 		$supports = get_theme_support( 'wpc-gallery' );
 
 		if ( isset( $supports[0] ) && is_array( $supports[0] ) ) {
-			foreach ( $supports[0] as $key => $value ) {
-				$wc_gallery_theme_support[ $key ] = $value;
+			foreach ( $supports[0] as $k => $v ) {
+				if ( is_array( $v ) ) {
+					foreach( $v as $kk => $vv ) {
+						$wc_gallery_theme_support[ $k ][ $kk ] = $vv;
+					}
+				}
+				else {
+					$wc_gallery_theme_support[ $k ] = $v;
+				}
 			}
 		}
 	}
@@ -654,11 +661,13 @@ function wc_gallery_after_setup_theme() {
 		$name_w = $size . '_size_w';
 		$name_h = $size . '_size_h';
 		$name_crop = $size . '_crop';
+		$name_enable = $size . '_enable';
 
-		$width = get_option( WC_GALLERY_PREFIX . $name_w );
-		$height = get_option( WC_GALLERY_PREFIX . $name_h );
-		$crop = get_option( WC_GALLERY_PREFIX . $name_crop );
-		if ( $width && $height ) {
+		$width = get_option( WC_GALLERY_PREFIX . $name_w, $value['size_w'] );
+		$height = get_option( WC_GALLERY_PREFIX . $name_h, $value['size_h'] );
+		$crop = get_option( WC_GALLERY_PREFIX . $name_crop, $value['crop'] );
+		$enable = get_option( WC_GALLERY_PREFIX . $name_enable, $value['enable'] );
+		if ( $enable && $width && $height ) {
 			$crop = $crop ? true : false;
 			add_image_size( 'wc' . $size, $width, $height, $crop );
 		}

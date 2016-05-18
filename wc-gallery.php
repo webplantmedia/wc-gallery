@@ -28,56 +28,67 @@ $wc_gallery_theme_support = array(
 		'size_w' => '48',
 		'size_h' => '48',
 		'crop' => true,
+		'enable' => true,
 	),
 	'square' => array(
 		'size_w' => '300',
 		'size_h' => '300',
 		'crop' => true,
+		'enable' => true,
 	),
 	'small' => array(
 		'size_w' => '250',
 		'size_h' => '9999',
 		'crop' => false,
+		'enable' => true,
 	),
 	'standard' => array(
 		'size_w' => '550',
 		'size_h' => '9999',
 		'crop' => false,
+		'enable' => true,
 	),
 	'big' => array(
 		'size_w' => '800',
 		'size_h' => '9999',
 		'crop' => false,
+		'enable' => true,
 	),
 	'fixedheightsmall' => array(
 		'size_w' => '9999',
 		'size_h' => '180',
 		'crop' => false,
+		'enable' => true,
 	),
 	'fixedheightmedium' => array(
 		'size_w' => '9999',
 		'size_h' => '300',
 		'crop' => false,
+		'enable' => true,
 	),
 	'fixedheight' => array(
 		'size_w' => '9999',
 		'size_h' => '500',
 		'crop' => false,
+		'enable' => true,
 	),
 	'carouselsmall' => array(
 		'size_w' => '210',
 		'size_h' => '150',
 		'crop' => true,
+		'enable' => true,
 	),
 	'carousel' => array(
 		'size_w' => '400',
 		'size_h' => '285',
 		'crop' => true,
+		'enable' => true,
 	),
 	'slider' => array(
 		'size_w' => '1100',
 		'size_h' => '500',
 		'crop' => true,
+		'enable' => true,
 	),
 );
 

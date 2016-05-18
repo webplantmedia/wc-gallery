@@ -513,6 +513,9 @@ class WC_Gallery_Settings_Framework {
 				require( 'views/settings/input-field.php' );
 				break;
 		}
+
+		if ( isset( $args['newline'] ) && $args['newline'] )
+			echo "<br />";
 	}
 
 	/************
