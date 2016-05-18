@@ -56,6 +56,10 @@ For more tutorials on our gallery plugin, go to our knowledge base.
 
 [http://angiemakes.com/knowledgebase/category/plugins/gallery/](http://angiemakes.com/knowledgebase/category/plugins/gallery/)
 
+### How can I disable extra image sizes and thumbnails from being generated? ###
+
+[http://angiemakes.com/knowledgebase/how-to-disable-extra-image-sizes-and-thumbnails-from-being-generated/](http://angiemakes.com/knowledgebase/how-to-disable-extra-image-sizes-and-thumbnails-from-being-generated/)
+
 ## Changelog ##
 
 ### Version 1.50 ###
