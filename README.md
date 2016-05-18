@@ -40,11 +40,29 @@ Yes, I do accept donations.  If you want to buy me a sandwich or something, you 
 
 ## Frequently Asked Questions ##
 
-### How do I use the shortcodes?
+### How do I use the shortcodes? ###
 
-Insert a gallery through your dashboard. You will see extra dropdown settings when configuring your gallery
+Insert a gallery through your dashboard. You will see extra dropdown settings when configuring your gallery.
+
+[http://angiemakes.com/knowledgebase/gallery-plugin-overview/](http://angiemakes.com/knowledgebase/gallery-plugin-overview/)
+
+### How do I fix HTTP error code when uploading media? ###
+
+[http://angiemakes.com/knowledgebase/how-to-fix-http-error-code-when-uploading-media/](http://angiemakes.com/knowledgebase/how-to-fix-http-error-code-when-uploading-media/)
+
+### Where can I get more help? ###
+
+For more tutorials on our gallery plugin, go to our knowledge base.
+
+[http://angiemakes.com/knowledgebase/category/plugins/gallery/](http://angiemakes.com/knowledgebase/category/plugins/gallery/)
 
 ## Changelog ##
+
+### Version 1.50 ###
+
+* added option to disable thumbnail generation
+* admin style update
+* adding settings link in plugin page
 
 ### Version 1.49
 
