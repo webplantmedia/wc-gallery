@@ -4,34 +4,9 @@
  * Licensed under MIT (https://github.com/OwlCarousel2/OwlCarousel2/blob/master/LICENSE)
  */
 /*
- * 	Default theme - Owl Carousel CSS File
+ * 	Green theme - Owl Carousel CSS File
  */
- .owl-carousel .owl-nav .owl-next,
- .owl-carousel .owl-nav .owl-prev {
-	 background-position: center center;
-	 background-repeat: no-repeat;
-	 position: absolute;
-	 top: 50%;
-	 margin-top: -25px;
-	 opacity: 0;
-	 cursor: pointer;
-	 width: 50px;
-	 height: 50px;
-	 color: transparent;
- }
- .owl-carousel:hover .owl-nav .owl-next,
- .owl-carousel:hover .owl-nav .owl-prev {
-	 opacity: 1;
- }
- .owl-carousel .owl-nav .owl-next {
-	 right: 0;
-	 background-image: url('slide-arrow-right.png');
- }
- .owl-carousel .owl-nav .owl-prev {
-	 left: 0;
-	 background-image: url('slide-arrow-left.png');
-}
-/*.owl-theme .owl-nav {
+.owl-theme .owl-nav {
   margin-top: 10px;
   text-align: center;
   -webkit-tap-highlight-color: transparent; }
@@ -45,7 +20,7 @@
     cursor: pointer;
     border-radius: 3px; }
     .owl-theme .owl-nav [class*='owl-']:hover {
-      background: #869791;
+      background: #4DC7A0;
       color: #FFF;
       text-decoration: none; }
   .owl-theme .owl-nav .disabled {
@@ -72,4 +47,4 @@
       transition: opacity 200ms ease;
       border-radius: 30px; }
     .owl-theme .owl-dots .owl-dot.active span, .owl-theme .owl-dots .owl-dot:hover span {
-      background: #869791; }*/
+      background: #4DC7A0; }
