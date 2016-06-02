@@ -27,8 +27,8 @@ if( !function_exists ('wc_gallery_scripts') ) :
 		wp_register_script( 'wordpresscanvas-imagesloaded', plugin_dir_url( __FILE__ ) . 'js/imagesloaded.pkgd.min.js', array (), '4.1.0', true );
 
 		if ( get_option( WC_GALLERY_PREFIX . 'enable_image_popup', true ) ) {
-			wp_enqueue_style( 'wc-gallery-popup-style', plugin_dir_url( __FILE__ ) . 'css/magnific-popup.css', array( ), '0.9.9' );
-			wp_register_script( 'wc-gallery-popup', plugin_dir_url( __FILE__ ) . 'js/jquery.magnific-popup.min.js', array ( 'jquery' ), '0.9.9', true );
+			wp_enqueue_style( 'wc-gallery-popup-style', plugin_dir_url( __FILE__ ) . 'css/magnific-popup.css', array( ), '1.1.0' );
+			wp_register_script( 'wc-gallery-popup', plugin_dir_url( __FILE__ ) . 'js/jquery.magnific-popup.min.js', array ( 'jquery' ), '1.1.0', true );
 		}
 
 		// Gallery Shortcode
