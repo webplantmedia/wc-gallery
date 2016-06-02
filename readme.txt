@@ -62,6 +62,17 @@ For more tutorials on our gallery plugin, go to our knowledge base.
 
 == Changelog ==
 
+= Version 1.52 =
+
+* updated owl carousel 2.1.4
+* updated flexslider 2.6.1
+* updated flexslider to 2.6.1
+* updated magnificpopup to version 1.1.0
+* updated images loaded library to 4.1.0
+* Updated gallery js file
+* CSS bug fixes
+* remove deprecated carousel
+
 = Version 1.50 =
 
 * added option to disable thumbnail generation
