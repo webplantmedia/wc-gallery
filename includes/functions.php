@@ -494,7 +494,6 @@ function wc_gallery_print_media_templates() {
 		'sliderauto' => __( 'Slider (Auto Start)', 'wc_gallery' ),
 		'owlautowidth' => __( 'Owl Carousel (Auto Width)', 'wc_gallery' ),
 		'owlcolumns' => __( 'Owl Carousel (Columns)', 'wc_gallery' ),
-		'carousel' => __( 'Carousel (Deprecated)', 'wc_gallery' ),
 		'slider3bottomlinks' => __( 'Slider + 3 Bottom Links', 'wc_gallery' ),
 		'slider4bottomlinks' => __( 'Slider + 4 Bottom Links', 'wc_gallery' ),
 	);
