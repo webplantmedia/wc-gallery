@@ -32,10 +32,10 @@ if( !function_exists ('wc_gallery_scripts') ) :
 		}
 
 		// Gallery Shortcode
-		wp_enqueue_style( 'wc-gallery-flexslider-style', plugin_dir_url( __FILE__ ) . 'vendors/flexslider/flexslider.css', array( ), '2.5.0' );
+		wp_enqueue_style( 'wc-gallery-flexslider-style', plugin_dir_url( __FILE__ ) . 'vendors/flexslider/flexslider.css', array( ), '2.6.1' );
 		wp_enqueue_style( 'wc-gallery-owlcarousel-style', plugin_dir_url( __FILE__ ) . 'vendors/owlcarousel/assets/owl.carousel.css', array( ), '2.0.0-beta.3.0' );
 		wp_enqueue_style( 'wc-gallery-owlcarousel-theme-style', plugin_dir_url( __FILE__ ) . 'vendors/owlcarousel/assets/owl.theme.default.css', array( ), '2.0.0-beta.3.0' );
-		wp_register_script( 'wc-gallery-flexslider', plugin_dir_url( __FILE__ ) . 'vendors/flexslider/jquery.flexslider-min.js', array ( 'jquery' ), '2.5', true );
+		wp_register_script( 'wc-gallery-flexslider', plugin_dir_url( __FILE__ ) . 'vendors/flexslider/jquery.flexslider-min.js', array ( 'jquery' ), '2.6.1', true );
 		wp_register_script( 'wc-gallery-owlcarousel', plugin_dir_url( __FILE__ ) . 'vendors/owlcarousel/owl.carousel.min.js', array ( 'jquery' ), '2.0.0-beta.3.0', true );
 		wp_register_script( 'wc-gallery', plugin_dir_url( __FILE__ ) . 'js/gallery.js', array ( 'jquery', 'wordpresscanvas-imagesloaded' ), $ver, true );
 		wp_register_script( 'wc-gallery-woocommerce-product', plugin_dir_url( __FILE__ ) . 'js/woocommerce.product.js', array( 'jquery' ), $ver, true );
