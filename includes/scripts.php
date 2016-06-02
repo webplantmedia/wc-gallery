@@ -1,9 +1,9 @@
 <?php
 /**
  * This file loads the CSS and JS necessary for your shortcodes display
- * @package wc Shortcodes Plugin
+ * @package WC Shortcodes Plugin
  * @since 1.0
- * @author AJ Clarke : http://wpexplorer.com
+ * @author Chris Baldelomar : http://webplantmedia.com
  * @copyright Copyright (c) 2012, AJ Clarke
  * @link http://wpexplorer.com
  * @License: GNU General Public License version 2.0
