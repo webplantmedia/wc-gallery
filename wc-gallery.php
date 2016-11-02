@@ -25,6 +25,7 @@ global $wc_gallery_options;
 global $wc_gallery_theme_support;
 
 $wc_gallery_theme_support = array(
+	'theme_reset' => true,
 	'icon' => array(
 		'size_w' => '48',
 		'size_h' => '48',
