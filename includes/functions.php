@@ -633,7 +633,7 @@ function wc_gallery_attachment_fields_to_edit( $form_fields, $post) {
         "label" => __( "Link To" ),  
         "input" => "text",
         "value" => get_post_meta( $post->ID, _WC_GALLERY_PREFIX . "custom_image_link", true )  
-    );        
+    );
     return $form_fields;  
 }  
 add_filter( "attachment_fields_to_edit", "wc_gallery_attachment_fields_to_edit", null, 2 ); 
