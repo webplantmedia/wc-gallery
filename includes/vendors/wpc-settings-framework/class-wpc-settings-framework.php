@@ -17,7 +17,7 @@
  */
 class WC_Gallery_Settings_Framework {
 
-	protected $version = '1.0.0';
+	protected $version = '1.0.2';
 
 	/**
 	 * Instance of this class.
@@ -52,6 +52,7 @@ class WC_Gallery_Settings_Framework {
 	protected $plugin_prefix = null;
 	protected $plugin_version = 0;
 	protected $options = array();
+	protected $theme_support = array();
 	protected $wp_settings_tabs = array();
 	protected $tabs = array();
 
@@ -71,6 +72,8 @@ class WC_Gallery_Settings_Framework {
 		add_action( 'init', array( $this, 'set_options' ), 100 );
 		add_action( 'admin_init', array( $this, 'register_settings' ) );
 		add_action( 'admin_init', array( $this, 'options_activation' ), 200 );
+		// add_action( 'admin_init', array( $this, 'update_options' ), 200 ); // debug
+		add_action( 'after_switch_theme', array( $this, 'update_options' ), 200 );
 		add_action( 'admin_menu', array( $this, 'options_admin_menu' ) );
 
 		// Load admin style sheet and JavaScript.
@@ -118,6 +121,66 @@ class WC_Gallery_Settings_Framework {
 
 	public function set_options() {
 		$this->options = apply_filters ( $this->plugin_prefix . 'wpcsf_options' , $this->options );
+		$this->theme_support = apply_filters ( $this->plugin_prefix . 'wpcsf_theme_support' , $this->theme_support );
+	}
+
+	public function update_options() {
+		$this->set_options();
+
+		if ( isset( $this->theme_support['theme_reset'] ) && $this->theme_support['theme_reset'] ) {
+			foreach ( $this->options as $menu_slug => $o ) {
+				if ( isset( $o['option_group'] ) ) {
+					if ( isset( $o['tabs'] ) &&
+					is_array( $o['tabs'] ) ) {
+						foreach( $o['tabs'] as $key => $oo ) {
+							if ( isset( $oo['sections'] ) &&
+							is_array( $oo['sections'] ) ) {
+								$this->loop_and_update_options( $oo['sections'] );
+							}
+						}
+					}
+					else if ( isset( $o['sections'] ) &&
+					is_array( $o['sections'] ) ) {
+						$this->loop_and_update_options( $o['sections'] );
+					}
+				}
+			}
+		}
+
+	}
+
+	public function loop_and_update_options( $sections ) {
+		foreach( $sections as $o ) {
+			if ( isset( $o['id'] ) &&
+			isset( $o['title'] ) &&
+			isset( $o['options'] ) &&
+			is_array( $o['options'] ) ) {
+				foreach( $o['options'] as $oo ) {
+					if ( isset( $oo['group'] ) && is_array( $oo['group'] ) ) {
+						foreach ( $oo['group'] as $key => $ooo ) {
+							if ( isset( $ooo['option_name'] ) ) {
+								if ( isset( $ooo['theme_reset'] ) && $ooo['theme_reset'] ) {
+									$ooo['option_name'] = $this->plugin_prefix . $ooo['option_name'];
+									$this->update_option( $ooo['option_name'], $ooo['default'] );
+								}
+							}
+						}
+					}
+					else {
+						if ( isset( $oo['option_name'] ) ) {
+							if ( isset( $oo['theme_reset'] ) && $oo['theme_reset'] ) {
+								$oo['option_name'] = $this->plugin_prefix . $oo['option_name'];
+								$this->update_option( $oo['option_name'], $oo['default'] );
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	public function update_option( $option_name, $default ) {
+		update_option( $option_name, $default );
 	}
 
 	public function options_activation() {
@@ -132,26 +195,30 @@ class WC_Gallery_Settings_Framework {
 		}
 
 		if ( $initialize ) {
-			update_option( $this->plugin_prefix . 'current_version', $this->plugin_version );
+			$this->options_activation_loop();
+		} 
+	}
+	
+	public function options_activation_loop() {
+		update_option( $this->plugin_prefix . 'current_version', $this->plugin_version );
 
-			foreach ( $this->options as $menu_slug => $o ) {
-				if ( isset( $o['option_group'] ) ) {
-					if ( isset( $o['tabs'] ) &&
-					is_array( $o['tabs'] ) ) {
-						foreach( $o['tabs'] as $key => $oo ) {
-							if ( isset( $oo['sections'] ) &&
-							is_array( $oo['sections'] ) ) {
-								$this->loop_and_init_options( $oo['sections'] );
-							}
+		foreach ( $this->options as $menu_slug => $o ) {
+			if ( isset( $o['option_group'] ) ) {
+				if ( isset( $o['tabs'] ) &&
+				is_array( $o['tabs'] ) ) {
+					foreach( $o['tabs'] as $key => $oo ) {
+						if ( isset( $oo['sections'] ) &&
+						is_array( $oo['sections'] ) ) {
+							$this->loop_and_init_options( $oo['sections'] );
 						}
 					}
-					else if ( isset( $o['sections'] ) &&
-					is_array( $o['sections'] ) ) {
-						$this->loop_and_init_options( $o['sections'] );
-					}
+				}
+				else if ( isset( $o['sections'] ) &&
+				is_array( $o['sections'] ) ) {
+					$this->loop_and_init_options( $o['sections'] );
 				}
 			}
-		} 
+		}
 	}
 
 	public function loop_and_init_options( $sections ) {
@@ -233,6 +300,9 @@ class WC_Gallery_Settings_Framework {
 					if ( isset( $oo['group'] ) && is_array( $oo['group'] ) ) {
 						foreach ( $oo['group'] as $key => $ooo ) {
 							if ( isset( $ooo['option_name'] ) ) {
+								if ( isset( $ooo['hide'] ) && $ooo['hide'] )
+									continue;
+
 								$ooo['option_name'] = $this->plugin_prefix . $ooo['option_name'];
 								$oo['group'][ $key ]['option_name'] = $ooo['option_name'];
 
@@ -251,6 +321,9 @@ class WC_Gallery_Settings_Framework {
 					}
 					else {
 						if ( isset( $oo['option_name'] ) ) {
+							if ( isset( $oo['hide'] ) && $oo['hide'] )
+								continue;
+
 							$oo['option_name'] = $this->plugin_prefix . $oo['option_name'];
 
 							$callback = $this->get_callback( $oo );
