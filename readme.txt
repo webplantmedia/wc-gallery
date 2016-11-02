@@ -62,6 +62,10 @@ For more tutorials on our gallery plugin, go to our knowledge base.
 
 == Changelog ==
 
+= Version 1.53 =
+
+* updated wpc settings framework to version 1.0.2
+
 = Version 1.52 =
 
 * updated owl carousel 2.1.4
