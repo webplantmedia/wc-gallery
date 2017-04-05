@@ -62,6 +62,11 @@ For more tutorials on our gallery plugin, go to our knowledge base.
 
 ## Changelog ##
 
+### Version 1.55 ###
+
+* Fixed bug with large galleries stacking images
+* Updated imagesLoaded Package to version 4.1.1
+
 ### Version 1.54 ###
 
 * removed ellipsis
