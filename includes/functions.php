@@ -472,7 +472,7 @@ function wc_gallery_get_attachment_link( $id = 0, $size = 'thumbnail', $permalin
 	if ( $text )
 		$link_text = $text;
 	elseif ( $size && 'none' != $size )
-		$link_text = wp_get_attachment_image( $id, $size, $icon, array( 'data-attachment-id' => $id ) );
+		$link_text = wp_get_attachment_image( $id, $size, $icon );
 	else
 		$link_text = '';
 

@@ -3,7 +3,6 @@
  * @website http://wordpresscanvas.com/
  */
 
-
 ( function( $ ) {
 	"use strict";
 
@@ -74,30 +73,30 @@
 		$('.gallery-masonry').each( function() {
 			var $container = $(this);
 			var $posts = $container.children('.gallery-item');
-			var attachmentId;
 
-			$posts.css('visibility', 'hidden');
+			$posts.css({'visibility':'hidden','position':'relative'}).addClass('wc-gallery-loading');
 
-			// keeps the media elements from calculating for the full width of the post
-			$(document).ready(function(){
-				// we are going to append masonry items as the images load
-				runMasonry(0, $container, $posts, 'masonry');
+			$.each( $posts, function( index, value ) {
+				var $post = $(this);
+				var $imgs = $post.find('img');
 
-				$container.imagesLoaded()
-					.always( function( instance ) {
-						$posts.css('visibility', 'visible');
-					})
-					.progress( function( instance, image ) {
-						attachmentId = image.img.dataset.attachmentId;
-						$container.children('.gallery-item-attachment-' + attachmentId ).css('visibility', 'visible')
-						runMasonry(0, $container, $posts, 'layout');
-					});
+				if ( $imgs.length ) {
+					$post.imagesLoaded()
+						.always( function( instance ) {
+							$post.css('visibility', 'visible').removeClass('wc-gallery-loading');
+							runMasonry(0, $container, $posts, 'layout');
+						});
+				}
+				else {
+					$post.css('visibility', 'visible').removeClass('wc-gallery-loading');
+				}
 			});
+
+			runMasonry(0, $container, $posts, 'masonry');
 
 			$(window).resize(function() {
 				runMasonry(0, $container, $posts, 'masonry');
 			}); 
-
 		});
 
 		if( jQuery().magnificPopup) {
@@ -308,7 +307,7 @@
 		}
 	};
 
-	$(document).ready( initGallery );
+	initGallery();
 
 	// Triggers re-layout on infinite scroll
 	$( document.body ).on( 'post-load', function () {
