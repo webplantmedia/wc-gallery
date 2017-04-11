@@ -1,10 +1,9 @@
-=== WP Canvas - Gallery ===
+=== Galleries by Angie Makes ===
 
 Contributors: cbaldelomar
-Donate link: http://webplantmedia.com/pay-now/
-Tags: masonry gallery, pinterest style gallery, pinterest gallery, gallery slider, slider gallery, carousel gallery, carousel, slider
+Tags: masonry gallery, pinterest style gallery, pinterest gallery, gallery slider, slider gallery, carousel gallery, carousel, slider, image links
 Requires at least: 3.7
-Tested up to: 4.5.2
+Tested up to: 4.7.3
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -13,23 +12,29 @@ Extend WordPress galleries to display masonry gallery, carousel gallery, and sli
 
 == Description ==
 
-See the galleries in action.
+The Galleries by Angie Makes plugin adds robust gallery features to your WordPress theme. These gallery options work flawlessly with [Angie Makes WordPress themes](http://angiemakes.com/feminine-wordpress-blog-themes-women/). This no-fuss plugin is perfect for Photographers, Creatives, and anyone else looking to display their site images in serious style.
 
-1. [WP Canvas Galleries](http://webplantmedia.com/starter-themes/wordpresscanvas/features/gallery/)
-2. [WP Canvas Slider & Carousel](http://webplantmedia.com/starter-themes/wordpresscanvas/features/gallery/slider-carousel/)
-3. [WP Canvas Gallery Columns](http://webplantmedia.com/starter-themes/wordpresscanvas/features/gallery/gallery-columns/)
+=== Demo ===
+
+See A DEMO of what You Can do With the Angie Makes Galleries Plugin Here:
+
+[http://gentry.angiemakes.com/galleries/](http://gentry.angiemakes.com/galleries/)
+
+=== Features ===
+
+Here are just a few options the Angie Makes Galleries Plugin offers:
+
+* Mosaic / Pinterest-esque Tiling Images
+* Display Images in 1-9 Mosaic
+* Tiling Columns
+* Link Images to Internal or External Site Urls
+* Carousel
+* Slider
+* Slider with Bottom Image Links
 
 = Professional Support =
 
-If you need professional plugin support from me, the plugin author, you can contact me at [Web Plant Media](http://webplantmedia.com/).
-
-= Plugin Development =
-
-If you're a theme author, plugin author, or just a code hobbyist, you can follow the development of this plugin on it's [GitHub repository](https://github.com/webplantmedia/wc-gallery). 
-
-= Donations =
-
-Yes, I do accept donations.  If you want to buy me a sandwich or something, you can do so from my [payment page](http://webplantmedia.com/pay-now/).  I appreciate all donations, no matter the size.  Further development of this plugin is not contingent on donations, but they are always a nice incentive.
+We have tested this plugin to work with the latest version of WordPress, but do not offer individual troubleshooting support as this is a free plugin. If you need individual support, we're happy to assist you if you purchase our premium support by purchasing a premium, Angie Makes WordPress theme from [angiemakes.com](http://angiemakes.com).
 
 == Installation ==
 
@@ -61,6 +66,11 @@ For more tutorials on our gallery plugin, go to our knowledge base.
 [http://angiemakes.com/knowledgebase/how-to-disable-extra-image-sizes-and-thumbnails-from-being-generated/](http://angiemakes.com/knowledgebase/how-to-disable-extra-image-sizes-and-thumbnails-from-being-generated/)
 
 == Changelog ==
+
+= Version 1.56 =
+
+* More elegant loading of masonry gallery images.
+* Updated brand name.
 
 = Version 1.55 =
 

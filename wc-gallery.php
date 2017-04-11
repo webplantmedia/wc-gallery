@@ -1,11 +1,11 @@
 <?php
 /*
-Plugin Name: WP Canvas - Gallery
-Plugin URI: http://wordpresscanvas.com/features/gallery/
+Plugin Name: Galleries by Angie Makes
+Plugin URI: http://angiemakes.com/feminine-wordpress-blog-themes-women/
 Description: Extend WordPress galleries to display masonry gallery, carousel gallery, and slider gallery
 Author: Chris Baldelomar
-Author URI: http://webplantmedia.com/
-Version: 1.55
+Author URI: http://angiemakes.com/
+Version: 1.56
 License: GPLv2 or later
 */
 
@@ -13,7 +13,7 @@ function wc_gallery_using_woocommerce() {
 	return in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) );
 }
 
-define( 'WC_GALLERY_VERSION', '1.55' );
+define( 'WC_GALLERY_VERSION', '1.56' );
 define( 'WC_GALLERY_PREFIX', 'wc_gallery_' );
 define( '_WC_GALLERY_PREFIX', '_wc_gallery_' );
 define( 'WC_GALLERY_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
