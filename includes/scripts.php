@@ -38,16 +38,6 @@ if( !function_exists ('wc_gallery_scripts') ) :
 		wp_register_script( 'wc-gallery-masonry', plugin_dir_url( __FILE__ ) . 'js/gallery-masonry.js', array ( 'jquery', 'wordpresscanvas-imagesloaded', 'jquery-masonry' ), $ver, true );
 		wp_register_script( 'wc-gallery-slider', plugin_dir_url( __FILE__ ) . 'js/gallery-slider.js', array ( 'jquery', 'wordpresscanvas-imagesloaded', 'wc-gallery-flexslider' ), $ver, true );
 		wp_register_script( 'wc-gallery-carousel', plugin_dir_url( __FILE__ ) . 'js/gallery-carousel.js', array ( 'jquery', 'wordpresscanvas-imagesloaded', 'wc-gallery-owlcarousel' ), $ver, true );
-		wp_register_script( 'wc-gallery-woocommerce-product', plugin_dir_url( __FILE__ ) . 'js/woocommerce.product.js', array( 'jquery' ), $ver, true );
-
-		if ( WC_GALLERY_USING_WOOCOMMERCE ) {
-			$lightbox_en = get_option( 'woocommerce_enable_lightbox' ) == 'yes' ? true : false;
-			if ( ! $lightbox_en && ( is_singular( array( 'product' ) ) || ( ! empty( $post->post_content ) && strstr( $post->post_content, '[product_page' ) ) ) ) {
-				wp_enqueue_script( 'wc-gallery-magnific' );
-				wp_enqueue_script( 'wc-gallery-woocommerce-product' );
-			}
-		}
-
 	}
 	add_action('wp_enqueue_scripts', 'wc_gallery_scripts');
 endif;
