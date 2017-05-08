@@ -17,7 +17,7 @@
  */
 class WC_Gallery_Settings_Framework {
 
-	protected $version = '1.0.2';
+	protected $version = '1.0.5';
 
 	/**
 	 * Instance of this class.
@@ -67,17 +67,17 @@ class WC_Gallery_Settings_Framework {
 
 		$this->set_slug_prefix();
 
-		add_action( 'admin_init', array( $this, 'set_plugin_info' ) );
+		add_action( 'admin_init', array( &$this, 'set_plugin_info' ) );
 
-		add_action( 'init', array( $this, 'set_options' ), 100 );
-		add_action( 'admin_init', array( $this, 'register_settings' ) );
-		add_action( 'admin_init', array( $this, 'options_activation' ), 200 );
-		// add_action( 'admin_init', array( $this, 'update_options' ), 200 ); // debug
-		add_action( 'after_switch_theme', array( $this, 'update_options' ), 200 );
-		add_action( 'admin_menu', array( $this, 'options_admin_menu' ) );
+		add_action( 'init', array( &$this, 'set_options' ), 100 );
+		add_action( 'admin_init', array( &$this, 'register_settings' ) );
+		add_action( 'admin_init', array( &$this, 'options_activation' ), 200 );
+		// add_action( 'admin_init', array( &$this, 'update_options' ), 200 ); // debug
+		add_action( 'after_switch_theme', array( &$this, 'update_options' ), 200 );
+		add_action( 'admin_menu', array( &$this, 'options_admin_menu' ) );
 
 		// Load admin style sheet and JavaScript.
-		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( &$this, 'enqueue_admin_scripts' ) );
 	}
 
 	/**
@@ -316,7 +316,7 @@ class WC_Gallery_Settings_Framework {
 							// add_settings_field( $id, $title, $callback, $page, $section, $args );
 							// @page should match @menu_slug from add_theme_page
 							// @section the section you added with add_settings_section
-							add_settings_field($oo['id'], $oo['title'], array( $this, 'display_group' ), $menu_slug, $o['id'], $oo );
+							add_settings_field($oo['id'], $oo['title'], array( &$this, 'display_group' ), $menu_slug, $o['id'], $oo );
 						}
 					}
 					else {
@@ -334,7 +334,7 @@ class WC_Gallery_Settings_Framework {
 							// add_settings_field( $id, $title, $callback, $page, $section, $args );
 							// @page should match @menu_slug from add_theme_page
 							// @section the section you added with add_settings_section
-							add_settings_field( $oo['option_name'], '<label for="'.$oo['option_name'].'">'.$oo['title'].'</label>' , array( $this, 'display_setting' ), $menu_slug, $o['id'], $oo );
+							add_settings_field( $oo['option_name'], '<label for="'.$oo['option_name'].'">'.$oo['title'].'</label>' , array( &$this, 'display_setting' ), $menu_slug, $o['id'], $oo );
 						}
 					}
 				}
@@ -344,7 +344,7 @@ class WC_Gallery_Settings_Framework {
 
 	public function get_callback( &$o ) {
 		if ( isset( $o['callback'] ) && ! empty( $o['callback'] ) ) {
-			if ( function_exists( $o['callback'] ) ) {
+			if ( is_callable( $o['callback'] ) ) {
 				return $o['callback'];
 			}
 		}
@@ -374,7 +374,7 @@ class WC_Gallery_Settings_Framework {
 				isset( $v['capability'] ) &&
 				isset( $v['option_group'] ) ) {
 					// add_submenu_page( $parent_slug, $page_title, $menu_title, $capability, $menu_slug, $function );
-					$view_hook_name = add_submenu_page( $v['parent_slug'], $v['page_title'], $v['menu_title'], $v['capability'], $menu_slug, array( $this, 'display_page' ) );
+					$view_hook_name = add_submenu_page( $v['parent_slug'], $v['page_title'], $v['menu_title'], $v['capability'], $menu_slug, array( &$this, 'display_page' ) );
 					$this->views[ $view_hook_name ] = $menu_slug;
 				}
 				else if ( isset( $v['parent_slug'] ) ) {

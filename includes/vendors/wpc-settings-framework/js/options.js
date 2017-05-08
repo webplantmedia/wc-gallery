@@ -1,6 +1,6 @@
 /**
  * @author Chris Baldelomar
- * @website http://wordpresscanvas.com/
+ * @website http://angiemakes.com/
  */
 
 
