@@ -314,9 +314,4 @@
 		initGallery();
 	}); 
 
-	// Triggers re-layout on accordion, tabs, toggle
-	$( document.body ).on( 'wcs-toggled', function () {
-		initGallery();
-	}); 
-
 } )( jQuery );
