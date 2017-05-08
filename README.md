@@ -67,6 +67,12 @@ For more tutorials on our gallery plugin, go to our knowledge base.
 
 ## Changelog ##
 
+### Version 1.57 ###
+
+* Updated WPC Settings Framework to 1.0.5
+* removed woocommerce product gallery option
+* fixed bug when muliple galleries were not loading libraries in correct order.
+
 ### Version 1.56 ###
 
 * More elegant loading of masonry gallery images.
