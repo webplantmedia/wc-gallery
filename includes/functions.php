@@ -150,8 +150,7 @@ function wc_gallery_shortcode($blank, $attr) {
 	}
 
 	if ( in_array( $display, $sliders ) ) {
-		wp_enqueue_script( 'wc-gallery-flexslider' );
-		wp_enqueue_script( 'wc-gallery' );
+		wp_enqueue_script( 'wc-gallery-slider' );
 
 		$class[] = 'wc' . $display;
 		$class[] = 'wcflexslider';
@@ -277,8 +276,7 @@ function wc_gallery_shortcode($blank, $attr) {
 		$output .= "</div>\n";
 	}
 	else if ( in_array( $display, $owlcarousel ) ) {
-		wp_enqueue_script( 'wc-gallery-owlcarousel' );
-		wp_enqueue_script( 'wc-gallery' );
+		wp_enqueue_script( 'wc-gallery-carousel' );
 
 		$class[] = 'wc' . $display;
 		$class[] = 'wcowlcarousel';
@@ -344,7 +342,7 @@ function wc_gallery_shortcode($blank, $attr) {
 		$output .= "</div></div>\n";
 	}
 	else {
-		wp_enqueue_script( 'wc-gallery' );
+		wp_enqueue_script( 'wc-gallery-masonry' );
 
 		// getting rid of float
 		$display = 'float' == $display ? 'masonry' : $display;
