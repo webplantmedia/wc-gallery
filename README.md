@@ -67,6 +67,10 @@ For more tutorials on our gallery plugin, go to our knowledge base.
 
 ## Changelog ##
 
+### Version 1.58 ###
+
+* removed wcs-trigger check
+
 ### Version 1.57 ###
 
 * Updated WPC Settings Framework to 1.0.5
