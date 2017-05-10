@@ -67,6 +67,10 @@ For more tutorials on our gallery plugin, go to our knowledge base.
 
 ## Changelog ##
 
+### Version 1.59 ###
+
+* fixing image count when flexslider clones exist.
+
 ### Version 1.58 ###
 
 * removed wcs-trigger check
