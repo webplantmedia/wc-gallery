@@ -19,7 +19,7 @@
 				}
 
 				$this.magnificPopup({
-					delegate: '.gallery-icon a',
+					delegate: '.gallery-item:not(.clone) .gallery-icon a',
 					gallery: {
 						enabled: true
 					},
