@@ -67,6 +67,10 @@ For more tutorials on our gallery plugin, go to our knowledge base.
 
 == Changelog ==
 
+= Version 1.61 =
+
+* Updated WPC Settings Framework to 1.0.7
+
 = Version 1.60 =
 
 * Updated WPC Settings Framework to 1.0.6
