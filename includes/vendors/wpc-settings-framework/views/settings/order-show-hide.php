@@ -1,5 +1,5 @@
 <?php
-$not_selected = $default;
+$not_selected = $selection;
 ?>
 
 <?php if ( isset( $label ) ) : ?>

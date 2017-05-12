@@ -17,7 +17,7 @@
  */
 class WC_Gallery_Settings_Framework {
 
-	protected $version = '1.0.6';
+	protected $version = '1.0.7';
 
 	/**
 	 * Instance of this class.
@@ -590,6 +590,7 @@ class WC_Gallery_Settings_Framework {
 			$args['display'] = 'default';
 
 		extract( $args );
+
 		$val = get_option( $option_name, $default );
 
 		switch ( $args['type'] ) {
