@@ -151,3 +151,22 @@
 .wpcsf-group .wpcsf-input-field .description {
 	display: inline-block;
 }
+/**
+ * Reset Button
+ */
+.wpcsf-wrap .button.delete {
+	float: right;
+}
+@media screen and (max-width: 600px) {
+	.wpcsf-wrap #submit {
+		display: block;
+		float: left;
+		clear: both;
+	}
+	.wpcsf-wrap .button.delete {
+		float: left;
+		display: block;
+		margin-top: 1.5em;
+		clear: both;
+	}
+}

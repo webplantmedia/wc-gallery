@@ -24,7 +24,7 @@
 
 		<p class="submit">
 			<?php submit_button( null, 'primary', 'submit', false ); ?>
-			<?php //submit_button( 'Restore Default Settings', 'delete', 'submit', false ); ?>
+			<?php submit_button( 'Restore Default Settings', 'delete', 'wpcsf_reset_options_' . $menu_slug, false, array( 'onclick' => 'return confirm("Are you sure you want to reset your settings?");' ) ); ?>
 		</p>
 	</form>
 </div>
