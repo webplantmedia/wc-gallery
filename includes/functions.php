@@ -21,6 +21,12 @@ function wc_gallery_check_supports() {
 }
 add_action( 'init', 'wc_gallery_check_supports' );
 
+// Disable Jetapck carousel gallery messsage when this plugin is activated.
+function wc_gallery_jp_carousel_maybe_disable( $false ) { 
+	return true; 
+}; 
+add_filter( 'jp_carousel_maybe_disable', 'wc_gallery_jp_carousel_maybe_disable', 10, 1 ); 
+
 function wc_gallery_add_action_links( $links ) {
 	return array_merge(
 		array(
