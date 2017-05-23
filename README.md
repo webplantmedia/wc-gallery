@@ -67,6 +67,10 @@ For more tutorials on our gallery plugin, go to our knowledge base.
 
 ## Changelog ##
 
+### Version 1.63 ###
+
+* added grid display
+
 ### Version 1.62 ###
 
 * disabled jetpack gallery message when plugin is activated
