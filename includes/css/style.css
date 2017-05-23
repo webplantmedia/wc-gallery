@@ -10,6 +10,9 @@
  * [gallery]
  * ----------------------------------------------------------------------------
  */
+.wc-gallery {
+	overflow: hidden;
+}
 .wc-gallery .gallery {
 	margin-bottom: 0px;
 	margin-left: 0px;
@@ -151,6 +154,88 @@
 .wc-gallery-captions-onhover .gallery-item:hover .gallery-caption {
 	display: block;
 }
+.gallery-grid .gallery-item-wrapper {
+	float: left;
+	text-align: center;
+}
+.gallery-grid .gallery-item-wrapper .gallery-item {
+	width: auto;
+}
+.gallery-grid.gallery-columns-1 .gallery-item-wrapper { width: 100%; }
+.gallery-grid.gallery-columns-2 .gallery-item-wrapper { width: 50%; }
+.gallery-grid.gallery-columns-3 .gallery-item-wrapper { width: 33.33333%; }
+.gallery-grid.gallery-columns-4 .gallery-item-wrapper { width: 25%; }
+.gallery-grid.gallery-columns-5 .gallery-item-wrapper { width: 20%; }
+.gallery-grid.gallery-columns-6 .gallery-item-wrapper { width: 16.66666%; }
+.gallery-grid.gallery-columns-7 .gallery-item-wrapper { width: 14.28571%; }
+.gallery-grid.gallery-columns-8 .gallery-item-wrapper { width: 12.5%; }
+.gallery-grid.gallery-columns-9 .gallery-item-wrapper { width: 11.11111%; }
+
+.gallery-grid .gallery-item-column-1 { clear: both; }
+
+.gallery-grid.wc-gallery-gutter-1 .gallery-item { margin-right: 1px; margin-bottom: 1px; }
+.gallery-grid.wc-gallery-gutter-1 { margin-right: -1px; }
+.gallery-grid.wc-gallery-gutter-2 .gallery-item { margin-right: 2px; margin-bottom: 2px; }
+.gallery-grid.wc-gallery-gutter-2 { margin-right: -2px; }
+.gallery-grid.wc-gallery-gutter-3 .gallery-item { margin-right: 3px; margin-bottom: 3px; }
+.gallery-grid.wc-gallery-gutter-3 { margin-right: -3px; }
+.gallery-grid.wc-gallery-gutter-4 .gallery-item { margin-right: 4px; margin-bottom: 4px; }
+.gallery-grid.wc-gallery-gutter-4 { margin-right: -4px; }
+.gallery-grid.wc-gallery-gutter-5 .gallery-item { margin-right: 5px; margin-bottom: 5px; }
+.gallery-grid.wc-gallery-gutter-5 { margin-right: -5px; }
+.gallery-grid.wc-gallery-gutter-6 .gallery-item { margin-right: 6px; margin-bottom: 6px; }
+.gallery-grid.wc-gallery-gutter-6 { margin-right: -6px; }
+.gallery-grid.wc-gallery-gutter-7 .gallery-item { margin-right: 7px; margin-bottom: 7px; }
+.gallery-grid.wc-gallery-gutter-7 { margin-right: -7px; }
+.gallery-grid.wc-gallery-gutter-8 .gallery-item { margin-right: 8px; margin-bottom: 8px; }
+.gallery-grid.wc-gallery-gutter-8 { margin-right: -8px; }
+.gallery-grid.wc-gallery-gutter-9 .gallery-item { margin-right: 9px; margin-bottom: 9px; }
+.gallery-grid.wc-gallery-gutter-9 { margin-right: -9px; }
+.gallery-grid.wc-gallery-gutter-10 .gallery-item { margin-right: 10px; margin-bottom: 10px; }
+.gallery-grid.wc-gallery-gutter-10 { margin-right: -10px; }
+.gallery-grid.wc-gallery-gutter-11 .gallery-item { margin-right: 11px; margin-bottom: 11px; }
+.gallery-grid.wc-gallery-gutter-11 { margin-right: -11px; }
+.gallery-grid.wc-gallery-gutter-12 .gallery-item { margin-right: 12px; margin-bottom: 12px; }
+.gallery-grid.wc-gallery-gutter-12 { margin-right: -12px; }
+.gallery-grid.wc-gallery-gutter-13 .gallery-item { margin-right: 13px; margin-bottom: 13px; }
+.gallery-grid.wc-gallery-gutter-13 { margin-right: -13px; }
+.gallery-grid.wc-gallery-gutter-14 .gallery-item { margin-right: 14px; margin-bottom: 14px; }
+.gallery-grid.wc-gallery-gutter-14 { margin-right: -14px; }
+.gallery-grid.wc-gallery-gutter-15 .gallery-item { margin-right: 15px; margin-bottom: 15px; }
+.gallery-grid.wc-gallery-gutter-15 { margin-right: -15px; }
+.gallery-grid.wc-gallery-gutter-16 .gallery-item { margin-right: 16px; margin-bottom: 16px; }
+.gallery-grid.wc-gallery-gutter-16 { margin-right: -16px; }
+.gallery-grid.wc-gallery-gutter-17 .gallery-item { margin-right: 17px; margin-bottom: 17px; }
+.gallery-grid.wc-gallery-gutter-17 { margin-right: -17px; }
+.gallery-grid.wc-gallery-gutter-18 .gallery-item { margin-right: 18px; margin-bottom: 18px; }
+.gallery-grid.wc-gallery-gutter-18 { margin-right: -18px; }
+.gallery-grid.wc-gallery-gutter-19 .gallery-item { margin-right: 19px; margin-bottom: 19px; }
+.gallery-grid.wc-gallery-gutter-19 { margin-right: -19px; }
+.gallery-grid.wc-gallery-gutter-20 .gallery-item { margin-right: 20px; margin-bottom: 20px; }
+.gallery-grid.wc-gallery-gutter-20 { margin-right: -20px; }
+.gallery-grid.wc-gallery-gutter-21 .gallery-item { margin-right: 21px; margin-bottom: 21px; }
+.gallery-grid.wc-gallery-gutter-21 { margin-right: -21px; }
+.gallery-grid.wc-gallery-gutter-22 .gallery-item { margin-right: 22px; margin-bottom: 22px; }
+.gallery-grid.wc-gallery-gutter-22 { margin-right: -22px; }
+.gallery-grid.wc-gallery-gutter-23 .gallery-item { margin-right: 23px; margin-bottom: 23px; }
+.gallery-grid.wc-gallery-gutter-23 { margin-right: -23px; }
+.gallery-grid.wc-gallery-gutter-24 .gallery-item { margin-right: 24px; margin-bottom: 24px; }
+.gallery-grid.wc-gallery-gutter-24 { margin-right: -24px; }
+.gallery-grid.wc-gallery-gutter-25 .gallery-item { margin-right: 25px; margin-bottom: 25px; }
+.gallery-grid.wc-gallery-gutter-25 { margin-right: -25px; }
+.gallery-grid.wc-gallery-gutter-26 .gallery-item { margin-right: 26px; margin-bottom: 26px; }
+.gallery-grid.wc-gallery-gutter-26 { margin-right: -26px; }
+.gallery-grid.wc-gallery-gutter-27 .gallery-item { margin-right: 27px; margin-bottom: 27px; }
+.gallery-grid.wc-gallery-gutter-27 { margin-right: -27px; }
+.gallery-grid.wc-gallery-gutter-28 .gallery-item { margin-right: 28px; margin-bottom: 28px; }
+.gallery-grid.wc-gallery-gutter-28 { margin-right: -28px; }
+.gallery-grid.wc-gallery-gutter-29 .gallery-item { margin-right: 29px; margin-bottom: 29px; }
+.gallery-grid.wc-gallery-gutter-29 { margin-right: -29px; }
+.gallery-grid.wc-gallery-gutter-30 .gallery-item { margin-right: 30px; margin-bottom: 30px; }
+.gallery-grid.wc-gallery-gutter-30 { margin-right: -30px; }
+
+.wc-gallery .gallery-grid.gallery-columns-1 .gallery-itemn { margin-right: 0; margin-bottom: 0; }
+.wc-gallery .gallery-grid.gallery-columns-1 { margin-right: 0px; }
 
 @media screen and (max-width: 568px) {
 	body .wc-gallery-captions-onpopup .gallery-caption,
@@ -169,6 +254,9 @@
 	body .wc-gallery .wc-image-links-bottomlinks {
 		margin: 0;
 	}
+	body .wc-gallery .gallery-grid .gallery-item-wrapper { width: 100%; }
+	body .wc-gallery .gallery-grid .gallery-item { margin-right: 0; }
+	body .wc-gallery .gallery-grid { margin-right: 0px; }
 }
 /**
  * Image Links

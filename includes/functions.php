@@ -347,11 +347,8 @@ function wc_gallery_shortcode($blank, $attr) {
 
 		$output .= "</div></div>\n";
 	}
-	else {
+	else if ( 'masonry' == $display ) {
 		wp_enqueue_script( 'wc-gallery-masonry' );
-
-		// getting rid of float
-		$display = 'float' == $display ? 'masonry' : $display;
 
 		$class[] = "gallery-{$display}";
 		$class[] = "galleryid-{$id}";
@@ -402,6 +399,73 @@ function wc_gallery_shortcode($blank, $attr) {
 			$output .= "</div>";
 
 			$pos++;
+		}
+
+		$output .= "</div>\n";
+	}
+	else {
+		// getting rid of float
+		$display = 'float' == $display ? 'grid' : $display;
+
+		$class[] = "gallery-{$display}";
+		$class[] = "galleryid-{$id}";
+		$class[] = "gallery-columns-{$columns}";
+		$class[] = "gallery-size-{$size_class}";
+		$class[] = 'wc-gallery-bottomspace-' . $bottomspace;
+		$class[] = 'wc-gallery-gutter-' . $gutterwidth;
+		$class[] = 'wc-gallery-clear';
+
+		$class = implode( ' ', $class );
+
+		$output = "<div id='$selector' data-gutter-width='".$gutterwidth."' data-columns='".$columns."' class='{$class}'>";
+
+		$i = 0;
+		$pos = 1;
+		foreach ( $attachments as $id => $attachment ) {
+			$column = $i % $columns;
+			$column++;
+			if ( $customlink ) {
+				$image_output = wc_gallery_get_attachment_link( $id, $size, false, false, false, $targetsize, $customlink, $link_target );
+			}
+			else if ( ! empty( $link ) && 'file' === $link ) {
+				$image_output = wc_gallery_get_attachment_link( $id, $size, false, false, false, $targetsize, $customlink, $link_target );
+			}
+			else if ( ! empty( $link ) && 'none' === $link ) {
+				$image_output = wp_get_attachment_image( $id, $size, false );
+			}
+			else {
+				$image_output = wc_gallery_get_attachment_link( $id, $size, true, false, false, 'large', false, $link_target );
+			}
+
+			$image_meta  = wp_get_attachment_metadata( $id );
+
+			$orientation = '';
+			if ( isset( $image_meta['height'], $image_meta['width'] ) )
+				$orientation = ( $image_meta['height'] > $image_meta['width'] ) ? 'portrait' : 'landscape';
+
+			$last_column_class = '';
+			if ( $column == $columns ) {
+				$last_column_class = ' gallery-item-last-column';
+			}
+
+			$output .= "<div class='gallery-item-wrapper gallery-item-position-".$pos." gallery-item-attachment-".$id." gallery-item-column-".$column.$last_column_class."'><div class='gallery-item'>";
+			$output .= "
+				<div class='gallery-item-inner'>
+					<div class='gallery-icon {$orientation}'>
+						$image_output
+					</div>";
+					if ( $showcaptions && trim($attachment->post_excerpt) ) {
+						$output .= "
+							<div class='wp-caption-text gallery-caption'>
+								<{$captiontype}>
+								" . wptexturize($attachment->post_excerpt) . "
+								</{$captiontype}>
+							</div>";
+					}
+			$output .= "</div></div></div>";
+
+			$pos++;
+			$i++;
 		}
 
 		$output .= "</div>\n";
@@ -493,6 +557,7 @@ function wc_gallery_get_attachment_link( $id = 0, $size = 'thumbnail', $permalin
 function wc_gallery_print_media_templates() {
 	$display_types = array( 
 		'masonry' => __( 'Masonry', 'wc_gallery' ),
+		'grid' => __( 'Grid', 'wc_gallery' ),
 		'slider' => __( 'Slider (Fade)', 'wc_gallery' ),
 		'slider2' => __( 'Slider (Slide)', 'wc_gallery' ),
 		'sliderauto' => __( 'Slider (Auto Start)', 'wc_gallery' ),
