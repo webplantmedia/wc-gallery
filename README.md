@@ -67,6 +67,10 @@ For more tutorials on our gallery plugin, go to our knowledge base.
 
 ## Changelog ##
 
+### Version 1.64 ###
+
+* Only load flex slider when more than 1 attachment is in the slider
+
 ### Version 1.63 ###
 
 * added grid display
