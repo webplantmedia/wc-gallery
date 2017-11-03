@@ -158,8 +158,13 @@ function wc_gallery_shortcode($blank, $attr) {
 	if ( in_array( $display, $sliders ) ) {
 		wp_enqueue_script( 'wc-gallery-slider' );
 
+		list( $attachments, $links ) = wc_gallery_seperate_attachments_links( $attachments, $display );
+
+		if ( sizeof( $attachments ) > 1 ) {
+			$class[] = 'wcflexslider';
+		}
+
 		$class[] = 'wc' . $display;
-		$class[] = 'wcflexslider';
 		if ( 'true' == $hidecontrols ) {
 			$class[] = 'wcflexslider-hidecontrols';
 		}
@@ -174,8 +179,6 @@ function wc_gallery_shortcode($blank, $attr) {
 		$output .= "<div class='".implode( ' ', $wrap_class )."'>";
 		$output .= "<div id='$selector' class='".implode( ' ', $class )."' data-gutter-width='".$gutterwidth."' data-columns='".$columns."' data-hide-controls='".$hidecontrols."'>";
 		$output .= "<ul class='slides'>";
-
-		list( $attachments, $links ) = wc_gallery_seperate_attachments_links( $attachments, $display );
 
 		$pos = 1;
 
