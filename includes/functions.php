@@ -265,12 +265,15 @@ function wc_gallery_shortcode($blank, $attr) {
 						$caption_text = trim($attachment->post_excerpt);
 
 						if ( ! empty( $caption_text ) ) {
+							$url = wc_gallery_get_attachment_url( $id, true, false, $targetsize );
+							$output .= "<a href='".$url."' target='".$link_target."'>";
 							$output .= "
 								<div class='wp-caption-text gallery-caption'>
 									<h3>
 									" . wptexturize($caption_text) . "
 									</h3>
 								</div>";
+							$output .= "</a>";
 						}
 					$output .= "</div>";
 				$output .= "</div>";
@@ -507,6 +510,23 @@ function wc_gallery_seperate_attachments_links( $attachments, $display ) {
 	return array( $attachments, $links );
 }
 
+function wc_gallery_get_attachment_url( $id, $customlink, $permalink, $targetsize ) {
+	$_post = get_post( $id );
+	
+	if ( $customlink ) {
+		$url = get_post_meta( $_post->ID, _WC_GALLERY_PREFIX . 'custom_image_link', true );
+	}
+	else if ( $permalink ) {
+		$url = get_attachment_link( $_post->ID );
+	}
+	else if ( $targetsize ) {
+		if ( $img = wp_get_attachment_image_src( $_post->ID, $targetsize ) )
+			$url = $img[0];
+	}
+
+	return $url;
+}
+
 /**
  * Retrieve an attachment page link using an image or icon, if possible.
  *
@@ -527,16 +547,7 @@ function wc_gallery_get_attachment_link( $id = 0, $size = 'thumbnail', $permalin
 	if ( empty( $_post ) || ( 'attachment' != $_post->post_type ) || ! $url = wp_get_attachment_url( $_post->ID ) )
 		return __( 'Missing Attachment' );
 
-	if ( $customlink ) {
-		$url = get_post_meta( $_post->ID, _WC_GALLERY_PREFIX . 'custom_image_link', true );
-	}
-	else if ( $permalink ) {
-		$url = get_attachment_link( $_post->ID );
-	}
-	else if ( $targetsize ) {
-		if ( $img = wp_get_attachment_image_src( $_post->ID, $targetsize ) )
-			$url = $img[0];
-	}
+	$url = wc_gallery_get_attachment_url( $id, $customlink, $permalink, $targetsize );
 
 	$post_title = esc_attr( $_post->post_title );
 
