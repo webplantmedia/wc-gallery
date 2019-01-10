@@ -3,7 +3,7 @@
 Contributors: cbaldelomar
 Tags: masonry gallery, pinterest style gallery, pinterest gallery, gallery slider, slider gallery, carousel gallery, carousel, slider, image links
 Requires at least: 3.7
-Tested up to: 4.7.3
+Tested up to: 5.0.3
 Stable tag: trunk
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -66,6 +66,10 @@ For more tutorials on our gallery plugin, go to our knowledge base.
 [http://angiemakes.com/knowledgebase/how-to-disable-extra-image-sizes-and-thumbnails-from-being-generated/](http://angiemakes.com/knowledgebase/how-to-disable-extra-image-sizes-and-thumbnails-from-being-generated/)
 
 == Changelog ==
+
+= Version 1.67 =
+
+* Updated readme.
 
 = Version 1.65 =
 
